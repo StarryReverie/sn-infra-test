@@ -28,11 +28,12 @@ in
 
     shellAliases = {
       ga = "git add . && git status";
-      gs = "git status";
-      gl = "git log --pretty='format:%C(yellow)%h %C(blue)%ad %C(white)%s' --graph --date=short";
       gd = "git diff HEAD";
+      gl = "git log --pretty='format:%C(yellow)%h %C(blue)%ad %C(white)%s' --graph --date=short";
       gp = "git push";
       gpr = "git pull --rebase";
+      gs = "git status";
+      lg = "lazygit";
     };
   };
 }
