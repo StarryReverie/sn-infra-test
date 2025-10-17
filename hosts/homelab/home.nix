@@ -10,6 +10,7 @@
   imports = [
     (flakeRoot + /modules/home/direnv)
     (flakeRoot + /modules/home/helix)
+    (flakeRoot + /modules/home/zsh)
   ];
 
   home.username = constants.username;

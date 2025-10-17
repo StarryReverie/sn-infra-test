@@ -36,6 +36,7 @@
 
   users.users.starryreverie = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
 
     packages = with pkgs; [
@@ -54,6 +55,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQrkIsLMV70klKFtQY8JK5QgXKGyTpZcIaLarXG5dBv"
     ];
   };
+
+  programs.zsh.enable = true;
 
   services.openssh.enable = true;
   services.v2raya.enable = true;
