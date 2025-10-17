@@ -10,6 +10,7 @@
   imports = [
     (flakeRoot + /modules/home/atuin)
     (flakeRoot + /modules/home/direnv)
+    (flakeRoot + /modules/home/fzf)
     (flakeRoot + /modules/home/git)
     (flakeRoot + /modules/home/helix)
     (flakeRoot + /modules/home/lazygit)
