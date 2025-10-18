@@ -9,6 +9,7 @@
 {
   imports = [
     (flakeRoot + /modules/home/atuin)
+    (flakeRoot + /modules/home/bat)
     (flakeRoot + /modules/home/direnv)
     (flakeRoot + /modules/home/fzf)
     (flakeRoot + /modules/home/git)

@@ -26,7 +26,6 @@
       tree
       neofetch
       htop
-      bat
       zellij
     ];
 
