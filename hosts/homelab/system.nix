@@ -24,7 +24,6 @@
 
     packages = with pkgs; [
       htop
-      zellij
     ];
 
     openssh.authorizedKeys.keys = [

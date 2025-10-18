@@ -1,0 +1,31 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane size="20%" {
+            plugin location="zellij:strider"
+        }
+        pane {
+            pane size="80%" {
+                focus true
+                command "direnv"
+                args "exec" "." "hx" "."
+            }
+            pane split_direction="vertical" {
+                pane
+                pane
+            }
+        }
+    }
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}
+keybinds {
+    shared_except "locked" {
+        bind "Alt B" { LaunchOrFocusPlugin "zellij:strider"; }
+        unbind "Alt N"
+        unbind "Alt X"
+    }
+}
