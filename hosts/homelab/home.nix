@@ -14,6 +14,7 @@
     (flakeRoot + /modules/home/git)
     (flakeRoot + /modules/home/helix)
     (flakeRoot + /modules/home/lazygit)
+    (flakeRoot + /modules/home/ripgrep)
     (flakeRoot + /modules/home/zoxide)
     (flakeRoot + /modules/home/zsh)
   ];

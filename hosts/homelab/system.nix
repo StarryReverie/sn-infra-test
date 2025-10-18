@@ -24,13 +24,9 @@
 
     packages = with pkgs; [
       tree
-      git
       neofetch
-      ripgrep
       htop
       bat
-      fzf
-      atuin
       zellij
     ];
 
