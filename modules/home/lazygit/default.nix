@@ -22,4 +22,8 @@
     };
     disableStartupPopups = true;
   };
+
+  home.shellAliases = {
+    lg = "lazygit";
+  };
 }
