@@ -7,6 +7,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     ./system.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.microvm.nixosModules.host
 
     {
       home-manager.useUserPackages = true;

@@ -14,13 +14,19 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
+
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     { self, flake-parts, ... }@inputs:
     let
       flakeRoot = ./.;
-      hostPrefix = "starrynix-";
+      makeHostnameForHost = host: "starrynix-${host}";
+      makeHostnameForService = cluster: node: "starrynix-srv-${cluster}-${node}";
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -51,7 +57,21 @@
             inherit inputs flakeRoot;
             constants = (import ./modules/constants.nix) // {
               system = "x86_64-linux";
-              hostname = "${hostPrefix}homelab";
+              hostname = makeHostnameForHost "homelab";
+            };
+          };
+        };
+
+        serviceConfigurations = {
+          web-fireworks = {
+            web = (import ./services/web-fireworks/web/entry-point.nix) {
+              inherit inputs flakeRoot;
+              serviceConstants = (import ./modules/constants.nix) // rec {
+                system = "x86_64-linux";
+                cluster = "web-fireworks";
+                node = "web";
+                hostname = makeHostnameForService cluster node;
+              };
             };
           };
         };

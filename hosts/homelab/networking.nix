@@ -5,7 +5,6 @@
   constants,
   ...
 }:
-
 {
   networking.useDHCP = lib.mkDefault true;
 
@@ -23,4 +22,43 @@
     allowAuxiliaryImperativeNetworks = true;
   };
 
+  networking.useNetworkd = true;
+  systemd.network.enable = true;
+
+  systemd.network.netdevs."10-microvm".netdevConfig = {
+    Kind = "bridge";
+    Name = "microvm";
+  };
+
+  systemd.network.networks."10-microvm" = {
+    matchConfig.Name = "microvm";
+    addresses = [ { Address = "10.0.0.254/24"; } ];
+    networkConfig = {
+      IPv4Forwarding = true;
+    };
+  };
+
+  systemd.network.networks."11-microvm" = {
+    matchConfig.Name = "vmif-*";
+    networkConfig.Bridge = "microvm";
+  };
+
+  networking.nat = {
+    enable = true;
+    externalInterface = "wlp3s0";
+    internalInterfaces = [ "microvm" ];
+
+    forwardPorts = [
+      {
+        proto = "tcp";
+        sourcePort = 8080;
+        destination = "10.0.0.1:80";
+      }
+    ];
+  };
+
+  networking.firewall.enable = true;
+  # networking.firewall.trustedInterfaces = [ "microvm" "vmif-cluster0" "wlp3s0" ];
+  networking.firewall.allowedTCPPortRanges = [ { from = 1; to = 65535; } ];
+  # networking.firewall.allowedUDPPortRanges = [ { from = 1; to = 65535; } ];
 }

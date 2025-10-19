@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   constants,
   flakeRoot,
   ...
@@ -38,4 +39,14 @@
   services.tailscale.enable = true;
 
   system.stateVersion = "25.05";
+
+  microvm.autostart = [
+    "web-fireworks-web"
+  ];
+
+  microvm.vms = {
+    web-fireworks-web = {
+      inherit (inputs.self.serviceConfigurations.web-fireworks.web) specialArgs config;
+    };
+  };
 }
