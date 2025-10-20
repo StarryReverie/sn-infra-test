@@ -32,7 +32,7 @@
 
   systemd.network.networks."10-microvm" = {
     matchConfig.Name = "microvm";
-    addresses = [ { Address = "10.0.0.254/24"; } ];
+    address = [ "172.25.0.254/24" ];
     networkConfig = {
       IPv4Forwarding = true;
     };
@@ -52,13 +52,12 @@
       {
         proto = "tcp";
         sourcePort = 8080;
-        destination = "10.0.0.1:80";
+        destination = "172.25.0.1:80";
       }
     ];
   };
 
   networking.firewall.enable = true;
-  # networking.firewall.trustedInterfaces = [ "microvm" "vmif-cluster0" "wlp3s0" ];
-  networking.firewall.allowedTCPPortRanges = [ { from = 1; to = 65535; } ];
-  # networking.firewall.allowedUDPPortRanges = [ { from = 1; to = 65535; } ];
+  networking.nftables.enable = true;
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 }

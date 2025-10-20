@@ -15,6 +15,7 @@
     services.openssh.settings.PermitRootLogin = "yes";
 
     networking.hostName = serviceConstants.hostname;
+    networking.useDHCP = false;
 
     microvm.hypervisor = "qemu";
     microvm.vcpu = 1;
@@ -38,9 +39,9 @@
     systemd.network.enable = true;
     systemd.network.networks."20-lan" = {
       matchConfig.MACAddress = "02:00:00:00:00:01";
-      address = [ "10.0.0.1/24" ];
-      networkConfig.Gateway = "10.0.0.254";
-      networkConfig.DNS = [ "8.8.8.8" ];
+      address = [ "172.25.0.1/24" ];
+      networkConfig.Gateway = "172.25.0.254";
+      networkConfig.DNS = "8.8.8.8";
     };
   };
 }

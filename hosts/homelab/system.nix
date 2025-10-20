@@ -32,7 +32,13 @@
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    socat
+    dig
+  ];
+
   programs.zsh.enable = true;
+  programs.tcpdump.enable = true;
 
   services.openssh.enable = true;
   services.v2raya.enable = true;
