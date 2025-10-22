@@ -58,5 +58,7 @@
         networkConfig.Gateway = cluster.gatewayIpv4Address;
         networkConfig.DNS = "8.8.8.8";
       };
+
+      system.stateVersion = "25.11";
     };
 }

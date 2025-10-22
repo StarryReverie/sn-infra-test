@@ -10,6 +10,7 @@
   imports = [
     (flakeRoot + /modules/home/atuin)
     (flakeRoot + /modules/home/bat)
+    (flakeRoot + /modules/home/difftastic)
     (flakeRoot + /modules/home/direnv)
     (flakeRoot + /modules/home/eza)
     (flakeRoot + /modules/home/fastfetch)

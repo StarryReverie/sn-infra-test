@@ -8,11 +8,8 @@
 {
   programs.git.enable = true;
 
-  programs.git.userName = constants.name;
-  programs.git.userEmail = constants.email;
-
-  programs.git.difftastic.enable = true;
-  programs.git.difftastic.enableAsDifftool = true;
+  programs.git.settings.user.name = constants.name;
+  programs.git.settings.user.email = constants.email;
 
   home.shellAliases = {
     ga = "git add . && git status";

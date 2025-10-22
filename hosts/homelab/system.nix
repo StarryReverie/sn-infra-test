@@ -49,7 +49,7 @@
     configFile = "/etc/nixos/config.dae";
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
   microvm.autostart = [
     "web-fireworks-web"
