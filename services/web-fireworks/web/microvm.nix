@@ -8,21 +8,25 @@
   ...
 }:
 let
-  registry = config.starrynix-infrastructure.registry;
-  cluster = registry.clusters.${serviceConstants.cluster};
-  node = cluster.nodes.${serviceConstants.node};
+  serviceCfg = config.starrynix-infrastructure.service;
 in
 {
   imports = [
-    (flakeRoot + /modules/nixos/starrynix-infrastructure/registry)
+    (flakeRoot + /modules/nixos/starrynix-infrastructure/service)
     (flakeRoot + /services/registry.nix)
   ];
+
+  starrynix-infrastructure.service = {
+    name = {
+      inherit (serviceConstants) cluster node;
+    };
+  };
 
   users.users.root.password = "root";
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
 
-  networking.hostName = serviceConstants.hostname;
+  networking.hostName = serviceCfg.nodeInformation.hostName;
   networking.useDHCP = false;
 
   microvm.hypervisor = "qemu";
@@ -38,18 +42,17 @@ in
 
   microvm.interfaces = inputs.nixpkgs.lib.singleton {
     type = "tap";
-    id = node.networkInterface;
-    mac = node.macAddress;
+    id = serviceCfg.nodeInformation.networkInterface;
+    mac = serviceCfg.nodeInformation.macAddress;
   };
 
   networking.useNetworkd = true;
 
   systemd.network.enable = true;
   systemd.network.networks."20-lan" = {
-    matchConfig.MACAddress = node.macAddress;
-    address = [ node.ipv4AddressCidr ];
-    networkConfig.Gateway = cluster.gatewayIpv4Address;
-    networkConfig.DNS = "8.8.8.8";
+    matchConfig.MACAddress = serviceCfg.nodeInformation.macAddress;
+    address = [ serviceCfg.nodeInformation.ipv4AddressCidr ];
+    networkConfig.Gateway = serviceCfg.clusterInformation.gatewayIpv4Address;
   };
 
   system.stateVersion = "25.11";
