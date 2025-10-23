@@ -26,7 +26,6 @@
     let
       flakeRoot = ./.;
       makeHostnameForHost = host: "starrynix-${host}";
-      makeHostnameForService = cluster: node: "starrynix-srv-${cluster}-${node}";
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -66,11 +65,10 @@
           web-fireworks = {
             web = (import ./services/web-fireworks/web/entry-point.nix) {
               inherit inputs flakeRoot;
-              serviceConstants = (import ./modules/constants.nix) // rec {
+              serviceConstants = (import ./modules/constants.nix) // {
                 system = "x86_64-linux";
                 cluster = "web-fireworks";
                 node = "web";
-                hostname = makeHostnameForService cluster node;
               };
             };
           };

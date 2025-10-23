@@ -7,6 +7,8 @@
 {
   imports = [
     ../registry
+    ./hardware.nix
+    ./networking.nix
   ];
 
   options = {
