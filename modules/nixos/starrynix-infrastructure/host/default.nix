@@ -48,6 +48,7 @@ in
   imports = [
     ../registry
     ./networking.nix
+    ./virtualization.nix
   ];
 
   options = {

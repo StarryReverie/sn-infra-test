@@ -80,14 +80,4 @@
       ];
     };
   };
-
-  microvm.autostart = [
-    "web-fireworks-web"
-  ];
-
-  microvm.vms = {
-    web-fireworks-web = {
-      inherit (inputs.self.serviceConfigurations.web-fireworks.web) specialArgs config;
-    };
-  };
 }
