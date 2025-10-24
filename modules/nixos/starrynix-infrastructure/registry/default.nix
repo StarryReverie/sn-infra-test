@@ -44,11 +44,39 @@ let
           example = 1;
         };
 
+        sshKey = {
+          mount = lib.mkOption {
+            type = lib.types.bool;
+            description = "Whether to mount the provided SSH key pair";
+            default = false;
+            example = true;
+          };
+
+          type = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            description = "The type of the SSH key pair";
+            default = null;
+            example = "ed25519";
+          };
+
+          publicKeyFile = lib.mkOption {
+            type = lib.types.nullOr lib.types.path;
+            description = "The content of the SSH public key";
+            default = null;
+          };
+
+          encryptedPrivateKeyFile = lib.mkOption {
+            type = lib.types.nullOr lib.types.path;
+            description = "The path to the encrypted SSH private key";
+            default = null;
+          };
+        };
+
         hostName = lib.mkOption {
           type = lib.types.str;
           description = ''
             The name of this service node that will be written to
-            `/etc/hostname`
+            `/etc/hostname` (readonly)
           '';
           readOnly = true;
         };
