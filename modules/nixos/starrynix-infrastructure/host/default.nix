@@ -48,6 +48,7 @@ in
   imports = [
     ../registry
     ./networking.nix
+    ./ssh-keys.nix
     ./virtualization.nix
   ];
 

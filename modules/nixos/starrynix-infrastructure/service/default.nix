@@ -9,6 +9,7 @@
     ../registry
     ./hardware.nix
     ./networking.nix
+    ./ssh-keys.nix
   ];
 
   options = {

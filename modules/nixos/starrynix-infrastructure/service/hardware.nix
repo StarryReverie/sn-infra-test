@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakeRoot,
   ...
 }:
 let
@@ -21,6 +22,12 @@ in
         tag = "ro-store";
         source = "/nix/store";
         mountPoint = "/nix/.ro-store";
+      }
+      {
+        proto = "virtiofs";
+        tag = "flake-root";
+        source = "${flakeRoot}";
+        mountPoint = "/flake-root";
       }
     ];
   };

@@ -23,7 +23,21 @@ let
             nodeConfiguartion = allConfigurations.${cluster.name}.${node.name};
           in
           {
-            inherit (nodeConfiguartion) specialArgs config;
+            inherit (nodeConfiguartion) specialArgs;
+
+            config = {
+              imports = [ nodeConfiguartion.config ];
+
+              microvm.shares = lib.mkIf node.sshKey.mount [
+                {
+                  proto = "virtiofs";
+                  tag = "ssh-private-key";
+                  source = builtins.dirOf config.age.secrets."${node.hostName}-ssh-private-key".path;
+                  mountPoint = "/etc/ssh/mount";
+                }
+              ];
+            };
+
             pkgs =
               if nodeConfiguartion.system == pkgs.system then
                 pkgs
