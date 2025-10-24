@@ -7,6 +7,8 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     ./system.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
     inputs.microvm.nixosModules.host
 
     {

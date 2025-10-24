@@ -10,6 +10,7 @@
 {
   imports = [
     (flakeRoot + /modules/nixos/nix)
+    (flakeRoot + /modules/nixos/secret)
     (flakeRoot + /modules/nixos/starrynix-infrastructure/host)
     (flakeRoot + /services/registry.nix)
     ./hardware.nix
@@ -33,6 +34,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQrkIsLMV70klKFtQY8JK5QgXKGyTpZcIaLarXG5dBv"
     ];
   };
+
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1iflX8DYwoguHB2BDxLy+eAcdBX+gTHEGqGNBFdvs/";
 
   environment.systemPackages = with pkgs; [
     socat

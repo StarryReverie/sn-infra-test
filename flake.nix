@@ -7,8 +7,20 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     flake-parts = {
@@ -42,6 +54,7 @@
             in
             mkShell {
               packages = with pkgs; [
+                inputs'.agenix-rekey.packages.default
                 nil
                 nixfmt-rfc-style
               ];
@@ -74,6 +87,11 @@
               };
             };
           };
+        };
+
+        agenix-rekey = inputs.agenix-rekey.configure {
+          userFlake = self;
+          nixosConfigurations = self.nixosConfigurations;
         };
       };
     };
