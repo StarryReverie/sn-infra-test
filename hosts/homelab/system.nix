@@ -15,6 +15,7 @@
     (flakeRoot + /services/registry.nix)
     ./hardware.nix
     ./networking.nix
+    ./secrets.nix
   ];
 
   networking.hostName = constants.hostname;

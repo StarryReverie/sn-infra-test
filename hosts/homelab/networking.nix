@@ -13,13 +13,13 @@ in
 
   networking.wireless = {
     enable = true;
-    secretsFile = "/etc/nixos/wireless.conf";
+    secretsFile = config.age.secrets."wireless-password.conf".path;
     networks."BIT-Mobile".auth = ''
       key_mgmt=WPA-EAP
       eap=PEAP
       phase2="auth=MSCHAPV2"
       identity="1120233608"
-      password=ext:pass_university
+      password=ext:pass_BIT-Mobile
     '';
     extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
     allowAuxiliaryImperativeNetworks = true;
