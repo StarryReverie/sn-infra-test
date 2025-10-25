@@ -7,6 +7,8 @@
 {
   programs.lazygit.enable = true;
 
+  programs.lazygit.enableZshIntegration = false;
+
   programs.lazygit.settings = {
     gui = {
       language = "en";
