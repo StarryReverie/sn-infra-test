@@ -21,6 +21,8 @@
       "git"
       "./gradlew"
       "./mvnw"
+      "systemctl"
+      "sudo"
     ];
 
     common_prefix = [
@@ -31,6 +33,7 @@
       ''^\\.*''
       ''^git reset.*''
       ''^rm.*''
+      ''^sudo rm.*''
       ''^ .*''
     ];
   };
