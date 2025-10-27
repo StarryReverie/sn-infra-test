@@ -17,7 +17,7 @@ in
     systemd.network.enable = true;
     networking.useNetworkd = true;
 
-    systemd.network.netdevs = lib.attrsets.mapAttrs' (name: cluster: {
+    systemd.network.netdevs = lib.attrsets.mapAttrs' (_: cluster: {
       name = "10-starrynix-infrastructure-cluster${builtins.toString cluster.index}-bridge";
       value = {
         netdevConfig = {
@@ -29,7 +29,7 @@ in
 
     systemd.network.networks =
       let
-        bridgeSettings = lib.attrsets.mapAttrs' (name: cluster: {
+        bridgeSettings = lib.attrsets.mapAttrsToList (_: cluster: {
           name = "10-starrynix-infrastructure-cluster${builtins.toString cluster.index}-bridge";
           value = {
             matchConfig.Name = cluster.networkBridge;
@@ -37,17 +37,19 @@ in
             networkConfig.IPv4Forwarding = true;
           };
         }) enabledClustersCfg;
-        nodeSettings = lib.attrsets.mapAttrs' (name: cluster: {
-          name = "15-starrynix-infrastructure-cluster${builtins.toString cluster.index}-node";
-          value = {
-            matchConfig.Name = builtins.concatStringsSep "," (
-              lib.attrsets.mapAttrsToList (name: node: node.networkInterface) cluster.nodes
-            );
-            networkConfig.Bridge = cluster.networkBridge;
-          };
-        }) enabledClustersCfg;
+
+        nodeSettings = lib.attrsets.mapAttrsToList (
+          _: cluster:
+          (lib.attrsets.mapAttrsToList (_: node: {
+            name = "15-starrynix-infrastructure-cluster${builtins.toString cluster.index}-node${builtins.toString node.index}";
+            value = {
+              matchConfig.Name = node.networkInterface;
+              networkConfig.Bridge = cluster.networkBridge;
+            };
+          }) cluster.nodes)
+        ) enabledClustersCfg;
       in
-      bridgeSettings // nodeSettings;
+      lib.attrsets.listToAttrs (bridgeSettings ++ (lib.lists.flatten nodeSettings));
 
     networking.nat.enable = true;
 
