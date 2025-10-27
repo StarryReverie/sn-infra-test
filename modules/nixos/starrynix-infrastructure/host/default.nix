@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -46,6 +47,9 @@ let
 in
 {
   imports = [
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
+    inputs.microvm.nixosModules.host
     ../registry
     ./networking.nix
     ./ssh-keys.nix

@@ -13,7 +13,6 @@
     (flakeRoot + /modules/nixos/nix)
     (flakeRoot + /modules/nixos/openssh)
     (flakeRoot + /modules/nixos/secret)
-    (flakeRoot + /modules/nixos/starrynix-infrastructure/host)
     (flakeRoot + /nodes/registry.nix)
     ./hardware.nix
     ./networking.nix

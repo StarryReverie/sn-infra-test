@@ -2,11 +2,14 @@
   config,
   lib,
   pkgs,
-  flakeRoot,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
+    inputs.microvm.nixosModules.microvm
     ../registry
     ./hardware.nix
     ./networking.nix

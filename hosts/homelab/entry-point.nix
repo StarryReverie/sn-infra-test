@@ -1,15 +1,18 @@
-{ inputs, constants, ... }@args:
+{
+  inputs,
+  constants,
+  flakeRoot,
+  ...
+}@args:
 inputs.nixpkgs.lib.nixosSystem {
   inherit (constants) system;
 
   specialArgs = args;
 
   modules = [
-    ./system.nix
     inputs.home-manager.nixosModules.home-manager
-    inputs.agenix.nixosModules.default
-    inputs.agenix-rekey.nixosModules.default
-    inputs.microvm.nixosModules.host
+    (flakeRoot + /modules/nixos/starrynix-infrastructure/host)
+    ./system.nix
 
     {
       home-manager.useUserPackages = true;
