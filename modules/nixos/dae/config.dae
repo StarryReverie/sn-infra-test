@@ -66,6 +66,7 @@ routing {
 
     dip(224.0.0.0/3, 'ff00::/8') -> direct
     dip(geoip:private) -> direct
+    domain(suffix: tailscale.com) -> direct
 
     dip(geoip:cn) -> direct
     domain(geosite:cn) -> direct
