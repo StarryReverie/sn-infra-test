@@ -11,6 +11,7 @@
   imports = [
     (flakeRoot + /modules/nixos/dae)
     (flakeRoot + /modules/nixos/nix)
+    (flakeRoot + /modules/nixos/openssh)
     (flakeRoot + /modules/nixos/secret)
     (flakeRoot + /modules/nixos/starrynix-infrastructure/host)
     (flakeRoot + /services/registry.nix)
@@ -49,7 +50,6 @@
   programs.zsh.enable = true;
   programs.tcpdump.enable = true;
 
-  services.openssh.enable = true;
   services.tailscale.enable = true;
 
   system.stateVersion = "25.11";
