@@ -11,6 +11,7 @@
     ./networking.nix
     ./security.nix
     ./ssh-keys.nix
+    ./system.nix
   ];
 
   options = {
