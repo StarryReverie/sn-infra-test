@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  flakeRoot,
   ...
 }:
 let
@@ -18,8 +17,7 @@ in
     ];
 
     fileSystems."/etc/ssh/ssh_host_${keyCfg.type}_key.pub" = lib.mkIf keyCfg.mount {
-      depends = [ "/flake-root" ];
-      device = "/flake-root/" + (lib.path.removePrefix flakeRoot keyCfg.publicKeyFile);
+      device = "${keyCfg.publicKeyFile}";
       fsType = "none";
       options = [
         "bind"
