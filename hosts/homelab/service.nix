@@ -29,6 +29,13 @@
           toNode = "web";
           destinationPort = 80;
         }
+        {
+          protocol = "tcp";
+          sourcePort = 8081;
+          toCluster = "nextcloud";
+          toNode = "main";
+          destinationPort = 80;
+        }
       ];
     };
   };
