@@ -13,6 +13,11 @@
       index = 1;
       nodes."web".index = 1;
     };
+
+    "nextcloud" = {
+      index = 2;
+      nodes."main".index = 1;
+    };
   };
 
   starrynix-infrastructure.registry.clusters = {
@@ -21,6 +26,13 @@
       type = "ed25519";
       publicKeyFile = flakeRoot + /nodes/web-fireworks/web/ssh-keys/ed25519.pub;
       encryptedPrivateKeyFile = flakeRoot + /nodes/web-fireworks/web/ssh-keys/ed25519.age;
+    };
+
+    "nextcloud".nodes."main".sshKey = {
+      mount = true;
+      type = "ed25519";
+      publicKeyFile = flakeRoot + /nodes/nextcloud/main/ssh-keys/ed25519.pub;
+      encryptedPrivateKeyFile = flakeRoot + /nodes/nextcloud/main/ssh-keys/ed25519.age;
     };
   };
 

@@ -9,7 +9,10 @@
   starrynix-infrastructure.host = {
     deployment = {
       inherit (inputs.self) nodeConfigurations;
-      enabledClusters = [ "web-fireworks" ];
+      enabledClusters = [
+        "web-fireworks"
+        "nextcloud"
+      ];
     };
 
     networking = {
