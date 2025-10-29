@@ -26,6 +26,30 @@ in
     allowAuxiliaryImperativeNetworks = true;
   };
 
+  systemd.network.networks."50-wireless-bypass-ap-isolation-bit-mobile" = {
+    matchConfig = {
+      WLANInterfaceType = "station";
+      SSID = "BIT-Mobile";
+    };
+    networkConfig = {
+      DHCP = "yes";
+      IPv6PrivacyExtensions = "kernel";
+    };
+    dhcpV4Config = {
+      RouteMetric = 1025;
+    };
+    ipv6AcceptRAConfig = {
+      RouteMetric = 1025;
+    };
+    routes = [
+      {
+        Destination = "10.194.0.0/16";
+        Gateway = "10.194.0.1";
+        Metric = 1000;
+      }
+    ];
+  };
+
   age.secrets = {
     "wireless-password.conf".rekeyFile = flakeRoot + /secrets/wireless-password.conf.age;
   };
