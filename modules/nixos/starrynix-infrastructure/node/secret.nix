@@ -12,7 +12,8 @@ in
   age.rekey.masterIdentities = registryCfg.secret.masterIdentities;
 
   age.rekey.storageMode = "local";
-  age.rekey.localStorageDir = registryCfg.secret.localStorageDir + nodeCfg.nodeInformation.hostName;
+  age.rekey.localStorageDir =
+    registryCfg.secret.localStorageDir + /${nodeCfg.nodeInformation.hostName};
 
   age.rekey.hostPubkey =
     if nodeCfg.nodeInformation.sshKey.publicKeyFile != null then
