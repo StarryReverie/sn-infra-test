@@ -20,8 +20,19 @@
     };
   };
 
-  microvm.vcpu = 1;
-  microvm.mem = 512;
+  microvm = {
+    vcpu = 1;
+    mem = 512;
+
+    shares = [
+      {
+        proto = "virtiofs";
+        tag = "minio";
+        source = "minio";
+        mountPoint = "/var/lib/minio";
+      }
+    ];
+  };
 
   system.stateVersion = "25.11";
 }

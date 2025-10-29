@@ -20,8 +20,19 @@
     };
   };
 
-  microvm.vcpu = 1;
-  microvm.mem = 512;
+  microvm = {
+    vcpu = 1;
+    mem = 512;
+
+    shares = [
+      {
+        proto = "virtiofs";
+        tag = "nextcloud";
+        source = "nextcloud";
+        mountPoint = "/var/lib/nextcloud";
+      }
+    ];
+  };
 
   system.stateVersion = "25.11";
 }
