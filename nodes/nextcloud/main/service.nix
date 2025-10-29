@@ -14,9 +14,11 @@ in
     enable = true;
     hostName = "0.0.0.0";
 
+    database.createLocally = true;
+
     config = {
       adminpassFile = config.age.secrets."nextcloud-admin-password".path;
-      dbtype = "sqlite";
+      dbtype = "pgsql";
 
       objectstore.s3 = {
         enable = true;

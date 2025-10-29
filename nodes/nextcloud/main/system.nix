@@ -22,7 +22,7 @@
 
   microvm = {
     vcpu = 1;
-    mem = 512;
+    mem = 1024;
 
     shares = [
       {
@@ -30,6 +30,12 @@
         tag = "nextcloud";
         source = "nextcloud";
         mountPoint = "/var/lib/nextcloud";
+      }
+      {
+        proto = "virtiofs";
+        tag = "postgresql";
+        source = "postgresql";
+        mountPoint = "/var/lib/postgresql";
       }
     ];
   };
