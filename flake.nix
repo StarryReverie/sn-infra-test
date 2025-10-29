@@ -97,6 +97,15 @@
                 node = "main";
               };
             };
+
+            "storage" = (import ./nodes/nextcloud/storage/entry-point.nix) {
+              inherit inputs flakeRoot;
+              system = "x86_64-linux";
+              nodeConstants = (import ./modules/constants.nix) // {
+                cluster = "nextcloud";
+                node = "storage";
+              };
+            };
           };
         };
 
