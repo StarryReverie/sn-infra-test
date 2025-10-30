@@ -15,6 +15,7 @@ in
     hostName = "0.0.0.0";
 
     database.createLocally = true;
+    secretFile = config.age.secrets."secret-configurations".path;
 
     config = {
       adminpassFile = config.age.secrets."nextcloud-admin-password".path;
@@ -37,19 +38,35 @@ in
       trusted_domains = [ "starrynix-homelab" ];
       trusted_proxies = [ nodeCfg.clusterInformation.gatewayIpv4Address ];
       log_type = "systemd";
+
+      redis = {
+        host = lib.mkForce nodeCfg.clusterInformation.nodes."cache".ipv4Address;
+        port = lib.mkForce 6379;
+        dbindex = 0;
+        timeout = 5;
+      };
     };
 
-    configureRedis = false;
+    configureRedis = true;
+    caching.redis = true;
+
     phpOptions."realpath_cache_size" = "0";
   };
 
-  age.secrets."nextcloud-admin-password" = {
-    rekeyFile = ./secrets/nextcloud-admin-password.age;
-    owner = "nextcloud";
-  };
+  age = {
+    secrets."nextcloud-admin-password" = {
+      rekeyFile = ./secrets/nextcloud-admin-password.age;
+      owner = "nextcloud";
+    };
 
-  age.secrets."minio-secret" = {
-    rekeyFile = ./secrets/minio-secret.age;
-    owner = "nextcloud";
+    secrets."minio-secret" = {
+      rekeyFile = ./secrets/minio-secret.age;
+      owner = "nextcloud";
+    };
+
+    secrets."secret-configurations" = {
+      rekeyFile = ./secrets/secret-configurations.age;
+      owner = "nextcloud";
+    };
   };
 }
