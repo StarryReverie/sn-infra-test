@@ -12,6 +12,7 @@
       enabledClusters = [
         "jellyfin"
         "nextcloud"
+        "searxng"
       ];
     };
 

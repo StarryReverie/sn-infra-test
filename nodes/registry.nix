@@ -20,6 +20,11 @@
       nodes."storage".index = 2;
       nodes."cache".index = 3;
     };
+
+    "searxng" = {
+      index = 3;
+      nodes."main".index = 1;
+    };
   };
 
   starrynix-infrastructure.registry.clusters = {
@@ -52,6 +57,15 @@
         type = "ed25519";
         publicKeyFile = flakeRoot + /nodes/nextcloud/cache/ssh-keys/ed25519.pub;
         encryptedPrivateKeyFile = flakeRoot + /nodes/nextcloud/cache/ssh-keys/ed25519.age;
+      };
+    };
+
+    "searxng".nodes = {
+      "main".sshKey = {
+        mount = true;
+        type = "ed25519";
+        publicKeyFile = flakeRoot + /nodes/searxng/main/ssh-keys/ed25519.pub;
+        encryptedPrivateKeyFile = flakeRoot + /nodes/searxng/main/ssh-keys/ed25519.age;
       };
     };
   };
