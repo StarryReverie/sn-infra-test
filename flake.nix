@@ -127,6 +127,17 @@
               };
             };
           };
+
+          "jupyter" = {
+            "main" = (import ./nodes/jupyter/main/entry-point.nix) {
+              inherit inputs flakeRoot;
+              system = "x86_64-linux";
+              nodeConstants = (import ./modules/constants.nix) // {
+                cluster = "jupyter";
+                node = "main";
+              };
+            };
+          };
         };
 
         agenix-rekey = inputs.agenix-rekey.configure {

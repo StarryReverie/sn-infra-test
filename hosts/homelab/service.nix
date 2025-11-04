@@ -13,6 +13,7 @@
         "jellyfin"
         "nextcloud"
         "searxng"
+        "jupyter"
       ];
     };
 

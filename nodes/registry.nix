@@ -25,6 +25,11 @@
       index = 3;
       nodes."main".index = 1;
     };
+
+    "jupyter" = {
+      index = 4;
+      nodes."main".index = 1;
+    };
   };
 
   starrynix-infrastructure.registry.clusters = {
@@ -66,6 +71,15 @@
         type = "ed25519";
         publicKeyFile = flakeRoot + /nodes/searxng/main/ssh-keys/ed25519.pub;
         encryptedPrivateKeyFile = flakeRoot + /nodes/searxng/main/ssh-keys/ed25519.age;
+      };
+    };
+
+    "jupyter".nodes = {
+      "main".sshKey = {
+        mount = true;
+        type = "ed25519";
+        publicKeyFile = flakeRoot + /nodes/jupyter/main/ssh-keys/ed25519.pub;
+        encryptedPrivateKeyFile = flakeRoot + /nodes/jupyter/main/ssh-keys/ed25519.age;
       };
     };
   };
