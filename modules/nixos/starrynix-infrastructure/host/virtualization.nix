@@ -39,7 +39,7 @@ let
             };
 
             pkgs =
-              if nodeConfiguartion.system == pkgs.system then
+              if nodeConfiguartion.system == pkgs.stdenv.hostPlatform.system then
                 pkgs
               else
                 import inputs.nixpkgs { inherit (nodeConfiguartion) system; };
