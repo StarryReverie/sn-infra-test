@@ -38,6 +38,8 @@ This project tries to conform the design philosophy below:
         - `cache`: Redis-based caching service.
     - `searxng`: SearXNG meta-search engine.
         - `main`: Main node of the SearXNG service.
+    - `jupyter`: Jupyter Lab.
+        - `main`: Main node of Jupyter Lab.
     - `registry.nix`: Node manifest and core metadata management.
 - `secrets`: Secret management of the infrastructure.
     - `identities`: Encrypted identities of secrets.
