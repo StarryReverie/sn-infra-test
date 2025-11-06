@@ -117,13 +117,11 @@ in
                 chain pre {
                     type nat hook prerouting priority dstnat; policy accept;
                     iifname @external-interfaces meta l4proto { tcp, udp } dnat ip to meta l4proto . th dport map @service-port-forwarding comment "DNAT external requests to internal services"
-                    iifname "lo" meta l4proto { tcp, udp } dnat ip to meta l4proto . th dport map @service-port-forwarding comment "DNAT requests from loopback to internal services"
                 }
 
                 chain postrouting {
                     type nat hook postrouting priority srcnat; policy accept;
                     iifname @internal-interfaces oifname @external-interfaces counter masquerade comment "SNAT from internal services"
-                    iifname != @external-interfaces oifname @internal-interfaces counter masquerade comment "Masquerade for DNAT reflection"
                 }
 
                 chain output {
