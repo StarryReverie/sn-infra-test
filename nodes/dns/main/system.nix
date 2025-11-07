@@ -22,7 +22,7 @@
 
   microvm = {
     vcpu = 1;
-    mem = 256;
+    mem = 512;
   };
 
   time.timeZone = "Asia/Shanghai";
