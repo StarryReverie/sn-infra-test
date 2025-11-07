@@ -22,8 +22,14 @@
 
   microvm = {
     vcpu = 1;
-    mem = 256;
+    mem = 512;
   };
+
+  time.timeZone = "Asia/Shanghai";
+
+  environment.systemPackages = with pkgs; [
+    dig
+  ];
 
   system.stateVersion = "25.11";
 }
