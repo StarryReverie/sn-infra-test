@@ -19,8 +19,6 @@ in
       upstreams = {
         groups.default = [
           nodeCfg.clusterInformation.nodes."recursive".ipv4Address
-          "https://1.1.1.1/dns-query"
-          "https://9.9.9.9/dns-query"
         ];
 
         strategy = "strict";
