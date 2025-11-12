@@ -1,11 +1,5 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
-  programs.helix.settings.editor = {
+  editor = {
     line-number = "relative";
     completion-trigger-len = 1;
     bufferline = "always";

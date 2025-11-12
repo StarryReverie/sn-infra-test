@@ -1,11 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
-  programs.helix.settings.keys = {
+lib: {
+  keys = {
     normal = {
       h = "insert_mode";
       j = "move_char_left";

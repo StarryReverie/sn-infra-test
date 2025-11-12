@@ -15,7 +15,6 @@
     (flakeRoot + /modules/home/fastfetch)
     (flakeRoot + /modules/home/fzf)
     (flakeRoot + /modules/home/git)
-    (flakeRoot + /modules/home/helix)
     (flakeRoot + /modules/home/systemctl-tui)
     (flakeRoot + /modules/home/zellij)
     (flakeRoot + /modules/home/zoxide)
