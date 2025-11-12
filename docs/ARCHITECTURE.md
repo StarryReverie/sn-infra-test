@@ -40,6 +40,9 @@ This project tries to conform the design philosophy below:
         - `main`: Main node of the SearXNG service.
     - `jupyter`: Jupyter Lab.
         - `main`: Main node of Jupyter Lab.
+    - `dns`: DNS server
+        - `main`: The entry point of DNS service, with ad-filtering support.
+        - `recursive`: DNS caching server using Unbound. 
     - `registry.nix`: Node manifest and core metadata management.
 - `secrets`: Secret management of the infrastructure.
     - `identities`: Encrypted identities of secrets.
