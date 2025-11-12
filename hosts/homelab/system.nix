@@ -35,6 +35,7 @@
           modules = [
             { wrappers = { }; }
             (flakeRoot + /modules/home/wrapper/bat)
+            (flakeRoot + /modules/home/wrapper/fd)
           ];
         };
       in
