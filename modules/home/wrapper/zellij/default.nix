@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   configDir = lib.fileset.toSource {
     root = ./.;
@@ -14,4 +19,9 @@ in
   wrappers.zellij.prependFlags = [
     "--config-dir=${configDir}"
   ];
+
+  settings.zsh.shellAliases = {
+    zj = "zellij";
+    zd = "zellij --layout development";
+  };
 }

@@ -32,4 +32,8 @@ in
   wrappers.lazygit.prependFlags = [
     "--use-config-file=${configFile}"
   ];
+
+  settings.zsh.shellAliases = {
+    lg = "lazygit";
+  };
 }
