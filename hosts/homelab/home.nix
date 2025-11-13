@@ -8,7 +8,6 @@
 }:
 {
   imports = [
-    (flakeRoot + /modules/home/direnv)
   ];
 
   home.username = constants.username;

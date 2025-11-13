@@ -14,6 +14,7 @@
     (flakeRoot + /modules/nixos/openssh)
     (flakeRoot + /modules/nixos/secret)
     (flakeRoot + /nodes/registry.nix)
+    (flakeRoot + /modules/home/nix-maid/direnv)
     (flakeRoot + /modules/home/wrapper/system-options.nix)
     ./hardware.nix
     ./networking.nix
@@ -33,6 +34,7 @@
       (flakeRoot + /modules/home/wrapper/atuin)
       (flakeRoot + /modules/home/wrapper/bat)
       (flakeRoot + /modules/home/wrapper/difftastic)
+      (flakeRoot + /modules/home/wrapper/direnv)
       (flakeRoot + /modules/home/wrapper/eza)
       (flakeRoot + /modules/home/wrapper/fastfetch)
       (flakeRoot + /modules/home/wrapper/fd)
@@ -57,8 +59,6 @@
         htop
       ])
       ++ (builtins.attrValues config.wrapperConfigurations.finalPackages);
-
-    maid = {};
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQrkIsLMV70klKFtQY8JK5QgXKGyTpZcIaLarXG5dBv"
