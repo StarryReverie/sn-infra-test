@@ -4,10 +4,10 @@
   pkgs,
   ...
 }:
-{
-  programs.atuin.enable = true;
+let
+  finalPackage = config.wrapperConfigurations.finalPackages.atuin;
 
-  programs.atuin.settings = {
+  configFile = pkgs.writers.writeTOML "atuin-config.toml" {
     update_check = false;
     style = "compact";
     show_help = false;
@@ -37,4 +37,21 @@
       ''^ .*''
     ];
   };
+
+  configDir = pkgs.runCommand "atuin-config-dir" { } ''
+    mkdir -p $out
+    ln -s ${configFile} $out/config.toml
+  '';
+in
+{
+  wrappers.atuin.basePackage = pkgs.atuin;
+
+  wrappers.atuin.env = {
+    ATUIN_CONFIG_DIR.value = configDir;
+  };
+
+  settings.zsh.initContent = ''
+    # Atuin integration
+    eval "$(${lib.getExe finalPackage} init zsh)"
+  '';
 }

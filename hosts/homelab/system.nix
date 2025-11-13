@@ -30,6 +30,7 @@
       (flakeRoot + /modules/home/wrapper/wrapper-options.nix)
       { wrapperConfigurations.finalPackages = config.wrapperConfigurations.finalPackages; }
 
+      (flakeRoot + /modules/home/wrapper/atuin)
       (flakeRoot + /modules/home/wrapper/bat)
       (flakeRoot + /modules/home/wrapper/fastfetch)
       (flakeRoot + /modules/home/wrapper/fd)

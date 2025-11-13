@@ -8,7 +8,6 @@
 }:
 {
   imports = [
-    (flakeRoot + /modules/home/atuin)
     (flakeRoot + /modules/home/difftastic)
     (flakeRoot + /modules/home/direnv)
     (flakeRoot + /modules/home/eza)
