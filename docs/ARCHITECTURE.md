@@ -26,7 +26,9 @@ This project tries to conform the design philosophy below:
     - `homelab`: Main server and hypervisor for `microvm.nix` nodes.
 - `lib`: Reusable Nix function library.
 - `modules`: Common modules.
-    - `home`: Modules used by Home Manager.
+    - `home`: User-specific modules.
+        - `wrapper`: Wrapper programs with configurations bundled.
+        - `nix-maid`: Dotfiles in home directory managed by `nix-maid`.
     - `nixos`: NixOS modules.
         - `starrynix-infrastructure`: Core modules of StarryNix-Infrastructure.
 - `nodes`: Configurations of all `microvm.nix` nodes grouped as clusters.
