@@ -11,7 +11,6 @@
     (flakeRoot + /modules/home/difftastic)
     (flakeRoot + /modules/home/direnv)
     (flakeRoot + /modules/home/git)
-    (flakeRoot + /modules/home/systemctl-tui)
   ];
 
   home.username = constants.username;
