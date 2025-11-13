@@ -210,6 +210,21 @@
         "type": "github"
       }
     },
+    "nix-maid": {
+      "locked": {
+        "lastModified": 1760858816,
+        "narHash": "sha256-96d+O9jcpJewkYZqJjf86Vpyomh6LLxIw/mmTF+ASko=",
+        "owner": "viperML",
+        "repo": "nix-maid",
+        "rev": "d362e71ba087919822ec4f5c41b7572d828c749e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "viperML",
+        "repo": "nix-maid",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1762111121,
@@ -271,6 +286,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "microvm": "microvm",
+        "nix-maid": "nix-maid",
         "nixpkgs": "nixpkgs",
         "wrapper-manager": "wrapper-manager"
       }

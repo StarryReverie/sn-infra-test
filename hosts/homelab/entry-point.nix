@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
   modules = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.nix-maid.nixosModules.default
     (flakeRoot + /modules/nixos/starrynix-infrastructure/host)
     ./system.nix
 

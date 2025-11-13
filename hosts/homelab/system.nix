@@ -47,7 +47,7 @@
     ];
   };
 
-  users.users.starryreverie = {
+  users.users.${constants.username} = {
     isNormalUser = true;
     shell = config.wrapperConfigurations.finalPackages.zsh;
     extraGroups = [ "wheel" ];
@@ -57,6 +57,8 @@
         htop
       ])
       ++ (builtins.attrValues config.wrapperConfigurations.finalPackages);
+
+    maid = {};
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQrkIsLMV70klKFtQY8JK5QgXKGyTpZcIaLarXG5dBv"
