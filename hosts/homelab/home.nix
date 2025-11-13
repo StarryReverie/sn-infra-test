@@ -15,7 +15,6 @@
     (flakeRoot + /modules/home/git)
     (flakeRoot + /modules/home/systemctl-tui)
     (flakeRoot + /modules/home/zoxide)
-    (flakeRoot + /modules/home/zsh)
   ];
 
   home.username = constants.username;

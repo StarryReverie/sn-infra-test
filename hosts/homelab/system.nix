@@ -38,18 +38,16 @@
       (flakeRoot + /modules/home/wrapper/lazygit)
       (flakeRoot + /modules/home/wrapper/ripgrep)
       (flakeRoot + /modules/home/wrapper/zellij)
+      (flakeRoot + /modules/home/wrapper/zsh)
     ];
   };
 
   users.users.starryreverie = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = config.wrapperConfigurations.finalPackages.zsh;
     extraGroups = [ "wheel" ];
 
     packages =
-      let
-        wrapperManagerConfigurations = inputs.wrapper-manager.lib;
-      in
       (with pkgs; [
         htop
       ])
@@ -67,7 +65,6 @@
     dig
   ];
 
-  programs.zsh.enable = true;
   programs.tcpdump.enable = true;
 
   services.tailscale.enable = true;
