@@ -6,6 +6,7 @@
 }:
 let
   fdExecutable = lib.getExe config.wrapperConfigurations.finalPackages.fd;
+  fzfExecutable = lib.getExe config.wrapperConfigurations.finalPackages.fzf;
 in
 {
   wrappers.fzf.basePackage = pkgs.fzf;
@@ -20,4 +21,17 @@ in
 
     FZF_DEFAULT_COMMAND.value = "${fdExecutable} --color=always .";
   };
+
+  settings.zsh.initContent = ''
+    # Fzf integration
+    function _fzf_compgen_path() {
+        eval "${fdExecutable} ."
+    }
+
+    function _fzf_compgen_dir() {
+        eval "${fdExecutable} --type d ."
+    }
+
+    source <(${fzfExecutable} --zsh)
+  '';
 }
