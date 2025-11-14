@@ -27,6 +27,15 @@ in
           ll = "ls -l";
         };
       };
+
+      environment = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        description = "Environment variables to be set when zsh starts";
+        default = { };
+        example = {
+          EDITOR = "hx";
+        };
+      };
     };
   };
 
@@ -103,10 +112,21 @@ in
         let
           zshrcFile = pkgs.writeTextDir ".zshrc" config.settings.zsh.initContent;
 
+          zshenvFile =
+            let
+              makeEnvironment = { name, value }: "export ${name}=${lib.escapeShellArg value}";
+              environmentCommands = builtins.map makeEnvironment (
+                lib.attrsToList config.settings.zsh.environment
+              );
+              zshenvContent = builtins.concatStringsSep "\n" environmentCommands;
+            in
+            pkgs.writeTextDir ".zshenv" zshenvContent;
+
           rcDirectory = pkgs.symlinkJoin {
             name = "zsh-rc-directory";
             paths = [
               zshrcFile
+              zshenvFile
             ];
           };
         in

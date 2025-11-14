@@ -27,36 +27,39 @@ inputs.nixpkgs.lib.nixosSystem {
     ./system.nix
 
     # Home modules (wrapper-manager + nix-maid)
-    ({ config, pkgs, ... }: {
-      imports = [
-        (flakeRoot + /modules/home/wrapper/system-options.nix)
+    (
+      { config, pkgs, ... }:
+      {
+        imports = [
+          (flakeRoot + /modules/home/wrapper/system-options.nix)
 
-        (flakeRoot + /modules/home/nix-maid/direnv)
-      ];
-
-      wrapperConfigurations = {
-        inherit pkgs;
-        modules = [
-          (flakeRoot + /modules/home/wrapper/wrapper-options.nix)
-          { wrapperConfigurations.finalPackages = config.wrapperConfigurations.finalPackages; }
-
-          (flakeRoot + /modules/home/wrapper/atuin)
-          (flakeRoot + /modules/home/wrapper/bat)
-          (flakeRoot + /modules/home/wrapper/difftastic)
-          (flakeRoot + /modules/home/wrapper/direnv)
-          (flakeRoot + /modules/home/wrapper/eza)
-          (flakeRoot + /modules/home/wrapper/fastfetch)
-          (flakeRoot + /modules/home/wrapper/fd)
-          (flakeRoot + /modules/home/wrapper/fzf)
-          (flakeRoot + /modules/home/wrapper/git)
-          (flakeRoot + /modules/home/wrapper/helix)
-          (flakeRoot + /modules/home/wrapper/lazygit)
-          (flakeRoot + /modules/home/wrapper/ripgrep)
-          (flakeRoot + /modules/home/wrapper/zellij)
-          (flakeRoot + /modules/home/wrapper/zoxide)
-          (flakeRoot + /modules/home/wrapper/zsh)
+          (flakeRoot + /modules/home/nix-maid/direnv)
         ];
-      };
-    })
+
+        wrapperConfigurations = {
+          inherit pkgs;
+          modules = [
+            (flakeRoot + /modules/home/wrapper/wrapper-options.nix)
+            { wrapperConfigurations.finalPackages = config.wrapperConfigurations.finalPackages; }
+
+            (flakeRoot + /modules/home/wrapper/atuin)
+            (flakeRoot + /modules/home/wrapper/bat)
+            (flakeRoot + /modules/home/wrapper/difftastic)
+            (flakeRoot + /modules/home/wrapper/direnv)
+            (flakeRoot + /modules/home/wrapper/eza)
+            (flakeRoot + /modules/home/wrapper/fastfetch)
+            (flakeRoot + /modules/home/wrapper/fd)
+            (flakeRoot + /modules/home/wrapper/fzf)
+            (flakeRoot + /modules/home/wrapper/git)
+            (flakeRoot + /modules/home/wrapper/helix)
+            (flakeRoot + /modules/home/wrapper/lazygit)
+            (flakeRoot + /modules/home/wrapper/ripgrep)
+            (flakeRoot + /modules/home/wrapper/zellij)
+            (flakeRoot + /modules/home/wrapper/zoxide)
+            (flakeRoot + /modules/home/wrapper/zsh)
+          ];
+        };
+      }
+    )
   ];
 }

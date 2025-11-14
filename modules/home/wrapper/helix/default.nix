@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   configFile = pkgs.writers.writeTOML "config.toml" (
     lib.mergeAttrsList [
@@ -15,4 +20,8 @@ in
     "--config"
     "${configFile}"
   ];
+
+  settings.zsh.environment = {
+    EDITOR = lib.getExe config.wrapperConfigurations.finalPackages.helix;
+  };
 }

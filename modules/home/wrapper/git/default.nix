@@ -25,7 +25,9 @@
     wrappers.git.basePackage = pkgs.gitMinimal;
 
     wrappers.git.env = {
-      GIT_CONFIG_GLOBAL.value = pkgs.writeText ".gitconfig" (lib.generators.toGitINI config.settings.git.config);
+      GIT_CONFIG_GLOBAL.value = pkgs.writeText ".gitconfig" (
+        lib.generators.toGitINI config.settings.git.config
+      );
     };
 
     settings.git.config = {
