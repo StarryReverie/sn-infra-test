@@ -6,11 +6,6 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wrapper-manager = {
       url = "github:viperML/wrapper-manager";
     };
@@ -22,7 +17,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      inputs.home-manager.follows = "";
     };
 
     agenix-rekey = {
