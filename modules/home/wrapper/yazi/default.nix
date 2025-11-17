@@ -6,23 +6,31 @@
 }:
 {
   wrappers.yazi.basePackage =
-    pkgs.runCommand "yazi-without-desktop-item" { nativeBuildInputs = [ pkgs.yazi ]; }
+    pkgs.runCommand "yazi-without-desktop-item" { nativeBuildInputs = [ pkgs.yazi-unwrapped ]; }
       ''
         mkdir -p $out
-        (cd ${pkgs.yazi} && tar -chf - --exclude="share/applications/yazi.desktop" .) \
+        (cd ${pkgs.yazi-unwrapped} && tar -chf - --exclude="share/applications/yazi.desktop" .) \
             | (cd $out && tar -xf -)
       '';
 
   wrappers.yazi.postBuild = ''
     mkdir -p $out/share/applications
     sed -E -e "s#Exec=((/.*)*/)?yazi#Exec=$out/bin/yazi#" \
-        ${pkgs.yazi}/share/applications/yazi.desktop \
+        ${pkgs.yazi-unwrapped}/share/applications/yazi.desktop \
         > $out/share/applications/yazi.desktop
   '';
 
   wrappers.yazi.overrideAttrs = prev: {
     pname = "yazi";
   };
+
+  wrappers.yazi.pathAdd = [
+    (config.wrappers.fd.wrapped or pkgs.fd)
+    (config.wrappers.fzf.wrapped or pkgs.fzf)
+    (config.wrappers.ripgrep.wrapped or pkgs.ripgrep)
+    (config.wrappers.zoxide.wrapped or pkgs.zoxide)
+    pkgs.jq
+  ];
 
   wrappers.yazi.env = {
     YAZI_CONFIG_HOME.value =
