@@ -29,6 +29,12 @@ in
         description = "All network interfaces that connect to the LAN.";
         default = [ ];
       };
+
+      forwardDns = lib.mkOption {
+        type = lib.types.bool;
+        description = "Whether to forward all DNS queries over proxies";
+        default = true;
+      };
     };
   };
 
@@ -60,6 +66,11 @@ in
         ]
         ++ [
           "--replace-fail"
+          "@@dns-file@@"
+          "dns.dae"
+        ]
+        ++ [
+          "--replace-fail"
           "@@wan-interface@@"
           wanInterfaceEntry
         ]
@@ -71,7 +82,10 @@ in
     };
 
     systemd.services.dae = {
-      serviceConfig.LoadCredential = [ "subscriptions.dae:${cfg.subscriptionFile}" ];
+      serviceConfig.LoadCredential = [
+        "subscriptions.dae:${cfg.subscriptionFile}"
+      ]
+      ++ (if cfg.forwardDns then [ "dns.dae:${./dns.dae}" ] else [ "dns.dae:/dev/null"]);
     };
   };
 }

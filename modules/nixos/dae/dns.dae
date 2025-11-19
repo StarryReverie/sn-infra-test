@@ -1,0 +1,26 @@
+dns {
+    ipversion_prefer: 4
+
+    upstream {
+        alibaba: 'https://dns.alidns.com/dns-query'
+        quad9: 'https://9.9.9.9:5053/dns-query'
+        google: 'tcp+udp://8.8.8.8:53'
+    }
+
+    routing {
+        request {
+            qname(full: dns.alidns.com) -> google
+            qname(geosite:category-ads-all) -> reject
+            qtype(https) -> reject
+            qname(geosite:cn) -> alibaba
+            fallback: quad9
+        }
+
+        response {
+            upstream(google) -> accept
+            upstream(quad9) -> accept
+            ip(geoip:private) && !qname(geosite:cn) -> quad9
+            fallback: accept
+        }
+    }
+}

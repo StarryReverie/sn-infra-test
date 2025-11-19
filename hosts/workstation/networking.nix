@@ -10,7 +10,6 @@
   networking.useDHCP = true;
   networking.useNetworkd = true;
   systemd.network.enable = true;
-  # networking.networkmanager.enable = true;
 
   networking.wireless = {
     enable = true;
@@ -30,5 +29,8 @@
     "wireless-password.conf".rekeyFile = flakeRoot + /secrets/wireless-password.conf.age;
   };
 
-  services.dae.wanInterfaces = [ "wlo1" ];
+  services.dae = {
+    wanInterfaces = [ "wlo1" ];
+    forwardDns = false;
+  };
 }
