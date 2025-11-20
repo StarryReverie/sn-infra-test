@@ -19,6 +19,7 @@
       },
       "original": {
         "owner": "ryantm",
+        "ref": "main",
         "repo": "agenix",
         "type": "github"
       }
@@ -45,6 +46,7 @@
       },
       "original": {
         "owner": "oddlama",
+        "ref": "main",
         "repo": "agenix-rekey",
         "type": "github"
       }
@@ -69,6 +71,7 @@
       },
       "original": {
         "owner": "zhaofengli",
+        "ref": "main",
         "repo": "colmena",
         "type": "github"
       }
@@ -162,6 +165,7 @@
       },
       "original": {
         "owner": "hercules-ci",
+        "ref": "main",
         "repo": "flake-parts",
         "type": "github"
       }
@@ -230,15 +234,16 @@
         "spectrum": "spectrum"
       },
       "locked": {
-        "lastModified": 1762200934,
-        "narHash": "sha256-Bv4ZKRPsIc6W7qF1I2fevxFETqRNuG3XOsiRIfJ7YlQ=",
+        "lastModified": 1763429621,
+        "narHash": "sha256-xJD3vjEdDP+/XKLgPAkaX44s2xuiAeOhCdjs2jrALY4=",
         "owner": "microvm-nix",
         "repo": "microvm.nix",
-        "rev": "1d05a3c26dbb9d4b1cd644e10713a70d8740cb6a",
+        "rev": "c4e4a264da114c618251b17eb4c959f86376e530",
         "type": "github"
       },
       "original": {
         "owner": "microvm-nix",
+        "ref": "main",
         "repo": "microvm.nix",
         "type": "github"
       }
@@ -275,6 +280,7 @@
       },
       "original": {
         "owner": "viperML",
+        "ref": "master",
         "repo": "nix-maid",
         "type": "github"
       }
@@ -423,6 +429,7 @@
       },
       "original": {
         "owner": "viperML",
+        "ref": "master",
         "repo": "wrapper-manager",
         "type": "github"
       }

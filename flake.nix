@@ -1,5 +1,5 @@
 {
-  description = "StarryNix Infrastructure";
+  description = "StarryNix-Infrastructure";
 
   inputs = {
     nixpkgs = {
@@ -7,37 +7,37 @@
     };
 
     wrapper-manager = {
-      url = "github:viperML/wrapper-manager";
+      url = "github:viperML/wrapper-manager/master";
     };
 
     nix-maid = {
-      url = "github:viperML/nix-maid";
+      url = "github:viperML/nix-maid/master";
     };
 
     agenix = {
-      url = "github:ryantm/agenix";
+      url = "github:ryantm/agenix/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "";
     };
 
     agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
+      url = "github:oddlama/agenix-rekey/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
 
     colmena = {
-      url = "github:zhaofengli/colmena";
+      url = "github:zhaofengli/colmena/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.stable.follows = "";
     };
 
     flake-parts = {
-      url = "github:hercules-ci/flake-parts";
+      url = "github:hercules-ci/flake-parts/main";
     };
 
     microvm = {
-      url = "github:microvm-nix/microvm.nix";
+      url = "github:microvm-nix/microvm.nix/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -57,18 +57,14 @@
       perSystem =
         { inputs', pkgs, ... }:
         {
-          devShells.default =
-            let
-              mkShell = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; };
-            in
-            mkShell {
-              packages = with pkgs; [
-                inputs'.agenix-rekey.packages.default
-                inputs'.colmena.packages.colmena
-                nil
-                nixfmt-rfc-style
-              ];
-            };
+          devShells.default = pkgs.mkShellNoCC {
+            packages = with pkgs; [
+              inputs'.agenix-rekey.packages.default
+              inputs'.colmena.packages.colmena
+              nil
+              nixfmt-rfc-style
+            ];
+          };
 
           formatter = pkgs.nixfmt-tree;
         };
