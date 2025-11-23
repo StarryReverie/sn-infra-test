@@ -11,6 +11,11 @@
   environment.systemPackages = with pkgs; [
     tofi
     swaybg
+    keepassxc
+    orchis-theme
+    nautilus
+    dconf-editor
+    amberol
   ];
 
   services.pipewire = {

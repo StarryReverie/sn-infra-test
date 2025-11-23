@@ -45,6 +45,8 @@ inputs.nixpkgs.lib.nixosSystem {
 
           (flakeRoot + /modules/home/nix-maid/direnv)
           (flakeRoot + /modules/home/nix-maid/helix)
+          (flakeRoot + /modules/home/nix-maid/niri)
+          ./home/nix-maid/niri.nix
         ];
 
         wrapping = {
