@@ -31,10 +31,10 @@ inputs.nixpkgs.lib.nixosSystem {
     (flakeRoot + /modules/nixos/nix)
     (flakeRoot + /modules/nixos/openssh)
     (flakeRoot + /modules/nixos/secret)
-    ./desktop.nix
-    ./hardware.nix
-    ./networking.nix
-    ./system.nix
+    ./nixos/desktop.nix
+    ./nixos/hardware.nix
+    ./nixos/networking.nix
+    ./nixos/system.nix
 
     # Home modules (wrapper-manager + nix-maid)
     (
