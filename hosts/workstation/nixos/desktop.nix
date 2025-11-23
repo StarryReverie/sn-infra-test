@@ -10,7 +10,6 @@
 
   environment.systemPackages = with pkgs; [
     tofi
-    swaybg
     keepassxc
     orchis-theme
     nautilus
