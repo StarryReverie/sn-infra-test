@@ -65,6 +65,7 @@ inputs.nixpkgs.lib.nixosSystem {
             (flakeRoot + /modules/home/wrapper/git)
             (flakeRoot + /modules/home/wrapper/helix)
             (flakeRoot + /modules/home/wrapper/lazygit)
+            (flakeRoot + /modules/home/wrapper/mako)
             (flakeRoot + /modules/home/wrapper/ripgrep)
             (flakeRoot + /modules/home/wrapper/yazi)
             (flakeRoot + /modules/home/wrapper/zellij)

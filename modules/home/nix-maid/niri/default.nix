@@ -25,5 +25,12 @@ in
       partOf = [ "niri.service" ];
       after = [ "niri.service" cfg.systemd.services.kanshi.name ];
     };
+
+    systemd.services.mako = {
+      serviceConfig.ExecStart = "${lib.getExe config.wrapping.packages.mako or pkgs.mako}";
+      wantedBy = [ "niri.service" ];
+      partOf = [ "niri.service" ];
+      after = [ "niri.service" ];
+    };
   };
 }
