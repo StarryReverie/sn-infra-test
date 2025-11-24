@@ -9,14 +9,19 @@ hotkey-overlay {
 
 environment {
     GDK_BACKEND "wayland,x11,*"
+    GTK_THEME "Orchis-Dark"
+
     QT_QPA_PLATFORM "wayland;xcb"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
     SDL_VIDEODRIVER "wayland"
+
     CLUTTER_BACKEND "wayland"
 
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "niri"
 
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    XCURSOR_THEME "Vimix-cursors"
 }
 
 input {

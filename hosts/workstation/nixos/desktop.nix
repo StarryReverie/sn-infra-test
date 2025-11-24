@@ -11,7 +11,6 @@
   environment.systemPackages = with pkgs; [
     tofi
     keepassxc
-    orchis-theme
     nautilus
     dconf-editor
     amberol
