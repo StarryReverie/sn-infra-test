@@ -40,6 +40,12 @@
       url = "github:microvm-nix/microvm.nix/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    starrynix-derivations = {
+      url = "github:StarryReverie/StarryNix-Derivations";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs =

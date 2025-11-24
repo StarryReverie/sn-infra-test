@@ -348,6 +348,7 @@
         "microvm": "microvm",
         "nix-maid": "nix-maid",
         "nixpkgs": "nixpkgs",
+        "starrynix-derivations": "starrynix-derivations",
         "wrapper-manager": "wrapper-manager"
       }
     },
@@ -365,6 +366,29 @@
       "original": {
         "type": "git",
         "url": "https://spectrum-os.org/git/spectrum"
+      }
+    },
+    "starrynix-derivations": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763656182,
+        "narHash": "sha256-DxZqFVrTyVDi/zLi7/YLKlScOePUpToPIv6+oshxx+c=",
+        "owner": "StarryReverie",
+        "repo": "StarryNix-Derivations",
+        "rev": "9b605b307c46009346850e737c1e96935f122645",
+        "type": "github"
+      },
+      "original": {
+        "owner": "StarryReverie",
+        "repo": "StarryNix-Derivations",
+        "type": "github"
       }
     },
     "systems": {
