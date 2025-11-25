@@ -20,7 +20,7 @@
       "/org/gnome/desktop/interface/color-scheme" = "prefer-dark";
     };
 
-    file.xdg_config.".gtkrc-2.0".text = ''
+    file.home.".gtkrc-2.0".text = ''
       gtk-theme-name="Orchis-Dark"
       gtk-icon-theme-name="Reversal-dark"
       gtk-cursor-theme-name="Vimix-cursors"
