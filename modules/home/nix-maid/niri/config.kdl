@@ -99,7 +99,7 @@ binds {
     // Frequently used applications
     Mod+Q hotkey-overlay-title="Open Terminal" { spawn "alacritty" "msg" "create-window"; }
     Mod+W hotkey-overlay-title="Open Web Browser" { spawn "firefox"; }
-    Mod+Space hotkey-overlay-title="Open Launcher" { spawn-sh "exec $(tofi-drun)"; }
+    Mod+Space hotkey-overlay-title="Open Launcher" { spawn-sh "rofi -show drun"; }
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
     // Screenshot

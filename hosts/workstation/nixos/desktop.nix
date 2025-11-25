@@ -9,7 +9,7 @@
   services.displayManager.ly.enable = true;
 
   environment.systemPackages = with pkgs; [
-    tofi
+    rofi
     keepassxc
     nautilus
     dconf-editor
