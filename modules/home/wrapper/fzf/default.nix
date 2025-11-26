@@ -22,7 +22,7 @@ in
     FZF_DEFAULT_COMMAND.value = "${fdExecutable} --color=always .";
   };
 
-  settings.zsh.initContent = ''
+  settings.zsh.rcContent = ''
     # Fzf integration
     function _fzf_compgen_path() {
         eval "${fdExecutable} ."

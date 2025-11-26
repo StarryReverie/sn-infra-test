@@ -8,7 +8,7 @@ let
   direnvExecutable = lib.getExe (config.wrappers.direnv.wrapped or pkgs.direnv);
 in
 {
-  settings.zsh.initContent = ''
+  settings.zsh.rcContent = ''
     eval "$(${direnvExecutable} hook zsh)"
   '';
 }

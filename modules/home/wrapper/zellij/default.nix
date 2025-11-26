@@ -25,7 +25,7 @@ in
     zd = "zellij --layout development";
   };
 
-  settings.zsh.initContent = ''
+  settings.zsh.rcContent = ''
     # Zellij helpers
     ## Attach to a session selected using fzf
     function za() {

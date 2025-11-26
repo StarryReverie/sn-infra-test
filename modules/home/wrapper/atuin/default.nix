@@ -50,7 +50,7 @@ in
     ATUIN_CONFIG_DIR.value = configDir;
   };
 
-  settings.zsh.initContent = ''
+  settings.zsh.rcContent = ''
     # Atuin integration
     eval "$(${atuinExecutable} init zsh)"
   '';

@@ -4,15 +4,17 @@
   pkgs,
   ...
 }:
-let
-  getCwdGitBranchScript = pkgs.writeScript "get-cwd-git-branch" (
-    builtins.readFile ./get-cwd-git-branch.sh
-  );
-in
 {
   options = {
     settings.zsh = {
-      initContent = lib.mkOption {
+      profileContent = lib.mkOption {
+        type = lib.types.lines;
+        description = "Zsh scripts to be added to .zprofile, concatenated by `\n`";
+        default = "";
+        example = "source /path/to/my/script.sh";
+      };
+
+      rcContent = lib.mkOption {
         type = lib.types.lines;
         description = "Zsh scripts to be added to .zshrc, concatenated by `\n`";
         default = "";
@@ -40,7 +42,15 @@ in
   };
 
   config = {
-    settings.zsh.initContent = lib.mkMerge [
+    settings.zsh.profileContent = lib.mkMerge [
+      ''
+        emulate sh
+        source ~/.profile
+        emulate zsh
+      ''
+    ];
+
+    settings.zsh.rcContent = lib.mkMerge [
       ''
         # Set prompt style
         source ${./short-cwd.sh}
@@ -111,9 +121,11 @@ in
     wrappers.zsh.env = {
       ZDOTDIR.value =
         let
-          zshrcFile = pkgs.writeTextDir ".zshrc" config.settings.zsh.initContent;
+          zshProfileFile = pkgs.writeTextDir ".zprofile" config.settings.zsh.profileContent;
 
-          zshenvFile =
+          zshRcFile = pkgs.writeTextDir ".zshrc" config.settings.zsh.rcContent;
+
+          zshEnvFile =
             let
               makeEnvironment = { name, value }: "export ${name}=${lib.escapeShellArg value}";
               environmentCommands = builtins.map makeEnvironment (
@@ -123,15 +135,16 @@ in
             in
             pkgs.writeTextDir ".zshenv" zshenvContent;
 
-          rcDirectory = pkgs.symlinkJoin {
-            name = "zsh-rc-directory";
+          configDirectory = pkgs.symlinkJoin {
+            name = "zsh-config-directory";
             paths = [
-              zshrcFile
-              zshenvFile
+              zshProfileFile
+              zshRcFile
+              zshEnvFile
             ];
           };
         in
-        rcDirectory;
+        configDirectory;
     };
 
     wrappers.zsh.pathAdd = [
