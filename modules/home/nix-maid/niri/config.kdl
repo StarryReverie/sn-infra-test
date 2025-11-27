@@ -8,10 +8,6 @@ hotkey-overlay {
 }
 
 environment {
-    GDK_BACKEND "wayland,x11,*"
-    GTK_THEME "Orchis-Dark"
-
-    QT_QPA_PLATFORM "wayland;xcb"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
     SDL_VIDEODRIVER "wayland"
@@ -20,8 +16,6 @@ environment {
 
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "niri"
-
-    XCURSOR_THEME "Vimix-cursors"
 }
 
 input {
@@ -99,7 +93,7 @@ binds {
     // Frequently used applications
     Mod+Q hotkey-overlay-title="Open Terminal" { spawn "alacritty" "msg" "create-window"; }
     Mod+W hotkey-overlay-title="Open Web Browser" { spawn "firefox"; }
-    Mod+Space hotkey-overlay-title="Open Launcher" { spawn-sh "rofi -show drun"; }
+    Mod+Space hotkey-overlay-title="Open Launcher" { spawn "rofi" "-show" "drun"; }
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
     // Screenshot
