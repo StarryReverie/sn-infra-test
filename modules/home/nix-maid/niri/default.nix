@@ -10,6 +10,11 @@ let
 in
 {
   users.users.${constants.username}.maid = {
+    packages = with pkgs; [
+      brightnessctl
+      playerctl
+    ];
+
     file.xdg_config."niri/config.kdl".text = lib.mkAfter (builtins.readFile ./config.kdl);
 
     systemd.services.kanshi = {
