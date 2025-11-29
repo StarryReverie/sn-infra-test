@@ -9,6 +9,8 @@
   i18n.inputMethod.type = "fcitx5";
 
   i18n.inputMethod.fcitx5 = {
+    waylandFrontend = true;
+
     addons = with pkgs; [
       fcitx5-gtk
 
@@ -77,4 +79,9 @@
       globalSection.DarkTheme = "FluentDark-solid";
     };
   };
+
+  # Fcitx5 should not be automatically started before the Wayland compositor,
+  # otherwise it will occupy the DBus name and prevent other applications from
+  # successful initialization.
+  systemd.user.units."app-org.fcitx.Fcitx5@autostart.service".enable = false;
 }
