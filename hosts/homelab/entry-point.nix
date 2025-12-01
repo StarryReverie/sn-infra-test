@@ -19,6 +19,7 @@ inputs.nixpkgs.lib.nixosSystem {
     # Colmena
     {
       deployment.allowLocalDeployment = true;
+      deployment.buildOnTarget = true;
       deployment.targetHost = "${constants.hostname}.tail931dca.ts.net";
       deployment.tags = [ "server" ];
     }
