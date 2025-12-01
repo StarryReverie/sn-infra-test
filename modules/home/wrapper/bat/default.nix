@@ -8,7 +8,7 @@
   wrappers.bat.basePackage = pkgs.bat;
 
   wrappers.bat.prependFlags = [
-    "--style=header,header-filesize,grid"
+    "--style=-changes,-numbers,-snip"
     "--theme=OneHalfDark"
   ];
 }
