@@ -54,6 +54,7 @@ in
       serviceConfig.ExecStart = "${lib.getExe config.wrapping.packages.waybar or pkgs.waybar}";
       path = [
         (config.wrapping.packages.rofi or pkgs.rofi)
+        (config.wrapping.packages.wpaperd or pkgs.wpaperd)
         pkgs.hyprlock
       ];
       wantedBy = [ "niri.service" ];

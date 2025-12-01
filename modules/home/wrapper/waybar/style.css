@@ -16,6 +16,7 @@
 #clock,
 #idle_inhibitor,
 #custom-lock,
+#custom-wallpaper,
 #tray,
 #network,
 #battery,
@@ -45,6 +46,10 @@
 
 #custom-lock {
     background-color: #fa61b6;
+}
+
+#custom-wallpaper {
+    background-color: #a346bc;
 }
 
 #tray {
@@ -81,7 +86,7 @@
 }
 
 tooltip {
-    border-radius: 8px;
+    border-radius: 0px;
     padding: 2px;
     background-color: #131822;
     color: #c0c0c0;

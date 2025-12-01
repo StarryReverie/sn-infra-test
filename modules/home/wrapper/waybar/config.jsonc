@@ -9,6 +9,7 @@
         "clock",
         "idle_inhibitor",
         "custom/lock",
+        "custom/wallpaper",
         "tray",
     ],
     "modules-right": [
@@ -33,6 +34,12 @@
         "format": " {:%B %d - %H:%M} ",
         "tooltip": true,
         "tooltip-format": "Date:     {:%Y-%m-%d\nWeekday:  %A\nTimezone: %Z\nTime:     %H:%M:%S}",
+    },
+    "custom/wallpaper": {
+        "interval": "once",
+        "format": "  ",
+        "on-click": "wpaperctl next",
+        "tooltip": false,
     },
     "idle_inhibitor": {
         "interval": "once",
