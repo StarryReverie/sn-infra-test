@@ -91,11 +91,11 @@
         { inputs', pkgs, ... }:
         {
           devShells.default = pkgs.mkShellNoCC {
-            packages = with pkgs; [
+            packages = [
               inputs'.agenix-rekey.packages.default
               inputs'.colmena.packages.colmena
-              nil
-              nixfmt-rfc-style
+              pkgs.nil
+              pkgs.nixfmt-rfc-style
             ];
           };
 
@@ -105,18 +105,18 @@
       flake = {
         lib = import ./lib;
 
-        colmenaHive =
+        colmenaHive = inputs.colmena.lib.makeHive self.colmenaArg;
+
+        colmenaArg =
           let
             conf = self.nixosConfigurations;
           in
-          inputs.colmena.lib.makeHive (
-            (builtins.mapAttrs (name: value: { imports = value._module.args.modules; }) conf)
-            // {
-              meta.nixpkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
-              meta.nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) conf;
-              meta.nodeSpecialArgs = builtins.mapAttrs (name: value: value._module.specialArgs) conf;
-            }
-          );
+          (builtins.mapAttrs (name: value: { imports = value._module.args.modules; }) conf)
+          // {
+            meta.nixpkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+            meta.nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) conf;
+            meta.nodeSpecialArgs = builtins.mapAttrs (name: value: value._module.specialArgs) conf;
+          };
 
         nixosConfigurations = {
           "homelab" = (import ./hosts/homelab/entry-point.nix) {

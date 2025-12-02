@@ -26,7 +26,8 @@ in
     };
 
     systemd.services.wpaperd = {
-      serviceConfig.ExecStart = "${lib.getExe' (config.wrapping.packages.wpaperd or pkgs.wpaperd) "wpaperd"}";
+      serviceConfig.ExecStart = "${lib.getExe' (config.wrapping.packages.wpaperd or pkgs.wpaperd
+      ) "wpaperd"}";
       wantedBy = [ "niri.service" ];
       partOf = [ "niri.service" ];
       after = [
