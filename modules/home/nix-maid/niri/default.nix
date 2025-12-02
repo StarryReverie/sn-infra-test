@@ -57,7 +57,13 @@ in
         (config.wrapping.packages.rofi or pkgs.rofi)
         (config.wrapping.packages.wpaperd or pkgs.wpaperd)
         pkgs.hyprlock
-      ];
+      ]
+      ++ (lib.optionals config.services.pipewire.wireplumber.enable [
+        pkgs.wireplumber
+      ])
+      ++ (lib.optionals config.hardware.bluetooth.enable [
+        pkgs.blueman
+      ]);
       wantedBy = [ "niri.service" ];
       partOf = [ "niri.service" ];
       after = [ "niri.service" ];
