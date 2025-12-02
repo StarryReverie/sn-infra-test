@@ -2,55 +2,76 @@
   description = "StarryNix-Infrastructure";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+    agenix = {
+      url = "github:ryantm/agenix/main";
+      inputs.home-manager.follows = "";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
 
-    wrapper-manager = {
-      url = "github:viperML/wrapper-manager/master";
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey/main";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pre-commit-hooks.inputs.flake-compat.follows = "flake-compat";
+    };
+
+    colmena = {
+      url = "github:zhaofengli/colmena/main";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.stable.follows = "";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flake-compat = {
+      url = "https://git.lix.systems/lix-project/flake-compat/archive/main.tar.gz";
+    };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts/main";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
+    microvm = {
+      url = "github:microvm-nix/microvm.nix/main";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-maid = {
       url = "github:viperML/nix-maid/master";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "";
-    };
-
-    agenix-rekey = {
-      url = "github:oddlama/agenix-rekey/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
-    colmena = {
-      url = "github:zhaofengli/colmena/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.stable.follows = "";
-    };
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts/main";
-    };
-
-    microvm = {
-      url = "github:microvm-nix/microvm.nix/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
     starrynix-derivations = {
       url = "github:StarryReverie/StarryNix-Derivations/master";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
     };
 
     starrynix-resources = {
       url = "github:StarryReverie/StarryNix-Resources/master";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
+    };
+
+    systems = {
+      url = "github:nix-systems/default-linux/main";
+    };
+
+    wrapper-manager = {
+      url = "github:viperML/wrapper-manager/master";
     };
   };
 
