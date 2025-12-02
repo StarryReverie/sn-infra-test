@@ -95,7 +95,7 @@
               inputs'.agenix-rekey.packages.default
               inputs'.colmena.packages.colmena
               pkgs.nil
-              pkgs.nixfmt-rfc-style
+              pkgs.nixfmt-tree
             ];
           };
 
