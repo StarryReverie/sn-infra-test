@@ -21,6 +21,7 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = [ ];
 
   boot.loader.efi = {
