@@ -2,8 +2,8 @@ dns {
     ipversion_prefer: 4
 
     upstream {
-        alibaba: 'https://dns.alidns.com/dns-query'
-        quad9: 'https://9.9.9.9:5053/dns-query'
+        alibaba-doh: 'https://dns.alidns.com/dns-query'
+        cloudflare-doh: 'https://cloudflare-dns.com/dns-query'
         google: 'tcp+udp://8.8.8.8:53'
     }
 
@@ -12,14 +12,14 @@ dns {
             qname(full: dns.alidns.com) -> google
             qname(geosite:category-ads-all) -> reject
             qtype(https) -> reject
-            qname(geosite:cn) -> alibaba
-            fallback: quad9
+            qname(geosite:cn) -> alibaba-doh
+            fallback: cloudflare-doh
         }
 
         response {
             upstream(google) -> accept
-            upstream(quad9) -> accept
-            ip(geoip:private) && !qname(geosite:cn) -> quad9
+            upstream(cloudflare-doh) -> accept
+            ip(geoip:private) && !qname(geosite:cn) -> cloudflare-doh
             fallback: accept
         }
     }

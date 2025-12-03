@@ -11,6 +11,6 @@
 
   services.dae = {
     wanInterfaces = [ "wlo1" ];
-    forwardDns = false;
+    forwardDns = true;
   };
 }

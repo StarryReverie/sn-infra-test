@@ -19,29 +19,16 @@
     allowAuxiliaryImperativeNetworks = true;
   };
 
-  systemd.network.networks."50-wireless-bypass-ap-isolation-bit-mobile" = {
-    matchConfig = {
-      WLANInterfaceType = "station";
-      SSID = "BIT-Mobile";
-    };
-    networkConfig = {
-      DHCP = "yes";
-      IPv6PrivacyExtensions = "kernel";
-    };
-    dhcpV4Config = {
-      RouteMetric = 1025;
-    };
-    ipv6AcceptRAConfig = {
-      RouteMetric = 1025;
-    };
-    routes = [
-      {
-        Destination = "10.194.0.0/16";
-        Gateway = "10.194.0.1";
-        Metric = 1000;
-      }
-    ];
-  };
+  environment.etc."systemd/network/99-wireless-client-dhcp.network.d/50-wireless-bypass-ap-isolation-bit-mobile.conf".text =
+    ''
+      [Match]
+      SSID=BIT-Mobile
+
+      [Route]
+      Destination=10.194.0.0/16
+      Gateway=10.194.0.1
+      Metric=100
+    '';
 
   age.secrets = {
     "wireless-password.conf".rekeyFile = ./wireless-password.conf.age;

@@ -10,9 +10,9 @@ let
   clusters = config.starrynix-infrastructure.registry.clusters;
 in
 {
-  networking.useDHCP = lib.mkDefault true;
+  networking.useDHCP = true;
 
-  networking.nameservers = [ clusters."dns".nodes."main".ipv4Address ];
+  networking.nameservers = lib.mkForce [ clusters."dns".nodes."main".ipv4Address ];
 
   services.dae = {
     wanInterfaces = [ "wlp3s0" ];
