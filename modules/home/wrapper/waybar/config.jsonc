@@ -119,13 +119,14 @@
                 "󰕿 ",
                 "󰖀 ",
                 "󰕾 "
-            ]
+            ],
         },
         "max-volume": 100,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "helvum",
         "tooltip": true,
-        "tooltip-format": "Node:   {node_name}\nVolume: {volume}%"
+        "tooltip-format": "Node:   {node_name}\nVolume: {volume}%",
+        "reverse-scrolling": true,
     },
     "backlight": {
 	      "interval": 60,
@@ -133,6 +134,7 @@
         "tooltip": true,
         "tooltip-format": "Brightness: {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃝", "󰃠"],
+        "reverse-scrolling": true,
     },
     "memory": {
 	      "interval": 10,
