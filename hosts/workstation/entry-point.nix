@@ -55,12 +55,12 @@ inputs.nixpkgs.lib.nixosSystem {
           (flakeRoot + /modules/home/nix-maid/gtk-theme)
           (flakeRoot + /modules/home/nix-maid/helix)
           (flakeRoot + /modules/home/nix-maid/hyprlock)
-          (flakeRoot + /modules/home/nix-maid/niri)
+          (flakeRoot + /modules/home/nix-maid/niri-environment)
           (flakeRoot + /modules/home/nix-maid/qt-theme)
           (flakeRoot + /modules/home/nix-maid/vscode)
           (flakeRoot + /modules/home/nix-maid/xdg)
           ./home/nix-maid/kanshi.nix
-          ./home/nix-maid/niri.nix
+          ./home/nix-maid/niri-environment.nix
         ];
 
         wrapping = {

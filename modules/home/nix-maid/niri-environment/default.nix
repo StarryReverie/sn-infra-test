@@ -42,6 +42,8 @@ in
       gnome-calendar
       gnome-clocks
       keepassxc
+      github-copilot-cli
+      bubblewrap
 
       # Communication
       telegram-desktop
