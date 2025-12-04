@@ -11,9 +11,41 @@ in
 {
   users.users.${constants.username}.maid = {
     packages = with pkgs; [
+      # Supporting utilities
       xwayland-satellite
       brightnessctl
       playerctl
+
+      # System
+      dconf-editor
+      nautilus
+
+      # Documents
+      newsflash
+      papers
+      textpieces
+
+      # Pictures
+      curtail
+      loupe
+      switcheroo
+
+      # Media
+      amberol
+      eartag
+      lx-music-desktop
+      mousai
+      showtime
+
+      # Efficiency
+      eyedropper
+      gnome-calendar
+      gnome-clocks
+      keepassxc
+
+      # Communication
+      telegram-desktop
+      qq
     ];
 
     file.xdg_config."niri/config.kdl".text = lib.mkAfter (builtins.readFile ./config.kdl);
