@@ -15,6 +15,7 @@ in
       xwayland-satellite
       brightnessctl
       playerctl
+      config.wrapping.packages.swaync
 
       # System
       dconf-editor
@@ -69,8 +70,8 @@ in
       ];
     };
 
-    systemd.services.mako = {
-      serviceConfig.ExecStart = "${lib.getExe config.wrapping.packages.mako or pkgs.mako}";
+    systemd.services.swaync = {
+      serviceConfig.ExecStart = "${lib.getExe config.wrapping.packages.swaync or pkgs.swaynotificationcenter}";
       wantedBy = [ "niri.service" ];
       partOf = [ "niri.service" ];
       after = [ "niri.service" ];
