@@ -195,8 +195,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     Mod+F       { maximize-column; }
-    Mod+Shift+F { expand-column-to-available-width; }
-    Mod+Ctrl+F  { fullscreen-window; }
+    Mod+Shift+F { fullscreen-window; }
 
     // Floating
     Mod+U       { toggle-window-floating; }
@@ -204,4 +203,26 @@ binds {
 
     // Tab
     Mod+T { toggle-column-tabbed-display; }
+}
+
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 250
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 8
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab       { next-window; }
+        Alt+Shift+Tab { previous-window; }
+    }
 }
