@@ -39,4 +39,6 @@
   };
 
   services.blueman.enable = true;
+
+  systemd.user.units."app-blueman@autostart.service".enable = false;
 }
