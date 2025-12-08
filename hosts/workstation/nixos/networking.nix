@@ -7,8 +7,6 @@
   ...
 }:
 {
-  networking.useDHCP = true;
-
   services.dae = {
     wanInterfaces = [ "wlo1" ];
     forwardDns = true;
