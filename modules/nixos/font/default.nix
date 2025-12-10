@@ -7,12 +7,17 @@
 {
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
-    nerd-fonts.symbols-only
+    noto-fonts-cjk-sans-static
+    open-sans
+
+    libertinus
+    noto-fonts-cjk-serif-static
+
     source-code-pro
     cascadia-code
+
+    nerd-fonts.symbols-only
+    noto-fonts-color-emoji
   ];
 
   fonts.fontDir.enable = true;
