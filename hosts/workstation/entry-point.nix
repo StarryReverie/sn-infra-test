@@ -29,6 +29,7 @@ inputs.nixpkgs.lib.nixosSystem {
     (flakeRoot + /modules/nixos/bluetooth)
     (flakeRoot + /modules/nixos/container)
     (flakeRoot + /modules/nixos/dae)
+    (flakeRoot + /modules/nixos/distrobox)
     (flakeRoot + /modules/nixos/fcitx5)
     (flakeRoot + /modules/nixos/firefox)
     (flakeRoot + /modules/nixos/font)
