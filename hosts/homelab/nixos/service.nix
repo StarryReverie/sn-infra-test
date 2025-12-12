@@ -14,7 +14,6 @@
         "nextcloud"
         "searxng"
         "jupyter"
-        "dns"
       ];
     };
 
