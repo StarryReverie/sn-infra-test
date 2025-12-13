@@ -58,6 +58,7 @@ inputs.nixpkgs.lib.nixosSystem {
           (flakeRoot + /modules/home/nix-maid/clipboard)
           (flakeRoot + /modules/home/nix-maid/direnv)
           (flakeRoot + /modules/home/nix-maid/environment)
+          (flakeRoot + /modules/home/nix-maid/eza)
           (flakeRoot + /modules/home/nix-maid/fd)
           (flakeRoot + /modules/home/nix-maid/fzf)
           (flakeRoot + /modules/home/nix-maid/github-copilot-cli)
@@ -85,7 +86,6 @@ inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs specialArgs;
           modules = [
             (flakeRoot + /modules/home/wrapper/difftastic)
-            (flakeRoot + /modules/home/wrapper/eza)
             (flakeRoot + /modules/home/wrapper/fastfetch)
             (flakeRoot + /modules/home/wrapper/git)
             (flakeRoot + /modules/home/wrapper/ripgrep)
