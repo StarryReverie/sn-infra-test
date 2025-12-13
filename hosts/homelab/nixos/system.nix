@@ -23,7 +23,6 @@
 
     packages =
       (with pkgs; [
-        difftastic
         htop
       ])
       ++ (builtins.attrValues config.wrapping.packages);
