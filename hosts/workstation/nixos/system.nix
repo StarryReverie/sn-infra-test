@@ -22,7 +22,6 @@
         difftastic
         htop
         libnotify
-        zoxide
       ])
       ++ (builtins.attrValues config.wrapping.packages);
   };

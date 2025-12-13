@@ -25,7 +25,6 @@
       (with pkgs; [
         difftastic
         htop
-        zoxide
       ])
       ++ (builtins.attrValues config.wrapping.packages);
 
