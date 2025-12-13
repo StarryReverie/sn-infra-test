@@ -1,0 +1,12 @@
+gui:
+  language: en
+  timeFormat: 2006/01/02
+  showRandomTip: false
+  border: single
+git:
+  pagers:
+    - externalDiffCommand: difft --color=always
+update:
+  method: never
+disableStartupPopups: true
+

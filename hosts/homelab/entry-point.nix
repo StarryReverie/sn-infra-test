@@ -51,6 +51,7 @@ inputs.nixpkgs.lib.nixosSystem {
           (flakeRoot + /modules/home/nix-maid/direnv)
           (flakeRoot + /modules/home/nix-maid/environment)
           (flakeRoot + /modules/home/nix-maid/helix)
+          (flakeRoot + /modules/home/nix-maid/lazygit)
         ];
 
         wrapping = {
@@ -64,7 +65,6 @@ inputs.nixpkgs.lib.nixosSystem {
             (flakeRoot + /modules/home/wrapper/fd)
             (flakeRoot + /modules/home/wrapper/fzf)
             (flakeRoot + /modules/home/wrapper/git)
-            (flakeRoot + /modules/home/wrapper/lazygit)
             (flakeRoot + /modules/home/wrapper/ripgrep)
             (flakeRoot + /modules/home/wrapper/yazi)
             (flakeRoot + /modules/home/wrapper/zellij)
