@@ -17,12 +17,9 @@
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
 
-    packages =
-      (with pkgs; [
-        htop
-        libnotify
-      ])
-      ++ (builtins.attrValues config.wrapping.packages);
+    packages = with pkgs; [
+      htop
+    ];
   };
 
   programs.zsh.enable = true;

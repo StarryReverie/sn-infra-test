@@ -45,13 +45,11 @@ inputs.nixpkgs.lib.nixosSystem {
     ./nixos/networking.nix
     ./nixos/system.nix
 
-    # Home modules (wrapper-manager + nix-maid)
+    # Home modules
     (
       { config, pkgs, ... }:
       {
         imports = [
-          (flakeRoot + /modules/home/wrapper/system-options.nix)
-
           (flakeRoot + /modules/home/nix-maid/alacritty)
           (flakeRoot + /modules/home/nix-maid/atuin)
           (flakeRoot + /modules/home/nix-maid/bat)
@@ -85,14 +83,6 @@ inputs.nixpkgs.lib.nixosSystem {
           ./home/nix-maid/kanshi.nix
           ./home/nix-maid/niri-environment.nix
         ];
-
-        wrapping = {
-          inherit pkgs specialArgs;
-          modules = [
-            (flakeRoot + /modules/home/wrapper/git)
-            (flakeRoot + /modules/home/wrapper/zsh)
-          ];
-        };
       }
     )
   ];

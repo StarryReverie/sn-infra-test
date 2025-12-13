@@ -14,6 +14,7 @@ in
       # Supporting utilities
       xwayland-satellite
       brightnessctl
+      libnotify
       playerctl
 
       # System

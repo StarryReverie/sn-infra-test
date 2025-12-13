@@ -40,13 +40,11 @@ inputs.nixpkgs.lib.nixosSystem {
     ./nixos/service.nix
     ./nixos/system.nix
 
-    # Home modules (wrapper-manager + nix-maid)
+    # Home modules
     (
       { config, pkgs, ... }:
       {
         imports = [
-          (flakeRoot + /modules/home/wrapper/system-options.nix)
-
           (flakeRoot + /modules/home/nix-maid/atuin)
           (flakeRoot + /modules/home/nix-maid/bat)
           (flakeRoot + /modules/home/nix-maid/difftastic)
@@ -65,15 +63,6 @@ inputs.nixpkgs.lib.nixosSystem {
           (flakeRoot + /modules/home/nix-maid/zoxide)
           (flakeRoot + /modules/home/nix-maid/zsh)
         ];
-
-        wrapping = {
-          inherit pkgs;
-          modules = [
-            (flakeRoot + /modules/home/wrapper/fastfetch)
-            (flakeRoot + /modules/home/wrapper/git)
-            (flakeRoot + /modules/home/wrapper/zsh)
-          ];
-        };
       }
     )
   ];
