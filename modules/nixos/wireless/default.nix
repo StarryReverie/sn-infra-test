@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  constants,
   ...
 }:
 {
@@ -25,5 +24,5 @@
 
   systemd.network.wait-online.enable = false;
 
-  users.users.${constants.username}.extraGroups = [ "networkmanager" ];
+  users.users.starryreverie.extraGroups = [ "networkmanager" ];
 }
