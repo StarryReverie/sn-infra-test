@@ -86,10 +86,10 @@ in
     systemd.services.waybar = {
       serviceConfig.ExecStart = "${lib.getExe config.wrapping.packages.waybar}";
       path = [
-        config.wrapping.packages.rofi
         config.wrapping.packages.wpaperd
         config.wrapping.packages.swaync
         pkgs.hyprlock
+        pkgs.rofi
       ]
       ++ (lib.optionals config.services.pipewire.wireplumber.enable [
         pkgs.wireplumber
