@@ -6,6 +6,8 @@
   ...
 }:
 {
+  services.tailscale.enable = true;
+
   starrynix-infrastructure.host = {
     deployment = {
       inherit (inputs.self) nodeConfigurations;

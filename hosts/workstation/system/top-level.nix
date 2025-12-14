@@ -1,0 +1,50 @@
+{
+  config,
+  lib,
+  pkgs,
+  constants,
+  flakeRoot,
+  ...
+}:
+let
+  systemModuleRoot = flakeRoot + /modules/system;
+in
+{
+  imports = [
+    # Common system modules
+    (systemModuleRoot + /bluetooth)
+    (systemModuleRoot + /container)
+    (systemModuleRoot + /dae)
+    (systemModuleRoot + /distrobox)
+    (systemModuleRoot + /fcitx5)
+    (systemModuleRoot + /firefox)
+    (systemModuleRoot + /font)
+    (systemModuleRoot + /networking)
+    (systemModuleRoot + /nix)
+    (systemModuleRoot + /pipewire)
+    (systemModuleRoot + /openssh)
+    (systemModuleRoot + /secret)
+    (systemModuleRoot + /waydroid)
+    (systemModuleRoot + /wireless)
+
+    # Host-specific system modules
+    ./desktop.nix
+    ./hardware.nix
+    ./networking.nix
+  ];
+
+  networking.hostName = constants.hostname;
+  time.timeZone = "Asia/Shanghai";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  services.openssh.enable = true;
+
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIKkfLJ1nNXoIFe33/puw/m/8ytPQhD7TYoTD2WCCl88";
+
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-36.9.5"
+  ];
+
+  system.stateVersion = "25.11";
+}
