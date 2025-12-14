@@ -6,7 +6,7 @@
   ...
 }:
 {
-  imports = [ (flakeRoot + /modules/nixos/starrynix-infrastructure/registry) ];
+  imports = [ (flakeRoot + /modules/system/starrynix-infrastructure/registry) ];
 
   starrynix-infrastructure.registry.clusters = {
     "jellyfin" = {

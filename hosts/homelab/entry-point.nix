@@ -25,20 +25,20 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     # StarryNix-Infrastructure
-    (flakeRoot + /modules/nixos/starrynix-infrastructure/host)
+    (flakeRoot + /modules/system/starrynix-infrastructure/host)
     (flakeRoot + /nodes/registry.nix)
 
     # NixOS modules
-    (flakeRoot + /modules/nixos/dae)
-    (flakeRoot + /modules/nixos/networking)
-    (flakeRoot + /modules/nixos/nix)
-    (flakeRoot + /modules/nixos/openssh)
-    (flakeRoot + /modules/nixos/secret)
-    (flakeRoot + /modules/nixos/wireless)
-    ./nixos/hardware.nix
-    ./nixos/networking.nix
-    ./nixos/service.nix
-    ./nixos/system.nix
+    (flakeRoot + /modules/system/dae)
+    (flakeRoot + /modules/system/networking)
+    (flakeRoot + /modules/system/nix)
+    (flakeRoot + /modules/system/openssh)
+    (flakeRoot + /modules/system/secret)
+    (flakeRoot + /modules/system/wireless)
+    ./system/hardware.nix
+    ./system/networking.nix
+    ./system/service.nix
+    ./system/system.nix
 
     # Home modules
     (

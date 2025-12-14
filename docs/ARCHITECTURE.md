@@ -57,18 +57,18 @@ This project tries to conform the design philosophy below:
 
 StarryNix-Infrastructure exposes a compact NixOS option declaration to describe hosts, clusters, and nodes:
 
-- [Registry Options](../modules/nixos/starrynix-infrastructure/registry/default.nix) `starrynix-infrastructure.registry.*`: the central source of each node's metadata
+- [Registry Options](../modules/system/starrynix-infrastructure/registry/default.nix) `starrynix-infrastructure.registry.*`: the central source of each node's metadata
     - Unique identifier and index for each node.
     - Deterministic MACs, NICs and IPv4 addresses allocation.
     - Additional metadata declaration, such as SSH keys.
     - Consumed by both node and host modules.
-- [Node Options](../modules/nixos/starrynix-infrastructure/node/default.nix) `starrynix-infrastructure.node.*`: node specific settings
+- [Node Options](../modules/system/starrynix-infrastructure/node/default.nix) `starrynix-infrastructure.node.*`: node specific settings
     - Declares hypervisor choices, VSOCK CID, virtiofs shares and state directory setup.
     - Configures the network in node side.
     - Sets up node secret management (`agenix` & `agenix-rekey`).
     - Applies security defaults.
     - Mounts node's SSH host key files from the host.
-- [Host Options](../modules/nixos/starrynix-infrastructure/host/default.nix) `starrynix-infrastructure.host.*`: host-level deployment and node orchestration.
+- [Host Options](../modules/system/starrynix-infrastructure/host/default.nix) `starrynix-infrastructure.host.*`: host-level deployment and node orchestration.
     - Declares VM `nodeConfigurations` and which clusters the host serves.
     - Generates cluster networks and port forwarding configurations.
     - Provides nodes with SSH keys access.
@@ -113,7 +113,7 @@ These abstractions hide raw `microvm.nix` and NixOS options from `nixpkgs` behin
     { inputs, flakeRoot, ... }@specialArgs:
     inputs.self.lib.makeNodeEntryPoint inputs.nixpkgs.lib specialArgs {
       modules = [
-        (flakeRoot + /modules/nixos/starrynix-infrastructure/node)
+        (flakeRoot + /modules/system/starrynix-infrastructure/node)
         (flakeRoot + /nodes/registry.nix)
         ./service.nix
         ./system.nix

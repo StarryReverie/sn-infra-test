@@ -26,24 +26,24 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     # NixOS modules
-    (flakeRoot + /modules/nixos/bluetooth)
-    (flakeRoot + /modules/nixos/container)
-    (flakeRoot + /modules/nixos/dae)
-    (flakeRoot + /modules/nixos/distrobox)
-    (flakeRoot + /modules/nixos/fcitx5)
-    (flakeRoot + /modules/nixos/firefox)
-    (flakeRoot + /modules/nixos/font)
-    (flakeRoot + /modules/nixos/networking)
-    (flakeRoot + /modules/nixos/nix)
-    (flakeRoot + /modules/nixos/pipewire)
-    (flakeRoot + /modules/nixos/openssh)
-    (flakeRoot + /modules/nixos/secret)
-    (flakeRoot + /modules/nixos/waydroid)
-    (flakeRoot + /modules/nixos/wireless)
-    ./nixos/desktop.nix
-    ./nixos/hardware.nix
-    ./nixos/networking.nix
-    ./nixos/system.nix
+    (flakeRoot + /modules/system/bluetooth)
+    (flakeRoot + /modules/system/container)
+    (flakeRoot + /modules/system/dae)
+    (flakeRoot + /modules/system/distrobox)
+    (flakeRoot + /modules/system/fcitx5)
+    (flakeRoot + /modules/system/firefox)
+    (flakeRoot + /modules/system/font)
+    (flakeRoot + /modules/system/networking)
+    (flakeRoot + /modules/system/nix)
+    (flakeRoot + /modules/system/pipewire)
+    (flakeRoot + /modules/system/openssh)
+    (flakeRoot + /modules/system/secret)
+    (flakeRoot + /modules/system/waydroid)
+    (flakeRoot + /modules/system/wireless)
+    ./system/desktop.nix
+    ./system/hardware.nix
+    ./system/networking.nix
+    ./system/system.nix
 
     # Home modules
     (
