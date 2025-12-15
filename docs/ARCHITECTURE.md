@@ -24,13 +24,14 @@ This project tries to conform the design philosophy below:
 - `docs`: Documentations.
 - `hosts`: Configurations of all hosts running NixOS or NixOS-like system.
     - `homelab`: Main server and hypervisor for `microvm.nix` nodes.
+    - `workstation`: Main workstation for everyday life.
 - `lib`: Reusable Nix function library.
-- `modules`: Common modules.
-    - `home`: User-specific modules.
-        - `wrapper`: Wrapper programs with configurations bundled.
-        - `nix-maid`: Dotfiles in home directory managed by `nix-maid`.
-    - `nixos`: NixOS modules.
+- `modules`: Common NixOS modules.
+    - `system`: System-wide modules.
         - `starrynix-infrastructure`: Core modules of StarryNix-Infrastructure.
+    - `users`: User-specific modules, grouped by user name.
+        - `common`: Common modules that can be used by each user.
+        - ...
 - `nodes`: Configurations of all `microvm.nix` nodes grouped as clusters.
     - `jellyfin`: Jellyfin streaming media service cluster.
         - `main`: Main node of the Jellyfin service.
