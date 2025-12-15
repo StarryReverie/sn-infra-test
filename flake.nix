@@ -88,12 +88,17 @@
       ];
 
       perSystem =
-        { inputs', pkgs, ... }:
+        { system, pkgs, ... }:
         {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = inputs.nixpkgs.lib.attrsets.attrValues self.overlays;
+          };
+
           devShells.default = pkgs.mkShellNoCC {
             packages = [
-              inputs'.agenix-rekey.packages.default
-              inputs'.colmena.packages.colmena
+              inputs.agenix-rekey.packages.${system}.default
+              inputs.colmena.packages.${system}.colmena
               pkgs.nil
               pkgs.nixfmt
               pkgs.nixfmt-tree
@@ -105,6 +110,8 @@
 
       flake = {
         lib = import ./lib;
+
+        overlays = import ./modules/system/nix/overlays/all-overlays.nix inputs;
 
         colmenaHive = inputs.colmena.lib.makeHive self.colmenaArg;
 
