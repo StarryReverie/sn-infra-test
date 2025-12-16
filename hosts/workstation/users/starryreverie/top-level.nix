@@ -54,6 +54,7 @@ in
 
     packages = with pkgs; [
       htop
+      nixpkgs-review
     ];
   };
 
