@@ -79,7 +79,6 @@
     { self, flake-parts, ... }@inputs:
     let
       flakeRoot = ./.;
-      makeHostnameForHost = host: "starrynix-${host}";
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -129,91 +128,42 @@
             meta.nodeSpecialArgs = builtins.mapAttrs (name: value: value._module.specialArgs) conf;
           };
 
-        nixosConfigurations = {
-          "homelab" = (import ./hosts/homelab/entry-point.nix) {
-            inherit inputs flakeRoot;
+        nixosConfigurations =
+          let
+            importHost =
+              path:
+              (import path) {
+                inherit inputs flakeRoot;
+              };
+          in
+          {
+            "homelab" = importHost ./hosts/homelab/entry-point.nix;
+            "workstation" = importHost ./hosts/workstation/entry-point.nix;
           };
 
-          "workstation" = (import ./hosts/workstation/entry-point.nix) {
-            inherit inputs flakeRoot;
-          };
-        };
-
-        nodeConfigurations = {
-          "jellyfin" = {
-            "main" = (import ./nodes/jellyfin/main/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "jellyfin";
-                node = "main";
+        nodeConfigurations =
+          let
+            importNode =
+              path: nodeConstants:
+              (import path) {
+                inherit inputs flakeRoot nodeConstants;
+              };
+            makeNodeEntry = cluster: node: {
+              ${cluster}.${node} = (importNode ./nodes/${cluster}/${node}/entry-point.nix) {
+                inherit cluster node;
               };
             };
-          };
-
-          "nextcloud" = {
-            "main" = (import ./nodes/nextcloud/main/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "nextcloud";
-                node = "main";
-              };
-            };
-
-            "storage" = (import ./nodes/nextcloud/storage/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "nextcloud";
-                node = "storage";
-              };
-            };
-
-            "cache" = (import ./nodes/nextcloud/cache/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "nextcloud";
-                node = "cache";
-              };
-            };
-          };
-
-          "searxng" = {
-            "main" = (import ./nodes/searxng/main/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "searxng";
-                node = "main";
-              };
-            };
-          };
-
-          "jupyter" = {
-            "main" = (import ./nodes/jupyter/main/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "jupyter";
-                node = "main";
-              };
-            };
-          };
-
-          "dns" = {
-            "main" = (import ./nodes/dns/main/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "dns";
-                node = "main";
-              };
-            };
-
-            "recursive" = (import ./nodes/dns/recursive/entry-point.nix) {
-              inherit inputs flakeRoot;
-              nodeConstants = {
-                cluster = "dns";
-                node = "recursive";
-              };
-            };
-          };
-        };
+          in
+          inputs.nixpkgs.lib.foldAttrs inputs.nixpkgs.lib.recursiveUpdate { } [
+            (makeNodeEntry "jellyfin" "main")
+            (makeNodeEntry "nextcloud" "main")
+            (makeNodeEntry "nextcloud" "storage")
+            (makeNodeEntry "nextcloud" "cache")
+            (makeNodeEntry "searxng" "main")
+            (makeNodeEntry "jupyter" "main")
+            (makeNodeEntry "dns" "main")
+            (makeNodeEntry "dns" "recursive")
+          ];
 
         agenix-rekey = inputs.agenix-rekey.configure {
           userFlake = self;
