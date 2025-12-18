@@ -2,47 +2,27 @@
   config,
   lib,
   pkgs,
+  flakeRoot,
   ...
 }:
-let
-  cfg = config.users.users.starryreverie.maid;
-
-  directories = {
-    XDG_DESKTOP_DIR = "$HOME/desktop";
-    XDG_DOCUMENTS_DIR = "$HOME/userdata/documents";
-    XDG_MUSIC_DIR = "$HOME/userdata/music";
-    XDG_PICTURES_DIR = "$HOME/userdata/pictures";
-    XDG_VIDEOS_DIR = "$HOME/userdata/videos";
-    XDG_TEMPLATES_DIR = "$HOME/userdata/templates";
-    XDG_PUBLICSHARE_DIR = "$HOME/public";
-    XDG_DOWNLOAD_DIR = "$HOME/downloads";
-  };
-in
 {
+  imports = [
+    (flakeRoot + /modules/users/common/xdg)
+  ];
+
   users.users.starryreverie = {
-    custom.environment = {
-      sessionVariables = directories;
-    };
+    custom.xdg = {
+      enable = true;
 
-    maid = {
-      file.xdg_config."user-dirs.dirs".text =
-        let
-          varEntries = lib.mapAttrsToList (name: value: "${name}=\"${value}\"") directories;
-          fileContent = builtins.concatStringsSep "\n" varEntries;
-        in
-        fileContent;
-
-      systemd.services."create-xdg-user-dirs" = {
-        script =
-          let
-            mapMkdirCommand = name: value: "mkdir -p \"${value}\"";
-            mkdirCommands = lib.mapAttrsToList mapMkdirCommand directories;
-            fileContent = builtins.concatStringsSep "\n" mkdirCommands;
-          in
-          fileContent;
-
-        serviceConfig.Type = "oneshot";
-        wantedBy = [ cfg.maid.systemdTarget ];
+      userDirectories = {
+        desktop = "$HOME/desktop";
+        documents = "$HOME/userdata/documents";
+        download = "$HOME/downloads";
+        music = "$HOME/userdata/music";
+        pictures = "$HOME/userdata/pictures";
+        publicShare = "$HOME/public";
+        templates = "$HOME/userdata/templates";
+        videos = "$HOME/userdata/videos";
       };
     };
   };
