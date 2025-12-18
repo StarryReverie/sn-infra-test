@@ -1,17 +1,16 @@
 {
   makeNodeEntryPoint =
-    nixpkgsLib:
-    { system, ... }@specialArgs:
+    nixpkgsLib: specialArgs:
     { modules }:
     {
-      inherit system specialArgs;
+      inherit specialArgs;
 
       config = {
         imports = modules;
       };
 
       nixosSystem = nixpkgsLib.nixosSystem {
-        inherit system specialArgs modules;
+        inherit specialArgs modules;
       };
     };
 }

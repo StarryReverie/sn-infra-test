@@ -28,6 +28,8 @@ let
             config = {
               imports = [ nodeConfiguartion.config ];
 
+              nixpkgs.overlays = config.nixpkgs.overlays;
+
               microvm.shares = lib.mkIf node.sshKey.mount [
                 {
                   proto = "virtiofs";
@@ -37,12 +39,6 @@ let
                 }
               ];
             };
-
-            pkgs =
-              if nodeConfiguartion.system == pkgs.stdenv.hostPlatform.system then
-                pkgs
-              else
-                import inputs.nixpkgs { inherit (nodeConfiguartion) system; };
           };
       };
       mapCluster = cluster: lib.attrsets.mapAttrsToList (name: node: mapNode cluster node) cluster.nodes;

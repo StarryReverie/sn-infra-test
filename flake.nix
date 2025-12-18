@@ -143,7 +143,6 @@
           "jellyfin" = {
             "main" = (import ./nodes/jellyfin/main/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "jellyfin";
                 node = "main";
@@ -154,7 +153,6 @@
           "nextcloud" = {
             "main" = (import ./nodes/nextcloud/main/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "nextcloud";
                 node = "main";
@@ -163,7 +161,6 @@
 
             "storage" = (import ./nodes/nextcloud/storage/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "nextcloud";
                 node = "storage";
@@ -172,7 +169,6 @@
 
             "cache" = (import ./nodes/nextcloud/cache/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "nextcloud";
                 node = "cache";
@@ -183,7 +179,6 @@
           "searxng" = {
             "main" = (import ./nodes/searxng/main/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "searxng";
                 node = "main";
@@ -194,7 +189,6 @@
           "jupyter" = {
             "main" = (import ./nodes/jupyter/main/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "jupyter";
                 node = "main";
@@ -205,7 +199,6 @@
           "dns" = {
             "main" = (import ./nodes/dns/main/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "dns";
                 node = "main";
@@ -214,7 +207,6 @@
 
             "recursive" = (import ./nodes/dns/recursive/entry-point.nix) {
               inherit inputs flakeRoot;
-              system = "x86_64-linux";
               nodeConstants = {
                 cluster = "dns";
                 node = "recursive";
