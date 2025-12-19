@@ -107,7 +107,7 @@
         };
 
       flake = {
-        lib = import ./lib;
+        lib = import ./lib inputs;
 
         overlays = import ./modules/system/nix/overlays/all-overlays.nix inputs;
 
@@ -131,7 +131,7 @@
           let
             importHost =
               path:
-              (import path) {
+              import path {
                 inherit inputs flakeRoot;
               };
           in
@@ -144,11 +144,11 @@
           let
             importNode =
               path: nodeConstants:
-              (import path) {
+              import path {
                 inherit inputs flakeRoot nodeConstants;
               };
             makeNodeEntry = cluster: node: {
-              ${cluster}.${node} = (importNode ./nodes/${cluster}/${node}/entry-point.nix) {
+              ${cluster}.${node} = importNode ./nodes/${cluster}/${node}/entry-point.nix {
                 inherit cluster node;
               };
             };
