@@ -1,5 +1,5 @@
 {
-  description = "StarryNix-Infrastructure";
+  description = "Declarative and virtualized service deployment and orchestraion infrastructure built on the Nix/NixOS ecosystem.";
 
   inputs = {
     agenix = {
