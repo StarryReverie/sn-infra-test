@@ -2,6 +2,7 @@ enter_accept = true
 inline_height = 15
 show_help = false
 style = "compact"
+search_mode = "fulltext"
 update_check = false
 workspaces = true
 
@@ -10,13 +11,14 @@ common_prefix = [
 ]
 
 common_subcommands = [
-  "nix",
-  "cargo",
-  "git",
   "./gradlew",
   "./mvnw",
-  "systemctl",
+  "cargo",
+  "colmena",
+  "git",
+  "nix",
   "sudo",
+  "systemctl",
 ]
 
 history_filter = [
