@@ -12,6 +12,7 @@ in
   imports = [
     # Common system modules
     (systemModuleRoot + /dae)
+    (systemModuleRoot + /ly)
     (systemModuleRoot + /networking)
     (systemModuleRoot + /nix)
     (systemModuleRoot + /openssh)
@@ -32,5 +33,4 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1iflX8DYwoguHB2BDxLy+eAcdBX+gTHEGqGNBFdvs/";
-
 }

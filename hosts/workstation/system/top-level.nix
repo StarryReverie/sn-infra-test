@@ -18,6 +18,7 @@ in
     (systemModuleRoot + /fcitx5)
     (systemModuleRoot + /firefox)
     (systemModuleRoot + /font)
+    (systemModuleRoot + /ly)
     (systemModuleRoot + /networking)
     (systemModuleRoot + /nix)
     (systemModuleRoot + /pipewire)
