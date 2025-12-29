@@ -12,6 +12,7 @@ in
   imports = [
     # Common system modules
     (systemModuleRoot + /dae)
+    (systemModuleRoot + /initrd)
     (systemModuleRoot + /ly)
     (systemModuleRoot + /networking)
     (systemModuleRoot + /nix)
