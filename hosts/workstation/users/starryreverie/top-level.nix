@@ -29,6 +29,7 @@ in
     (userModuleRoot + /hyprlock)
     (userModuleRoot + /lazygit)
     (userModuleRoot + /niri-environment)
+    (userModuleRoot + /password)
     (userModuleRoot + /qt-theme)
     (userModuleRoot + /ripgrep)
     (userModuleRoot + /rofi)

@@ -23,6 +23,7 @@ in
     (userModuleRoot + /git)
     (userModuleRoot + /helix)
     (userModuleRoot + /lazygit)
+    (userModuleRoot + /password)
     (userModuleRoot + /ripgrep)
     (userModuleRoot + /yazi)
     (userModuleRoot + /zellij)
