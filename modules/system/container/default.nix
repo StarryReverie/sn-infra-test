@@ -15,4 +15,15 @@
       dns_enabled = true;
     };
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    directories = [
+      # OCI containers
+      "/var/lib/containers"
+      # LXC
+      "/var/lib/lxc"
+      # Systemd-nspawn containers
+      "/var/lib/machines"
+    ];
+  };
 }

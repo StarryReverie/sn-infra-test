@@ -23,6 +23,7 @@ in
     (systemModuleRoot + /networking)
     (systemModuleRoot + /nix)
     (systemModuleRoot + /pipewire)
+    (systemModuleRoot + /preservation)
     (systemModuleRoot + /openssh)
     (systemModuleRoot + /secret)
     (systemModuleRoot + /user-management)

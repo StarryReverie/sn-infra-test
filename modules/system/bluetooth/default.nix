@@ -41,4 +41,8 @@
   services.blueman.enable = true;
 
   systemd.user.units."app-blueman@autostart.service".enable = false;
+
+  preservation.preserveAt."/nix/persistence" = {
+    directories = [ "/var/lib/bluetooth" ];
+  };
 }

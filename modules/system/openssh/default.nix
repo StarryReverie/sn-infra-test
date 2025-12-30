@@ -32,4 +32,33 @@
       overalljails = true;
     };
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    files = [
+      {
+        file = "/etc/ssh/ssh_host_rsa_key";
+        how = "symlink";
+        inInitrd = true;
+        configureParent = true;
+      }
+      {
+        file = "/etc/ssh/ssh_host_rsa_key.pub";
+        how = "symlink";
+        inInitrd = true;
+        configureParent = true;
+      }
+      {
+        file = "/etc/ssh/ssh_host_ed25519_key";
+        how = "symlink";
+        inInitrd = true;
+        configureParent = true;
+      }
+      {
+        file = "/etc/ssh/ssh_host_ed25519_key.pub";
+        how = "symlink";
+        inInitrd = true;
+        configureParent = true;
+      }
+    ];
+  };
 }
