@@ -29,4 +29,10 @@ in
       '';
     };
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    users.starryreverie = {
+      directories = [ ".local/share/direnv" ];
+    };
+  };
 }

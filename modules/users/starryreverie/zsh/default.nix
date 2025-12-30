@@ -40,4 +40,13 @@
       ];
     };
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    users.starryreverie = {
+      files = [
+        ".zcompdump"
+        ".zsh_history"
+      ];
+    };
+  };
 }

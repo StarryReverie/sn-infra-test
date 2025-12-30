@@ -14,4 +14,10 @@
       })
     ];
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    users.starryreverie = {
+      directories = [ ".config/QQ" ];
+    };
+  };
 }

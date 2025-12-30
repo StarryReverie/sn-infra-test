@@ -36,4 +36,13 @@
       };
     };
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    users.starryreverie = {
+      directories = [
+        ".config/qt5ct"
+        ".config/qt6ct"
+      ];
+    };
+  };
 }

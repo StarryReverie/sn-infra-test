@@ -181,4 +181,10 @@ in
   users.users.starryreverie.maid = {
     packages = [ copilotSandboxRunner ];
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    users.starryreverie = {
+      directories = [ ".local/state/github-copilot-cli" ];
+    };
+  };
 }

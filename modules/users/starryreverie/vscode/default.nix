@@ -40,4 +40,10 @@
 
     file.xdg_config."VSCodium/User/settings.json".source = ./settings.jsonc;
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    users.starryreverie = {
+      directories = [ ".config/VSCodium" ];
+    };
+  };
 }
