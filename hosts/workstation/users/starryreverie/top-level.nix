@@ -54,6 +54,7 @@ in
     # Host-specific user modules
     ./kanshi.nix
     ./niri-environment.nix
+    ./preservation.nix
   ];
 
   users.users.starryreverie = {

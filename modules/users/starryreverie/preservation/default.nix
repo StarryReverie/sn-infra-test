@@ -13,12 +13,6 @@
       ];
 
       directories = [
-        "desktop"
-        "downloads"
-        "public"
-        "userdata"
-        "vm"
-
         ".cache"
         ".local/share/Trash"
 
