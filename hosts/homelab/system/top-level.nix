@@ -17,6 +17,7 @@ in
     (systemModuleRoot + /networking)
     (systemModuleRoot + /nix)
     (systemModuleRoot + /openssh)
+    (systemModuleRoot + /preservation)
     (systemModuleRoot + /secret)
     (systemModuleRoot + /tailscale)
     (systemModuleRoot + /user-management)
@@ -37,5 +38,5 @@ in
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1iflX8DYwoguHB2BDxLy+eAcdBX+gTHEGqGNBFdvs/";
 
-  preservation.enable = lib.mkForce false;
+  system.nixos-init.enable = lib.mkForce false;
 }

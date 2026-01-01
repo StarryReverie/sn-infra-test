@@ -55,4 +55,10 @@
       ];
     };
   };
+
+  preservation.preserveAt."/nix/persistence" = {
+    directories = [
+      "/var/lib/microvms"
+    ];
+  };
 }
