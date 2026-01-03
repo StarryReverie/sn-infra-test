@@ -17,6 +17,9 @@
       config = {
         user.name = "Justin Chen";
         user.email = "42143810+StarryReverie@users.noreply.github.com";
+
+        core.fsmonitor = true;
+        feature.manyFiles = true;
       };
     };
 
