@@ -44,8 +44,14 @@
   preservation.preserveAt."/nix/persistence" = {
     users.starryreverie = {
       files = [
-        { file = ".zcompdump"; how = "symlink"; }
-        { file = ".zsh_history"; how = "symlink"; }
+        {
+          file = ".zcompdump";
+          how = "symlink";
+        }
+        {
+          file = ".zsh_history";
+          how = "symlink";
+        }
       ];
     };
   };

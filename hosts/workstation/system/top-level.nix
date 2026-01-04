@@ -20,6 +20,7 @@ in
     (systemModuleRoot + /initrd)
     (systemModuleRoot + /ly)
     (systemModuleRoot + /networking)
+    (systemModuleRoot + /niri-environment)
     (systemModuleRoot + /nix)
     (systemModuleRoot + /pipewire)
     (systemModuleRoot + /preservation)
@@ -30,7 +31,6 @@ in
     (systemModuleRoot + /wireless)
 
     # Host-specific system modules
-    ./desktop.nix
     ./hardware.nix
     ./networking.nix
   ];

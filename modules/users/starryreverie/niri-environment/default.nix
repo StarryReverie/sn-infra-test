@@ -2,12 +2,16 @@
   config,
   lib,
   pkgs,
+  flakeRoot,
   ...
 }:
 let
   cfg = config.users.users.starryreverie.maid;
 in
 {
+  # Requires the corresponding system module
+  imports = [ (flakeRoot + /modules/system/niri-environment) ];
+
   users.users.starryreverie.maid = {
     packages = with pkgs; [
       # Supporting utilities
