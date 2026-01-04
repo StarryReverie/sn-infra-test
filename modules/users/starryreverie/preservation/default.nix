@@ -22,6 +22,7 @@
         # `maid-activation.service` can't prepare all systemd units in time.
         # So persisting these directories helps cache all the contents, and
         # improves speed.
+        # See <https://github.com/viperML/nix-maid/issues/53>.
         ".config/environment.d"
         ".config/systemd"
         ".config/user-tmpfiles.d"

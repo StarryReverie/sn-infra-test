@@ -246,11 +246,11 @@
     },
     "nix-maid": {
       "locked": {
-        "lastModified": 1760858816,
-        "narHash": "sha256-96d+O9jcpJewkYZqJjf86Vpyomh6LLxIw/mmTF+ASko=",
+        "lastModified": 1767517306,
+        "narHash": "sha256-7KBOKp4GoL324MHEDns4sQmdV5hhdqcgfRIjBHSizh8=",
         "owner": "viperML",
         "repo": "nix-maid",
-        "rev": "d362e71ba087919822ec4f5c41b7572d828c749e",
+        "rev": "a2aab233f853c107ffc9a9d59ef25401bc2b2965",
         "type": "github"
       },
       "original": {
