@@ -22,6 +22,4 @@
   };
 
   systemd.network.wait-online.enable = false;
-
-  users.users.starryreverie.extraGroups = [ "networkmanager" ];
 }

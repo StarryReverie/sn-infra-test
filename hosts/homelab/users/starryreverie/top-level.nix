@@ -34,7 +34,12 @@ in
   users.users.starryreverie = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+    ]
+    ++ lib.optionals config.networking.networkmanager.enable [
+      "networkmanager"
+    ];
 
     packages = with pkgs; [
       htop
