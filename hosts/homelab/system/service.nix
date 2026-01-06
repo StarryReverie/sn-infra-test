@@ -14,6 +14,7 @@
         "nextcloud"
         "searxng"
         "jupyter"
+        "dns"
       ];
     };
 
@@ -51,6 +52,13 @@
           toCluster = "jupyter";
           toNode = "main";
           destinationPort = 8799;
+        }
+        {
+          protocol = "udp";
+          sourcePort = 53;
+          toCluster = "dns";
+          toNode = "main";
+          destinationPort = 53;
         }
       ];
     };
