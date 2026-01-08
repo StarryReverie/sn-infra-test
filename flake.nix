@@ -20,8 +20,8 @@
       url = "github:zhaofengli/colmena/main";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
-      inputs.stable.follows = "";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.stable.follows = "";
     };
 
     flake-compat = {
@@ -57,16 +57,16 @@
 
     starrynix-derivations = {
       url = "github:StarryReverie/StarryNix-Derivations/master";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     starrynix-resources = {
       url = "github:StarryReverie/StarryNix-Resources/master";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     systems = {
