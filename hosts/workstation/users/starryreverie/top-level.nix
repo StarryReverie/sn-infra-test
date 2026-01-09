@@ -58,8 +58,11 @@ in
   ];
 
   users.users.starryreverie = {
+    uid = 1000;
+    group = config.users.groups.starryreverie.name;
     isNormalUser = true;
     shell = pkgs.zsh;
+
     extraGroups = [
       "wheel"
     ]
@@ -71,6 +74,10 @@ in
       htop
       nixpkgs-review
     ];
+  };
+
+  users.groups.starryreverie = {
+    gid = config.users.users.starryreverie.uid;
   };
 
   programs.zsh.enable = true;
