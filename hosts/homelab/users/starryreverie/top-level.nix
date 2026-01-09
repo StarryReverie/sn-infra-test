@@ -32,8 +32,11 @@ in
   ];
 
   users.users.starryreverie = {
+    uid = 1000;
+    group = config.users.groups.starryreverie.name;
     isNormalUser = true;
     shell = pkgs.zsh;
+
     extraGroups = [
       "wheel"
     ]
@@ -49,6 +52,10 @@ in
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQrkIsLMV70klKFtQY8JK5QgXKGyTpZcIaLarXG5dBv"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHhBWBm0pl855WnAlKB6567DR3fzAWPYAbYI4YxmYFu starryreverie@starrynix-workstation"
     ];
+  };
+
+  users.groups.starryreverie = {
+    gid = config.users.users.starryreverie.uid;
   };
 
   programs.zsh.enable = true;
