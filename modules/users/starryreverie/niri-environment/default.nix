@@ -50,17 +50,17 @@ in
 
     systemd.services.kanshi = {
       serviceConfig.ExecStart = "${lib.getExe pkgs.kanshi}";
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
-      after = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
+      after = [ "niri-session.target" ];
     };
 
     systemd.services.wpaperd = {
       serviceConfig.ExecStart = "${lib.getExe' pkgs.wpaperd "wpaperd"}";
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
       after = [
-        "niri.service"
+        "niri-session.target"
         "xdg-desktop-portal.service"
         cfg.systemd.services.kanshi.name
       ];
@@ -68,16 +68,16 @@ in
 
     systemd.services.swaync = {
       serviceConfig.ExecStart = "${lib.getExe pkgs.swaynotificationcenter}";
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
-      after = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
+      after = [ "niri-session.target" ];
     };
 
     systemd.services.clipboard = {
       script = "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
-      after = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
+      after = [ "niri-session.target" ];
     };
 
     systemd.services.waybar = {
@@ -95,9 +95,9 @@ in
         ++ (lib.optionals config.hardware.bluetooth.enable [
           pkgs.blueman
         ]);
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
-      after = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
+      after = [ "niri-session.target" ];
     };
 
     systemd.services.swayidle = {
@@ -120,28 +120,28 @@ in
           "lock ${lib.escapeShellArg "${monitorsOffCommand}; ${lockCommand}"}"
           "unlock ${lib.escapeShellArg monitorsOnCommand}"
         ];
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
-      after = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
+      after = [ "niri-session.target" ];
     };
 
     systemd.services.sway-audio-idle-inhibit = {
       serviceConfig.ExecStart = "${lib.getExe pkgs.sway-audio-idle-inhibit}";
       serviceConfig.Restart = "on-failure";
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
       after = [
-        "niri.service"
+        "niri-session.target"
         cfg.systemd.services.swayidle.name
       ];
     };
 
     systemd.services.polkit-authentication-agent = {
       serviceConfig.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      wantedBy = [ "niri.service" ];
-      partOf = [ "niri.service" ];
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
       after = [
-        "niri.service"
+        "niri-session.target"
         "xdg-desktop-portal.service"
       ];
     };
