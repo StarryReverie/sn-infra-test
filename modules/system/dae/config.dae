@@ -1,6 +1,6 @@
 include {
-    @@subscription-file@@
-    @@dns-file@@
+    @subscriptionFile@
+    @dnsFile@
 }
 
 global {
@@ -9,8 +9,8 @@ global {
     so_mark_from_dae: 0x9
     log_level: info
 
-    @@wan-interface@@
-    @@lan-interface@@
+    @wanInterface@
+    @lanInterface@
 
     auto_config_kernel_parameter: true
 
