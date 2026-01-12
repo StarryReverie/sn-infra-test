@@ -60,7 +60,6 @@ in
       partOf = [ "niri-session.target" ];
       after = [
         "niri-session.target"
-        "xdg-desktop-portal.service"
         cfg.systemd.services.kanshi.name
       ];
     };
@@ -139,10 +138,15 @@ in
       serviceConfig.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       wantedBy = [ "niri-session.target" ];
       partOf = [ "niri-session.target" ];
-      after = [
-        "niri-session.target"
-        "xdg-desktop-portal.service"
-      ];
+      after = [ "niri-session.target" ];
+    };
+
+    systemd.services.alacritty = {
+      serviceConfig.ExecStart = "${lib.getExe pkgs.alacritty} --daemon";
+      environment = lib.mkForce { };
+      wantedBy = [ "niri-session.target" ];
+      partOf = [ "niri-session.target" ];
+      after = [ "niri-session.target" ];
     };
   };
 }
