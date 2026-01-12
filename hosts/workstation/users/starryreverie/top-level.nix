@@ -33,6 +33,7 @@ in
     (userModuleRoot + /lazygit)
     (userModuleRoot + /lx-music-desktop)
     (userModuleRoot + /mpd-ecosystem)
+    (userModuleRoot + /nautilus)
     (userModuleRoot + /niri-environment)
     (userModuleRoot + /password)
     (userModuleRoot + /pipewire)

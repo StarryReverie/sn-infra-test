@@ -22,7 +22,6 @@ in
 
       # System
       dconf-editor
-      nautilus
 
       # Documents
       newsflash
