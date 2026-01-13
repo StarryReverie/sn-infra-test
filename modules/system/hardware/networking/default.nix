@@ -31,4 +31,6 @@
     dhcpV4Config.UseDNS = false;
     dhcpV6Config.UseDNS = false;
   };
+
+  networking.nftables.enable = true;
 }
