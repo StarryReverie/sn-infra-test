@@ -23,6 +23,7 @@ in
     (systemModuleRoot + /hardware/networking)
     (systemModuleRoot + /hardware/pipewire)
     (systemModuleRoot + /hardware/wireless)
+    (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /services/dae)
     (systemModuleRoot + /services/dconf)
