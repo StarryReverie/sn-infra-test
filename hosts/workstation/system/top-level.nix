@@ -25,6 +25,7 @@ in
     (systemModuleRoot + /hardware/wireless)
     (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
+    (systemModuleRoot + /security/sudo)
     (systemModuleRoot + /services/dae)
     (systemModuleRoot + /services/dconf)
     (systemModuleRoot + /services/ly)
