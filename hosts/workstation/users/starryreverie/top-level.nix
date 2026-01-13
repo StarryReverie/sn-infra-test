@@ -40,6 +40,7 @@ in
     (userModuleRoot + /preservation)
     (userModuleRoot + /qq)
     (userModuleRoot + /qt-theme)
+    (userModuleRoot + /resources)
     (userModuleRoot + /ripgrep)
     (userModuleRoot + /rofi)
     (userModuleRoot + /swaync)
