@@ -7,7 +7,7 @@
 }:
 let
   resourcesPkgs = inputs.starrynix-resources.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  wallpaperPackage = resourcesPkgs.wallpaperPackages.landscape-illustration;
+  wallpaperPackage = resourcesPkgs.wallpaperPackages.anime-girls;
 
   configFile = pkgs.writers.writeTOML "wpaperd-config.toml" {
     default = {
