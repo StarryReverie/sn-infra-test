@@ -91,13 +91,12 @@
 
       imports = [
         ./modules/flake/dev-environment
+        ./modules/flake/lib
         ./modules/flake/overlays
         ./modules/flake/packages
       ];
 
       flake = {
-        lib = import ./lib inputs;
-
         colmenaHive = inputs.colmena.lib.makeHive self.colmenaArg;
 
         colmenaArg =
