@@ -10,7 +10,7 @@
         "idle_inhibitor",
         "custom/lock",
         "custom/wallpaper",
-        "tray",
+        "tray"
     ],
     "modules-right": [
         "network",
@@ -20,49 +20,49 @@
         "backlight",
         "memory",
         "cpu",
-        "custom/notification",
+        "custom/notification"
     ],
 
     "custom/launcher": {
         "interval": "once",
         "format": " 󱄅  Applications ",
         "tooltip": false,
-        "on-click": "rofi -show drun",
+        "on-click": "rofi -show drun"
     },
     "clock": {
         "interval": 1,
         "timezone": "Asia/Shanghai",
         "format": " {:%B %d - %H:%M} ",
         "tooltip": true,
-        "tooltip-format": "Date:     {:%Y-%m-%d\nWeekday:  %A\nTimezone: %Z\nTime:     %H:%M:%S}",
+        "tooltip-format": "Date:     {:%Y-%m-%d\nWeekday:  %A\nTimezone: %Z\nTime:     %H:%M:%S}"
     },
     "custom/wallpaper": {
         "interval": "once",
         "format": "  ",
         "on-click": "wpaperctl next",
-        "tooltip": false,
+        "tooltip": false
     },
     "idle_inhibitor": {
         "interval": "once",
         "format": "{icon}",
         "format-icons": {
             "activated": " 󰐨 ",
-            "deactivated": "  ",
+            "deactivated": "  "
         },
         "tooltip": true,
         "tooltip-format-activated": "Mode: Presentation",
-        "tooltip-format-deactivated": "Mode: Auto-suspend",
+        "tooltip-format-deactivated": "Mode: Auto-suspend"
     },
     "custom/lock": {
         "interval": "once",
         "format": "  ",
         "on-click": "hyprlock",
-        "tooltip": false,
+        "tooltip": false
     },
     "tray": {
         "icon-size": 16,
         "show-passive-items": true,
-        "spacing": 6,
+        "spacing": 6
     },
 
     "network": {
@@ -74,13 +74,13 @@
         "format-alt": " {icon} {signalStrength}% ",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥"],
         "tooltip": true,
-        "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}    <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
+        "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}    <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}"
     },
     "battery": {
-	      "interval": 60,
+	    "interval": 60,
         "states": {
             "warning": 30,
-            "critical": 15,
+            "critical": 15
         },
         "format": " {icon} {capacity}% ",
         "format-charging": " 󱐋 {capacity}% ",
@@ -88,10 +88,10 @@
         "tooltip": true,
         "tooltip-format-full": "Capacity: {capacity}%\nPower:    {power} W\nStatus:   Full",
         "tooltip-format-charging": "Capacity: {capacity}%\nPower:    {power} W\nStatus:   Charging\nEstimate: {timeTo}",
-        "tooltip-format-discharging": "Capacity: {capacity}%\nPower:    {power} W\nStatus:   Discharging\nEstimate: {timeTo}",
+        "tooltip-format-discharging": "Capacity: {capacity}%\nPower:    {power} W\nStatus:   Discharging\nEstimate: {timeTo}"
     },
     "bluetooth": {
-	      "interval": 60,
+	    "interval": 60,
         "format-no-controller": "  Unavailable ",
         "format-disabled": "  Disabled ",
         "format-on": "  Enabled ",
@@ -103,10 +103,10 @@
         "tooltip-format-on": "Controller: {controller_alias}\nAddress:    {controller_address}\nStatus:     Enabled\n\nNo Connection",
         "tooltip-format-connected": "Controller: {controller_alias}\nAddress:    {controller_address}\nStatus:     Connected\n\nConnections:{device_enumerate}",
         "tooltip-format-enumerate-connected": "\n\n- Device:  {device_alias}\n  Address: {device_address}",
-        "tooltip-format-enumerate-connected": "\n\n- Device:  {device_alias}\n  Address: {device_address}\n  Battery: {device_battery_percentage}%",
+        "tooltip-format-enumerate-connected-battery": "\n\n- Device:  {device_alias}\n  Address: {device_address}\n  Battery: {device_battery_percentage}%"
     },
     "wireplumber": {
-	      "interval": 60,
+	    "interval": 60,
         "format": " {icon} {volume}% ",
         "format-muted": " 󰝟 Muted ",
         "format-icons": {
@@ -120,39 +120,39 @@
                 "󰕿 ",
                 "󰖀 ",
                 "󰕾 "
-            ],
+            ]
         },
         "max-volume": 100,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "helvum",
         "tooltip": true,
         "tooltip-format": "Node:   {node_name}\nVolume: {volume}%",
-        "reverse-scrolling": true,
+        "reverse-scrolling": true
     },
     "backlight": {
-	      "interval": 60,
+	    "interval": 60,
         "format": " {icon} {percent}% ",
         "tooltip": true,
         "tooltip-format": "Brightness: {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃝", "󰃠"],
-        "reverse-scrolling": true,
+        "reverse-scrolling": true
     },
     "memory": {
-	      "interval": 10,
+	    "interval": 10,
         "format": "  {percentage}% ",
         "tooltip": true,
-        "tooltip-format": "Percentage:    {percentage}%\nRAM Total:     {total:0.1f} GiB\nRAM Available: {avail:0.1f} GiB\nRAM Used:      {used:0.1f} GiB\nSwap Used:     {swapUsed:0.1f} GiB",
+        "tooltip-format": "Percentage:    {percentage}%\nRAM Total:     {total:0.1f} GiB\nRAM Available: {avail:0.1f} GiB\nRAM Used:      {used:0.1f} GiB\nSwap Used:     {swapUsed:0.1f} GiB"
     },
     "cpu": {
-	      "interval": 10,
+	    "interval": 10,
         "format": "  {usage}% ",
-        "tooltip": true,
+        "tooltip": true
     },
     "custom/notification": {
         "interval": "once",
         "tooltip": false,
         "format": " 󱅫 ",
         "on-click": "swaync-client --toggle-panel --skip-wait",
-        "on-click-right": "swaync-client --toggle-dnd --skip-wait",
-    },
+        "on-click-right": "swaync-client --toggle-dnd --skip-wait"
+    }
 }
