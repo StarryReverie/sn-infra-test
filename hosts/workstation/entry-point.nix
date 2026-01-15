@@ -17,6 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     # External modules
     inputs.agenix-rekey.nixosModules.default
     inputs.agenix.nixosModules.default
+    inputs.disko.nixosModules.default
     inputs.nix-maid.nixosModules.default
     inputs.preservation.nixosModules.default
 
