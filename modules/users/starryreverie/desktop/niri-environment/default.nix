@@ -37,7 +37,6 @@ in
       switcheroo
 
       # Media
-      amberol
       eartag
       mousai
 

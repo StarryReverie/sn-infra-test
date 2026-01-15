@@ -48,14 +48,14 @@
           "image/x-ms-bmp" = "org.gnome.Loupe.desktop";
 
           # Audio
-          "audio/flac" = "io.bassi.Amberol.desktop";
-          "audio/mpeg" = "io.bassi.Amberol.desktop";
-          "audio/ogg" = "io.bassi.Amberol.desktop";
-          "audio/wav" = "io.bassi.Amberol.desktop";
-          "audio/x-wav" = "io.bassi.Amberol.desktop";
-          "audio/aac" = "io.bassi.Amberol.desktop";
-          "audio/x-aiff" = "io.bassi.Amberol.desktop";
-          "audio/x-m4a" = "io.bassi.Amberol.desktop";
+          "audio/flac" = "mpv.desktop";
+          "audio/mpeg" = "mpv.desktop";
+          "audio/ogg" = "mpv.desktop";
+          "audio/wav" = "mpv.desktop";
+          "audio/x-wav" = "mpv.desktop";
+          "audio/aac" = "mpv.desktop";
+          "audio/x-aiff" = "mpv.desktop";
+          "audio/x-m4a" = "mpv.desktop";
 
           # Video
           "video/mp4" = "mpv.desktop";
