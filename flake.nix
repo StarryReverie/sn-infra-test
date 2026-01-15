@@ -24,6 +24,11 @@
       inputs.stable.follows = "";
     };
 
+    disko = {
+      url = "github:nix-community/disko/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-compat = {
       url = "https://git.lix.systems/lix-project/flake-compat/archive/main.tar.gz";
     };
