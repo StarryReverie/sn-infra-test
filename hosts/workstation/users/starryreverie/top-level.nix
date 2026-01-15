@@ -19,6 +19,7 @@ in
     (userModuleRoot + /applications/keepassxc)
     (userModuleRoot + /applications/lazygit)
     (userModuleRoot + /applications/lx-music-desktop)
+    (userModuleRoot + /applications/mpv)
     (userModuleRoot + /applications/nautilus)
     (userModuleRoot + /applications/qq)
     (userModuleRoot + /applications/resources)
