@@ -58,15 +58,15 @@
           "audio/x-m4a" = "io.bassi.Amberol.desktop";
 
           # Video
-          "video/mp4" = "io.bassi.Showtime.desktop";
-          "video/x-msvideo" = "io.bassi.Showtime.desktop";
-          "video/mpeg" = "io.bassi.Showtime.desktop";
-          "video/x-matroska" = "io.bassi.Showtime.desktop";
-          "video/quicktime" = "io.bassi.Showtime.desktop";
-          "video/x-ms-wmv" = "io.bassi.Showtime.desktop";
-          "video/x-flv" = "io.bassi.Showtime.desktop";
-          "video/x-webm" = "io.bassi.Showtime.desktop";
-          "video/webm" = "io.bassi.Showtime.desktop";
+          "video/mp4" = "mpv.desktop";
+          "video/x-msvideo" = "mpv.desktop";
+          "video/mpeg" = "mpv.desktop";
+          "video/x-matroska" = "mpv.desktop";
+          "video/quicktime" = "mpv.desktop";
+          "video/x-ms-wmv" = "mpv.desktop";
+          "video/x-flv" = "mpv.desktop";
+          "video/x-webm" = "mpv.desktop";
+          "video/webm" = "mpv.desktop";
 
           # Text
           "text/plain" = "Helix.desktop";

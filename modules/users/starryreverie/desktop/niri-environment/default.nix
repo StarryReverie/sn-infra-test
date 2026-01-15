@@ -40,7 +40,6 @@ in
       amberol
       eartag
       mousai
-      showtime
 
       # Efficiency
       eyedropper
