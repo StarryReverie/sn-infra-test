@@ -43,6 +43,7 @@ in
 
       # Efficiency
       eyedropper
+      gnome-calculator
       gnome-calendar
       gnome-clocks
     ];
