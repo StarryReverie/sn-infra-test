@@ -15,7 +15,7 @@
         };
     in
     {
+      "superposition" = importHost (flakeRoot + /hosts/superposition/entry-point.nix);
       "topological" = importHost (flakeRoot + /hosts/topological/entry-point.nix);
-      "workstation" = importHost (flakeRoot + /hosts/workstation/entry-point.nix);
     };
 }

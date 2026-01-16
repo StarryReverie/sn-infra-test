@@ -42,7 +42,7 @@ in
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
-  networking.hostName = "starrynix-workstation";
+  networking.hostName = "superposition";
   system.stateVersion = "25.11";
 
   time.timeZone = "Asia/Shanghai";
