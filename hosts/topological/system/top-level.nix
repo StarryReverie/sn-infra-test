@@ -22,7 +22,6 @@ in
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /security/sudo)
     (systemModuleRoot + /services/dae)
-    (systemModuleRoot + /services/ly)
     (systemModuleRoot + /services/openssh)
     (systemModuleRoot + /services/tailscale)
 
