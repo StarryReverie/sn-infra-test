@@ -36,7 +36,7 @@ in
     (systemModuleRoot + /virtualization/distrobox)
 
     # Host-specific system modules
-    ./disko-config.nix
+    ./disk-config.nix
     ./hardware.nix
     ./networking.nix
   ];
