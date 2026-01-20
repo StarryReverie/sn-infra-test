@@ -24,6 +24,7 @@ in
     (systemModuleRoot + /hardware/networking)
     (systemModuleRoot + /hardware/pipewire)
     (systemModuleRoot + /hardware/wireless)
+    (systemModuleRoot + /hardware/zram-swap)
     (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /security/sudo)

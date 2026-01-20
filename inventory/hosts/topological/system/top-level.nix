@@ -18,6 +18,7 @@ in
     (systemModuleRoot + /core/user-management)
     (systemModuleRoot + /hardware/networking)
     (systemModuleRoot + /hardware/wireless)
+    (systemModuleRoot + /hardware/zram-swap)
     (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /security/sudo)
