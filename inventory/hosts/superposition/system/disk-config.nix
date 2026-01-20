@@ -76,4 +76,6 @@
     depends = [ "/nix/persistence" ];
     neededForBoot = true;
   };
+
+  swapDevices = [ ];
 }

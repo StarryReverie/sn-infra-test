@@ -32,8 +32,6 @@
 
   services.fstrim.enable = true;
 
-  swapDevices = [ ];
-
   boot.tmp.useTmpfs = true;
 
   services.xserver.videoDrivers = [
