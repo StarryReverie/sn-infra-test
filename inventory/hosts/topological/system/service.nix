@@ -12,6 +12,7 @@
       services.dae = {
         wanInterfaces = [ "wlp3s0" ];
         lanInterfaces = config.starrynix-infrastructure.host.networking.internalInterfaces;
+        forwardDns = false;
       };
     }
 
