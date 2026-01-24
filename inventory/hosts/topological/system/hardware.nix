@@ -49,13 +49,6 @@
       boot.extraModulePackages = [ ];
     }
 
-    # Networking
-    {
-      networking.nameservers = lib.mkBefore [
-        config.starrynix-infrastructure.registry.clusters."dns".nodes."main".ipv4Address
-      ];
-    }
-
     # Power Management
     {
       systemd.sleep.extraConfig = ''

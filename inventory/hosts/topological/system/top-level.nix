@@ -22,9 +22,10 @@ in
     (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /security/sudo)
-    (systemModuleRoot + /services/transparent-proxy)
+    (systemModuleRoot + /services/dnsproxy)
     (systemModuleRoot + /services/openssh)
     (systemModuleRoot + /services/tailscale)
+    (systemModuleRoot + /services/transparent-proxy)
 
     # Host-specific system modules
     ./disk-config.nix
