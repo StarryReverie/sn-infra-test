@@ -10,11 +10,6 @@ in
 {
   options = {
     services.dae = {
-      subscriptionFile = lib.mkOption {
-        type = lib.types.path;
-        description = "A file that stores all subscription links";
-      };
-
       wanInterfaces = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         description = ''
@@ -41,9 +36,6 @@ in
   config = {
     services.dae.enable = true;
 
-    age.secrets."proxy-subscriptions.dae".rekeyFile = ./proxy-subscriptions.dae.age;
-    services.dae.subscriptionFile = config.age.secrets."proxy-subscriptions.dae".path;
-
     services.dae.configFile = pkgs.replaceVars ./config.dae {
       wanInterface =
         if (lib.lists.length cfg.wanInterfaces) != 0 then
@@ -57,15 +49,12 @@ in
         else
           "";
 
-      subscriptionFile = "subscriptions.dae";
       dnsFile = "dns.dae";
     };
 
     systemd.services.dae = {
-      serviceConfig.LoadCredential = [
-        "subscriptions.dae:${cfg.subscriptionFile}"
-      ]
-      ++ (if cfg.forwardDns then [ "dns.dae:${./dns.dae}" ] else [ "dns.dae:/dev/null" ]);
+      serviceConfig.LoadCredential =
+        if cfg.forwardDns then [ "dns.dae:${./dns.dae}" ] else [ "dns.dae:/dev/null" ];
     };
   };
 }

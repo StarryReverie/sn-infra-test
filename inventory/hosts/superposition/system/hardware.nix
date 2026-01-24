@@ -42,18 +42,16 @@
 
     # Networking
     {
-      services.dae.enable = lib.mkForce false;
       services.dae = {
         wanInterfaces = [ "wlo1" ];
         forwardDns = true;
       };
 
-      networking.firewall.trustedInterfaces = [ "Meta" "Mihomo" ];
-
-      programs.clash-verge = {
+      services.mihomo = {
         enable = true;
-        serviceMode = true;
         tunMode = true;
+        webui = pkgs.metacubexd;
+        configFile = "/home/starryreverie/downloads/Configuration.yaml";
       };
     }
 

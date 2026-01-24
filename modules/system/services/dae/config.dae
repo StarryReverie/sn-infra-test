@@ -1,6 +1,9 @@
 include {
-    @subscriptionFile@
     @dnsFile@
+}
+
+node {
+    mihomo: 'socks://localhost:7890'
 }
 
 global {
@@ -34,7 +37,9 @@ group {
 }
 
 routing {
+    pname(NetworkManager) -> direct
     pname(systemd-networkd) -> direct
+    pname(mihomo) -> direct
 
     dip(224.0.0.0/3, 'ff00::/8') -> direct
     dip(geoip:private) -> direct
