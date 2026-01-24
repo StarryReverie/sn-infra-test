@@ -22,7 +22,7 @@ in
     (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /security/sudo)
-    (systemModuleRoot + /services/dae)
+    (systemModuleRoot + /services/transparent-proxy)
     (systemModuleRoot + /services/openssh)
     (systemModuleRoot + /services/tailscale)
 

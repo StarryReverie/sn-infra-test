@@ -40,21 +40,6 @@
       boot.extraModulePackages = [ ];
     }
 
-    # Networking
-    {
-      services.dae = {
-        wanInterfaces = [ "wlo1" ];
-        forwardDns = true;
-      };
-
-      services.mihomo = {
-        enable = true;
-        tunMode = true;
-        webui = pkgs.metacubexd;
-        configFile = "/home/starryreverie/downloads/Configuration.yaml";
-      };
-    }
-
     # NVIDIA Graphics
     {
       custom.nvidia = {

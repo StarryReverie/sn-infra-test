@@ -7,9 +7,10 @@
 }:
 {
   config = lib.mkMerge [
-    # Dae
+    # Transparent Proxy
     {
-      services.dae = {
+      custom.transparent-proxy = {
+        enable = true;
         wanInterfaces = [ "wlp3s0" ];
         lanInterfaces = config.starrynix-infrastructure.host.networking.internalInterfaces;
         forwardDns = false;

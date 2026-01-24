@@ -31,7 +31,7 @@ in
     (systemModuleRoot + /security/fail2ban)
     (systemModuleRoot + /security/secret)
     (systemModuleRoot + /security/sudo)
-    (systemModuleRoot + /services/dae)
+    (systemModuleRoot + /services/transparent-proxy)
     (systemModuleRoot + /services/dconf)
     (systemModuleRoot + /services/ly)
     (systemModuleRoot + /services/openssh)
@@ -42,6 +42,7 @@ in
     # Host-specific system modules
     ./disk-config.nix
     ./hardware.nix
+    ./services.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
