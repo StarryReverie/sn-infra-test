@@ -9,7 +9,7 @@
   config = lib.mkMerge [
     # Transparent Proxy
     {
-      custom.transparent-proxy = {
+      custom.services.transparent-proxy = {
         enable = true;
         wanInterfaces = [ "wlp3s0" ];
         lanInterfaces = config.starrynix-infrastructure.host.networking.internalInterfaces;

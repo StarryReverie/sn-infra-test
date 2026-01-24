@@ -5,7 +5,7 @@
   ...
 }:
 {
-  options.custom.nvidia = {
+  options.custom.hardware.nvidia-graphics = {
     enable = lib.mkOption {
       type = lib.types.bool;
       description = "Whether to enable NVIDIA driver";
@@ -27,7 +27,7 @@
 
   config =
     let
-      cfg = config.custom.nvidia;
+      cfg = config.custom.hardware.nvidia-graphics;
     in
     lib.mkMerge [
       (lib.mkIf cfg.enable {

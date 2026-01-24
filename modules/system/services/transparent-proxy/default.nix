@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.custom.transparent-proxy;
+  cfg = config.custom.services.transparent-proxy;
 in
 {
-  options.custom.transparent-proxy = {
+  options.custom.services.transparent-proxy = {
     enable = lib.mkOption {
       type = lib.types.bool;
       description = ''
