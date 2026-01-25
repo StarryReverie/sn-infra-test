@@ -9,13 +9,6 @@ let
 in
 {
   options.custom.services.transparent-proxy = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      description = ''
-        Whether to enable chained transparent proxy using dae and mihomo
-      '';
-    };
-
     wanInterfaces = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = ''

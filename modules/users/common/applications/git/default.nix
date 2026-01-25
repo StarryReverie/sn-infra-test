@@ -13,13 +13,6 @@ let
     in
     {
       options.custom.applications.git = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          description = "Whether to enable git";
-          default = false;
-          example = true;
-        };
-
         config = lib.mkOption {
           type = lib.types.attrsOf lib.types.anything;
           description = "Configurations in `.gitconfig`";

@@ -1,4 +1,4 @@
-{ inputs, ... }@specialArgs:
+{ inputs, flakeRoot, ... }@specialArgs:
 inputs.nixpkgs.lib.nixosSystem {
   inherit specialArgs;
 
@@ -22,6 +22,8 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.preservation.nixosModules.default
 
     # Local modules
+    (flakeRoot + /modules/system)
+    (flakeRoot + /modules/users/common)
     ./system/top-level.nix
     ./users/starryreverie/top-level.nix
   ];

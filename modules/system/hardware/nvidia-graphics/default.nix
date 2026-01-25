@@ -9,13 +9,6 @@ let
 in
 {
   options.custom.hardware.nvidia-graphics = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable NVIDIA driver";
-      default = false;
-      example = true;
-    };
-
     prime = lib.mkOption {
       type = lib.types.enum [
         "disabled"

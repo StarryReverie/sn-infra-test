@@ -13,13 +13,6 @@ let
     in
     {
       options.custom.applications.zsh = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          description = "Whether to enable zsh";
-          default = false;
-          example = true;
-        };
-
         profileContent = lib.mkOption {
           type = lib.types.lines;
           description = "Zsh scripts to be added to `.zprofile`, concatenated by `\n`";
