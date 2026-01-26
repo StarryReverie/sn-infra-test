@@ -42,7 +42,7 @@
 
     # NVIDIA Graphics
     {
-      custom.hardware.nvidia-graphics = {
+      custom.system.hardware.nvidia-graphics = {
         enable = true;
         prime = "offload";
       };

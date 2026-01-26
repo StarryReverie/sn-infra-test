@@ -5,10 +5,10 @@
   ...
 }:
 let
-  customCfg = config.custom.hardware.nvidia-graphics;
+  customCfg = config.custom.system.hardware.nvidia-graphics;
 in
 {
-  options.custom.hardware.nvidia-graphics = {
+  options.custom.system.hardware.nvidia-graphics = {
     prime = lib.mkOption {
       type = lib.types.enum [
         "disabled"

@@ -9,10 +9,9 @@ let
     ${domain}.${feature}.enable = lib.mkOption {
       type = lib.types.bool;
       description = ''
-        Whether to system-scoped feature option `custom.${domain}.${feature}`.
-        If at least one `users.users.<user>.custom.${domain}.${feature}.enable`
-        exists and is set to `true`, then this option will be enabled as well
-        by default.
+        Whether to enable system-scoped feature option `custom.system.${domain}.${feature}`. If at
+        least one `custom.users.<user>.${domain}.${feature}.enable` exists and is set to `true`,
+        then this option will be enabled as well by default.
       '';
       default = lib.pipe config.users.users [
         lib.attrsets.attrValues
@@ -20,15 +19,15 @@ let
         (lib.lists.any lib.id)
       ];
       defaultText = ''
-        `true` if any of `users.users.<name>.custom.${domain}.${feature}.enable`
-        is `true`, otherwise `false`
+        `true` if any of `custom.users.<name>.${domain}.${feature}.enable` is `true`, `false`
+        otherwise
       '';
       example = true;
     };
   };
 in
 {
-  options.custom = lib.attrsets.foldAttrs lib.attrsets.recursiveUpdate { } [
+  options.custom.system = lib.attrsets.foldAttrs lib.attrsets.recursiveUpdate { } [
     (mkEntry "applications" "alacritty")
     (mkEntry "applications" "firefox")
     (mkEntry "applications" "git")

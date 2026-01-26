@@ -9,7 +9,7 @@ let
   customSubmodule =
     { name, ... }:
     {
-      # Mirrors the structure of system-scoped `custom.<domain>.<feature>`.
+      # Mirrors the structure of system-scoped `custom.system.<domain>.<feature>`.
       options.custom = lib.attrsets.mapAttrs (
         domain: perDomain:
         lib.attrsets.mapAttrs (feature: perFeature: {
@@ -20,7 +20,7 @@ let
             example = true;
           };
         }) perDomain
-      ) options.custom;
+      ) options.custom.system;
     };
 in
 {
