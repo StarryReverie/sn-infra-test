@@ -107,5 +107,10 @@ in
       zellij.enable = true;
       zsh.enable = true;
     };
+    core = {
+      preservation.enable = true;
+      environment.enable = true;
+      xdg.enable = true;
+    };
   };
 }

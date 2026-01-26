@@ -59,6 +59,14 @@ in
     applications = {
       firefox.enable = true;
     };
+    core = {
+      nix.enable = true;
+      etc-overlay.enable = true;
+      initrd.enable = true;
+      preservation.enable = true;
+      user-management.enable = true;
+      fhs-compatibility.enable = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;

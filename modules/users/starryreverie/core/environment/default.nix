@@ -5,20 +5,20 @@
   flakeRoot,
   ...
 }:
+let
+  selfCfg = config.custom.users.starryreverie;
+  customCfg = selfCfg.core.environment;
+in
 {
   imports = [
     (flakeRoot + /modules/users/common/core/environment)
   ];
 
-  custom.users.starryreverie = {
-    core.environment = {
-      enable = true;
-    };
-  };
-
-  preservation.preserveAt."/nix/persistence" = {
-    users.starryreverie = {
-      directories = [ ".config/environment.d" ];
+  config = lib.mkIf customCfg.enable {
+    preservation.preserveAt."/nix/persistence" = {
+      users.starryreverie = {
+        directories = [ ".config/environment.d" ];
+      };
     };
   };
 }

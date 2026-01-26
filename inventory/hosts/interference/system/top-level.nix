@@ -38,4 +38,14 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJQ7Sondk+b5QIot+iua5gQ1lSC2GLpb7RPq5m6rileH";
+
+  custom.system = {
+    core = {
+      nix.enable = true;
+      etc-overlay.enable = true;
+      initrd.enable = true;
+      preservation.enable = true;
+      user-management.enable = true;
+    };
+  };
 }

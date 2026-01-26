@@ -59,5 +59,8 @@ in
       helix.enable = true;
       zsh.enable = true;
     };
+    core = {
+      environment.enable = true;
+    };
   };
 }

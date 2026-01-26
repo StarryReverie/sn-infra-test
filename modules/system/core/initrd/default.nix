@@ -4,7 +4,12 @@
   pkgs,
   ...
 }:
+let
+  customCfg = config.custom.system.core.initrd;
+in
 {
-  system.nixos-init.enable = true;
-  boot.initrd.systemd.enable = true;
+  config = lib.mkIf customCfg.enable {
+    system.nixos-init.enable = true;
+    boot.initrd.systemd.enable = true;
+  };
 }
