@@ -10,8 +10,8 @@
     (flakeRoot + /modules/users/common/core/environment)
   ];
 
-  users.users.starryreverie = {
-    custom.core.environment = {
+  custom.users.starryreverie = {
+    core.environment = {
       enable = true;
     };
   };

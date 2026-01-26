@@ -5,12 +5,8 @@
   ...
 }:
 {
-  users.users.starryreverie = {
-    maid = {
-      packages = with pkgs; [ fzf ];
-    };
-
-    custom.applications.zsh = {
+  custom.users.starryreverie = {
+    applications.zsh = {
       environment = {
         FZF_DEFAULT_OPTS = builtins.concatStringsSep " " [
           "--ansi"
@@ -37,4 +33,7 @@
     };
   };
 
+  users.users.starryreverie.maid = {
+    packages = with pkgs; [ fzf ];
+  };
 }

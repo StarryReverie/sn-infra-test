@@ -8,11 +8,11 @@ let
   customZshSubmodule =
     { name, ... }:
     let
-      selfCfg = config.users.users.${name};
-      customCfg = selfCfg.custom.applications.zsh;
+      selfCfg = config.custom.users.${name};
+      customCfg = selfCfg.applications.zsh;
     in
     {
-      options.custom.applications.zsh = {
+      options.applications.zsh = {
         profileContent = lib.mkOption {
           type = lib.types.lines;
           description = "Zsh scripts to be added to `.zprofile`, concatenated by `\n`";
@@ -56,8 +56,8 @@ let
         };
       };
 
-      config = {
-        custom.applications.zsh = {
+      config = lib.mkIf customCfg.enable {
+        applications.zsh = {
           profileContent = lib.mkMerge [
             (lib.mkOrder 300 ''
               # ===== Prevent `.zprofile` from being sourced again
@@ -139,8 +139,18 @@ let
             ]
           );
         };
+      };
+    };
 
-        maid = lib.mkIf customCfg.enable {
+  customZshEffectSubmodule =
+    { name, ... }:
+    let
+      selfCfg = config.custom.users.${name} or { };
+      customCfg = selfCfg.applications.zsh or { };
+    in
+    {
+      config = lib.mkIf (customCfg.enable or false) {
+        maid = {
           packages = with pkgs; [
             nix-zsh-completions
             zsh
@@ -161,7 +171,11 @@ let
     };
 in
 {
-  options.users.users = lib.mkOption {
+  options.custom.users = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule customZshSubmodule);
+  };
+
+  options.users.users = lib.mkOption {
+    type = lib.types.attrsOf (lib.types.submodule customZshEffectSubmodule);
   };
 }

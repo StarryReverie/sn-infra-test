@@ -5,14 +5,25 @@
   ...
 }:
 let
+  mkUserDirectoryVars = userDirectories: {
+    XDG_DESKTOP_DIR = userDirectories.desktop;
+    XDG_DOCUMENTS_DIR = userDirectories.documents;
+    XDG_DOWNLOAD_DIR = userDirectories.download;
+    XDG_MUSIC_DIR = userDirectories.music;
+    XDG_PICTURES_DIR = userDirectories.pictures;
+    XDG_PUBLICSHARE_DIR = userDirectories.publicShare;
+    XDG_TEMPLATES_DIR = userDirectories.templates;
+    XDG_VIDEOS_DIR = userDirectories.videos;
+  };
+
   customXdgSubmodule =
     { name, ... }:
     let
-      selfCfg = config.users.users.${name};
-      customCfg = selfCfg.custom.core.xdg;
+      selfCfg = config.custom.users.${name};
+      customCfg = selfCfg.core.xdg;
     in
     {
-      options.custom.core.xdg.userDirectories = {
+      options.core.xdg.userDirectories = {
         desktop = lib.mkOption {
           type = lib.types.nullOr lib.types.str;
           description = "Path to the desktop directory";
@@ -70,25 +81,26 @@ let
         };
       };
 
-      config =
-        let
-          userDirectoryVars = {
-            XDG_DESKTOP_DIR = customCfg.userDirectories.desktop;
-            XDG_DOCUMENTS_DIR = customCfg.userDirectories.documents;
-            XDG_DOWNLOAD_DIR = customCfg.userDirectories.download;
-            XDG_MUSIC_DIR = customCfg.userDirectories.music;
-            XDG_PICTURES_DIR = customCfg.userDirectories.pictures;
-            XDG_PUBLICSHARE_DIR = customCfg.userDirectories.publicShare;
-            XDG_TEMPLATES_DIR = customCfg.userDirectories.templates;
-            XDG_VIDEOS_DIR = customCfg.userDirectories.videos;
-          };
-        in
-        lib.mkIf customCfg.enable {
-          custom.core.environment = {
-            sessionVariables = userDirectoryVars;
-          };
+      config = lib.mkIf customCfg.enable {
+        core.environment = {
+          sessionVariables = mkUserDirectoryVars customCfg.userDirectories;
+        };
+      };
+    };
 
-          maid = {
+  customXdgEffectSubmodule =
+    { name, ... }:
+    let
+      selfCfg = config.custom.users.${name} or { };
+      customCfg = selfCfg.core.xdg or { };
+    in
+    {
+      config = lib.mkIf (customCfg.enable or false) {
+        maid =
+          let
+            userDirectoryVars = mkUserDirectoryVars customCfg.userDirectories;
+          in
+          {
             file.xdg_config."user-dirs.dirs".text =
               let
                 varEntries = lib.mapAttrsToList (name: value: "${name}=\"${value}\"") userDirectoryVars;
@@ -106,14 +118,20 @@ let
                 fileContent;
 
               serviceConfig.Type = "oneshot";
-              wantedBy = [ selfCfg.maid.maid.systemdTarget ];
+              wantedBy = [ config.users.users.${name}.maid.maid.systemdTarget ];
             };
           };
-        };
+      };
     };
 in
 {
-  options.users.users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule customXdgSubmodule);
+  options = {
+    custom.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customXdgSubmodule);
+    };
+
+    users.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customXdgEffectSubmodule);
+    };
   };
 }

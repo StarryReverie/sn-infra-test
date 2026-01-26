@@ -8,18 +8,11 @@ let
   customEnvironmentSubmodule =
     { name, ... }:
     let
-      selfCfg = config.users.users.${name};
-      customCfg = selfCfg.custom.core.environment;
+      selfCfg = config.custom.users.${name};
+      customCfg = selfCfg.core.environment;
     in
     {
-      options.custom.core.environment = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          description = "Whether to enable environment-related settings";
-          default = false;
-          example = true;
-        };
-
+      options.core.environment = {
         sessionVariables = lib.mkOption {
           type = lib.types.attrsOf lib.types.str;
           description = ''
@@ -33,9 +26,17 @@ let
           };
         };
       };
+    };
 
-      config = {
-        maid = lib.mkIf customCfg.enable {
+  customEnvironmentEffectSubmodule =
+    { name, ... }:
+    let
+      selfCfg = config.custom.users.${name} or { };
+      customCfg = selfCfg.core.environment or { };
+    in
+    {
+      config = lib.mkIf (customCfg.enable or false) {
+        maid = {
           file.home.".profile".text = ''
             source <(${pkgs.systemd}/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
           '';
@@ -52,7 +53,13 @@ let
     };
 in
 {
-  options.users.users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule customEnvironmentSubmodule);
+  options = {
+    custom.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customEnvironmentSubmodule);
+    };
+
+    users.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customEnvironmentEffectSubmodule);
+    };
   };
 }

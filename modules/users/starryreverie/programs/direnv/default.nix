@@ -13,21 +13,21 @@ let
   };
 in
 {
-  users.users.starryreverie = {
-    maid = {
-      packages = [ pkgs.direnv ];
-
-      file.xdg_config."direnv/direnv.toml".source = configFile;
-      file.xdg_config."direnv/direnvrc".source = ./direnv-stdlib.sh;
-      file.xdg_config."direnv/lib/nix-direnv.sh".source = "${pkgs.nix-direnv}/share/nix-direnv/direnvrc";
-    };
-
-    custom.applications.zsh = {
+  custom.users.starryreverie = {
+    applications.zsh = {
       rcContent = ''
         # ===== Direnv integration
         eval "$(${lib.getExe pkgs.direnv} hook zsh)"
       '';
     };
+  };
+
+  users.users.starryreverie.maid = {
+    packages = [ pkgs.direnv ];
+
+    file.xdg_config."direnv/direnv.toml".source = configFile;
+    file.xdg_config."direnv/direnvrc".source = ./direnv-stdlib.sh;
+    file.xdg_config."direnv/lib/nix-direnv.sh".source = "${pkgs.nix-direnv}/share/nix-direnv/direnvrc";
   };
 
   preservation.preserveAt."/nix/persistence" = {

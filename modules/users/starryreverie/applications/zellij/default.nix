@@ -5,15 +5,8 @@
   ...
 }:
 {
-  users.users.starryreverie = {
-    maid = {
-      packages = with pkgs; [ zellij ];
-
-      file.xdg_config."zellij/config.kdl".source = ./config.kdl;
-      file.xdg_config."zellij/layouts".source = ./layouts;
-    };
-
-    custom.applications.zsh = {
+  custom.users.starryreverie = {
+    applications.zsh = {
       shellAliases = {
         zj = "zellij";
         zd = "zellij --layout development";
@@ -31,4 +24,10 @@
     };
   };
 
+  users.users.starryreverie.maid = {
+    packages = with pkgs; [ zellij ];
+
+    file.xdg_config."zellij/config.kdl".source = ./config.kdl;
+    file.xdg_config."zellij/layouts".source = ./layouts;
+  };
 }

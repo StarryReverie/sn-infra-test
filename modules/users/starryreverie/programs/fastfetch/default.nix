@@ -5,15 +5,16 @@
   ...
 }:
 {
-  users.users.starryreverie = {
-    maid = {
-      packages = with pkgs; [ fastfetchMinimal ];
-    };
-
-    custom.applications.zsh = {
+  custom.users.starryreverie = {
+    applications.zsh = {
       shellAliases = {
         ff = "fastfetch";
       };
     };
   };
+
+  users.users.starryreverie.maid = {
+    packages = with pkgs; [ fastfetchMinimal ];
+  };
+
 }

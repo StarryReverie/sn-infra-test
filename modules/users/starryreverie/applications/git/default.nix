@@ -10,8 +10,8 @@
     (flakeRoot + /modules/users/common/applications/git)
   ];
 
-  users.users.starryreverie = {
-    custom.applications.git = {
+  custom.users.starryreverie = {
+    applications.git = {
       enable = true;
 
       config = {
@@ -23,7 +23,7 @@
       };
     };
 
-    custom.applications.zsh = {
+    applications.zsh = {
       shellAliases = {
         ga = "git add . && git status";
         gd = "git diff HEAD";

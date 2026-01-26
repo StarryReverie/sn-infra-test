@@ -10,12 +10,14 @@ let
     { name, ... }:
     {
       # Mirrors the structure of system-scoped `custom.system.<domain>.<feature>`.
-      options.custom = lib.attrsets.mapAttrs (
+      options = lib.attrsets.mapAttrs (
         domain: perDomain:
         lib.attrsets.mapAttrs (feature: perFeature: {
           enable = lib.mkOption {
             type = lib.types.bool;
-            description = "Whether to user-scoped feature option `custom.${domain}.${feature}`";
+            description = ''
+              Whether to enable user-scoped feature option `custom.users.<user>.${domain}.${feature}`
+            '';
             default = false;
             example = true;
           };
@@ -24,7 +26,8 @@ let
     };
 in
 {
-  options.users.users = lib.mkOption {
+  options.custom.users = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule customSubmodule);
+    default = { };
   };
 }

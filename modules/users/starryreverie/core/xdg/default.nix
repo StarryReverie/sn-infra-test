@@ -10,8 +10,8 @@
     (flakeRoot + /modules/users/common/core/xdg)
   ];
 
-  users.users.starryreverie = {
-    custom.core.xdg = {
+  custom.users.starryreverie = {
+    core.xdg = {
       enable = true;
 
       userDirectories = {

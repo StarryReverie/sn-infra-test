@@ -8,11 +8,11 @@ let
   customMpdEcosystemSubmodule =
     { name, ... }:
     let
-      selfCfg = config.users.users.${name};
-      customCfg = selfCfg.custom.services.mpd-ecosystem;
+      selfCfg = config.custom.users.${name};
+      customCfg = selfCfg.services.mpd-ecosystem;
     in
     {
-      options.custom.services.mpd-ecosystem.client = {
+      options.services.mpd-ecosystem.client = {
         packages = lib.mkOption {
           type = lib.types.listOf lib.types.package;
           description = "MPD clients to be added to `$PATH`";
@@ -20,8 +20,16 @@ let
           example = lib.literalExpression "[ pkgs.mpc ]";
         };
       };
+    };
 
-      config = lib.mkIf customCfg.enable {
+  customMpdEcosystemEffectSubmodule =
+    { name, ... }:
+    let
+      selfCfg = config.custom.users.${name} or { };
+      customCfg = selfCfg.services.mpd-ecosystem or { };
+    in
+    {
+      config = lib.mkIf (customCfg.enable or false) {
         maid = {
           packages = customCfg.client.packages;
         };
@@ -29,7 +37,13 @@ let
     };
 in
 {
-  options.users.users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule customMpdEcosystemSubmodule);
+  options = {
+    custom.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customMpdEcosystemSubmodule);
+    };
+
+    users.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customMpdEcosystemEffectSubmodule);
+    };
   };
 }

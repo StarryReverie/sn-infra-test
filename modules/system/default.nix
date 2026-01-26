@@ -13,9 +13,9 @@ let
         least one `custom.users.<user>.${domain}.${feature}.enable` exists and is set to `true`,
         then this option will be enabled as well by default.
       '';
-      default = lib.pipe config.users.users [
+      default = lib.pipe config.custom.users [
         lib.attrsets.attrValues
-        (lib.lists.map (cfg: cfg.custom.${domain}.${feature}.enable or false))
+        (lib.lists.map (cfg: cfg.${domain}.${feature}.enable or false))
         (lib.lists.any lib.id)
       ];
       defaultText = ''
@@ -46,6 +46,7 @@ in
     (mkEntry "applications" "yazi")
     (mkEntry "applications" "zellij")
     (mkEntry "applications" "zsh")
+    (mkEntry "core" "environment")
     (mkEntry "core" "etc-overlay")
     (mkEntry "core" "fhs-compatibility")
     (mkEntry "core" "initrd")

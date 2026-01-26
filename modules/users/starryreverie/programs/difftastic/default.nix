@@ -5,12 +5,8 @@
   ...
 }:
 {
-  users.users.starryreverie = {
-    maid = {
-      packages = with pkgs; [ difftastic ];
-    };
-
-    custom.applications.git = {
+  custom.users.starryreverie = {
+    applications.git = {
       config =
         let
           difftasticExecutable = lib.getExe pkgs.difftastic;
@@ -25,6 +21,12 @@
             cmd = "${difftasticExecutable} $LOCAL $REMOTE";
           };
         };
+    };
+  };
+
+  users.users.starryreverie = {
+    maid = {
+      packages = with pkgs; [ difftastic ];
     };
   };
 }

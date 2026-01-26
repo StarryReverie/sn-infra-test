@@ -8,11 +8,11 @@ let
   customXdgSubmodule =
     { name, ... }:
     let
-      selfCfg = config.users.users.${name};
-      customCfg = selfCfg.custom.core.xdg;
+      selfCfg = config.custom.users.${name};
+      customCfg = selfCfg.core.xdg;
     in
     {
-      options.custom.core.xdg.mimeApplications = {
+      options.core.xdg.mimeApplications = {
         default = lib.mkOption {
           type = lib.types.attrsOf lib.types.str;
           description = "Default applications for each MIME types";
@@ -44,8 +44,16 @@ let
           };
         };
       };
+    };
 
-      config = lib.mkIf customCfg.enable {
+  customXdgEffectSubmodule =
+    { name, ... }:
+    let
+      selfCfg = config.custom.users.${name} or { };
+      customCfg = selfCfg.core.xdg or { };
+    in
+    {
+      config = lib.mkIf (customCfg.enable or false) {
         maid = {
           file.xdg_config."mimeapps.list".text =
             let
@@ -81,7 +89,13 @@ let
     };
 in
 {
-  options.users.users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule customXdgSubmodule);
+  options = {
+    custom.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customXdgSubmodule);
+    };
+
+    users.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customXdgEffectSubmodule);
+    };
   };
 }

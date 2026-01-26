@@ -10,8 +10,8 @@
     (flakeRoot + /modules/users/common/applications/zsh)
   ];
 
-  users.users.starryreverie = {
-    custom.applications.zsh = {
+  custom.users.starryreverie = {
+    applications.zsh = {
       enable = true;
       alwaysSourceProfile = true;
 

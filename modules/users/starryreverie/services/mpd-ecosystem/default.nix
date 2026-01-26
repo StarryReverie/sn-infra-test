@@ -11,8 +11,8 @@
     (flakeRoot + /modules/users/common/services/mpd-ecosystem)
   ];
 
-  users.users.starryreverie = {
-    custom.services.mpd-ecosystem = {
+  custom.users.starryreverie = {
+    services.mpd-ecosystem = {
       enable = true;
 
       client = {
@@ -51,14 +51,14 @@
         '';
       };
     };
+  };
 
-    maid = {
-      gsettings.settings = {
-        io.github.htkhiem.Euphonica = {
-          client.mpd-use-unix-socket = true;
-          client.mpd-unix-socket = "/run/user/${builtins.toString config.users.users.starryreverie.uid}/mpd/socket";
-          ui.use-visualizer = false;
-        };
+  users.users.starryreverie.maid = {
+    gsettings.settings = {
+      io.github.htkhiem.Euphonica = {
+        client.mpd-use-unix-socket = true;
+        client.mpd-unix-socket = "/run/user/${builtins.toString config.users.users.starryreverie.uid}/mpd/socket";
+        ui.use-visualizer = false;
       };
     };
   };

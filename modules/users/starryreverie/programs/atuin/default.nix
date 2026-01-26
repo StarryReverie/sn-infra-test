@@ -5,19 +5,19 @@
   ...
 }:
 {
-  users.users.starryreverie = {
-    maid = {
-      packages = with pkgs; [ atuin ];
-
-      file.xdg_config."atuin/config.toml".source = ./config.toml;
-    };
-
-    custom.applications.zsh = {
+  custom.users.starryreverie = {
+    applications.zsh = {
       rcContent = ''
         # ===== Atuin integration
         eval "$(${lib.getExe pkgs.atuin} init zsh)"
       '';
     };
+  };
+
+  users.users.starryreverie.maid = {
+    packages = with pkgs; [ atuin ];
+
+    file.xdg_config."atuin/config.toml".source = ./config.toml;
   };
 
   preservation.preserveAt."/nix/persistence" = {

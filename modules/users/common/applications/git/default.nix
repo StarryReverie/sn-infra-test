@@ -8,11 +8,11 @@ let
   customGitSubmodule =
     { name, ... }:
     let
-      userCfg = config.users.users.${name};
-      customCfg = userCfg.custom.applications.git;
+      userCfg = config.custom.users.${name};
+      customCfg = userCfg.applications.git;
     in
     {
-      options.custom.applications.git = {
+      options.applications.git = {
         config = lib.mkOption {
           type = lib.types.attrsOf lib.types.anything;
           description = "Configurations in `.gitconfig`";
@@ -25,9 +25,17 @@ let
           };
         };
       };
+    };
 
-      config = {
-        maid = lib.mkIf customCfg.enable {
+  customGitEffectSubmodule =
+    { name, ... }:
+    let
+      userCfg = config.custom.users.${name} or { };
+      customCfg = userCfg.applications.git or { };
+    in
+    {
+      config = lib.mkIf (customCfg.enable or false) {
+        maid = {
           packages = with pkgs; [ git ];
 
           file.home.".gitconfig".text = lib.generators.toGitINI customCfg.config;
@@ -36,7 +44,13 @@ let
     };
 in
 {
-  options.users.users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule customGitSubmodule);
+  options = {
+    custom.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customGitSubmodule);
+    };
+
+    users.users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule customGitEffectSubmodule);
+    };
   };
 }
