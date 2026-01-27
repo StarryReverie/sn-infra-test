@@ -95,14 +95,7 @@
         "aarch64-linux"
       ];
 
-      imports = [
-        ./modules/flake/dev-environment
-        ./modules/flake/lib
-        ./modules/flake/nixos
-        ./modules/flake/overlays
-        ./modules/flake/packages
-        ./modules/flake/profiles
-      ];
+      imports = [ ./modules/flake-modules.nix ];
 
       _module.args = {
         flakeRoot = ./.;

@@ -8,12 +8,6 @@ let
   nixpkgs-lib = inputs.nixpkgs.lib;
 in
 {
-  imports = [
-    ./profiles
-
-    ./make-node-entry-point.nix
-  ];
-
   options.flake.lib = nixpkgs-lib.mkOption {
     type = nixpkgs-lib.types.submodule {
       freeformType = nixpkgs-lib.types.attrsOf nixpkgs-lib.types.raw;
@@ -27,7 +21,7 @@ in
       - Only public functions are accessible from the library. Private functions
         should be hidden or exported in a special namespace `internal`.
       - Every `default.nix` specifies its sub-namespaces and imports them
-        explicitly and exclusively.
+        explicitly and exclusively (if auto-import is not used).
       - Every non-`default.nix` file defines only one public function, and
         several private function, if necessary.
       - Constants are also allowed, since they can be treated as functions
