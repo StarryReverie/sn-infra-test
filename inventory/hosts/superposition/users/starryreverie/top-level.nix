@@ -115,6 +115,18 @@ in
     hardware = {
       pipewire.enable = true;
     };
+    desktop = {
+      clipboard.enable = true;
+      fcitx5.enable = true;
+      gtk-theme.enable = true;
+      hyprlock.enable = true;
+      niri-environment.enable = true;
+      qt-theme.enable = true;
+      rofi.enable = true;
+      swaync.enable = true;
+      waybar.enable = true;
+      wpaperd.enable = true;
+    };
     programs = {
       atuin.enable = true;
       bat.enable = true;

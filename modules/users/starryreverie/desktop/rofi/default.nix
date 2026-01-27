@@ -4,10 +4,16 @@
   pkgs,
   ...
 }:
+let
+  selfCfg = config.custom.users.starryreverie;
+  customCfg = selfCfg.desktop.rofi;
+in
 {
-  users.users.starryreverie.maid = {
-    packages = with pkgs; [ rofi ];
+  config = lib.mkIf customCfg.enable {
+    users.users.starryreverie.maid = {
+      packages = with pkgs; [ rofi ];
 
-    file.xdg_config."rofi/config.rasi".source = ./config.rasi;
+      file.xdg_config."rofi/config.rasi".source = ./config.rasi;
+    };
   };
 }

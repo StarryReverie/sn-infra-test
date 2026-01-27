@@ -67,6 +67,10 @@ in
       user-management.enable = true;
       fhs-compatibility.enable = true;
     };
+    desktop = {
+      font.enable = true;
+      niri-environment.enable = true;
+    };
     hardware = {
       bluetooth.enable = true;
       intel-graphics.enable = true;

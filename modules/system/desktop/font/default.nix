@@ -4,27 +4,32 @@
   pkgs,
   ...
 }:
+let
+  customCfg = config.custom.system.desktop.font;
+in
 {
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans-static
-    open-sans
+  config = lib.mkIf customCfg.enable {
+    fonts.packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans-static
+      open-sans
 
-    libertinus
-    noto-fonts-cjk-serif-static
+      libertinus
+      noto-fonts-cjk-serif-static
 
-    cascadia-code
-    maple-mono.NL-NF-CN-unhinted
-    source-code-pro
+      cascadia-code
+      maple-mono.NL-NF-CN-unhinted
+      source-code-pro
 
-    nerd-fonts.symbols-only
-    noto-fonts-color-emoji
-  ];
+      nerd-fonts.symbols-only
+      noto-fonts-color-emoji
+    ];
 
-  fonts.fontDir.enable = true;
+    fonts.fontDir.enable = true;
 
-  fonts.fontconfig = {
-    enable = true;
-    localConf = builtins.readFile ./fonts.conf;
+    fonts.fontconfig = {
+      enable = true;
+      localConf = builtins.readFile ./fonts.conf;
+    };
   };
 }

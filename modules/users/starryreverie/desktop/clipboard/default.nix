@@ -4,12 +4,18 @@
   pkgs,
   ...
 }:
+let
+  selfCfg = config.custom.users.starryreverie;
+  customCfg = selfCfg.desktop.clipboard;
+in
 {
-  users.users.starryreverie.maid = {
-    packages = with pkgs; [
-      wl-clipboard
-      cliphist
-      (pkgs.writeScriptBin "clipboard-select" (builtins.readFile ./clipboard-select.sh))
-    ];
+  config = lib.mkIf customCfg.enable {
+    users.users.starryreverie.maid = {
+      packages = with pkgs; [
+        wl-clipboard
+        cliphist
+        (pkgs.writeScriptBin "clipboard-select" (builtins.readFile ./clipboard-select.sh))
+      ];
+    };
   };
 }

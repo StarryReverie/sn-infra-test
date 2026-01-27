@@ -4,11 +4,17 @@
   pkgs,
   ...
 }:
+let
+  selfCfg = config.custom.users.starryreverie;
+  customCfg = selfCfg.desktop.swaync;
+in
 {
-  users.users.starryreverie.maid = {
-    packages = with pkgs; [ swaynotificationcenter ];
+  config = lib.mkIf customCfg.enable {
+    users.users.starryreverie.maid = {
+      packages = with pkgs; [ swaynotificationcenter ];
 
-    file.xdg_config."swaync/config.json".source = ./config.json;
-    file.xdg_config."swaync/style.css".source = ./style.css;
+      file.xdg_config."swaync/config.json".source = ./config.json;
+      file.xdg_config."swaync/style.css".source = ./style.css;
+    };
   };
 }

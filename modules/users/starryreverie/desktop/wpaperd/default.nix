@@ -6,6 +6,10 @@
   ...
 }:
 let
+  selfCfg = config.custom.users.starryreverie;
+  customCfg = selfCfg.desktop.wpaperd;
+in
+let
   resourcesPkgs = inputs.starrynix-resources.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   wallpaperPackage = resourcesPkgs.wallpaperPackages.anime-girls;
 
@@ -20,9 +24,11 @@ let
   };
 in
 {
-  users.users.starryreverie.maid = {
-    packages = with pkgs; [ wpaperd ];
+  config = lib.mkIf customCfg.enable {
+    users.users.starryreverie.maid = {
+      packages = with pkgs; [ wpaperd ];
 
-    file.xdg_config."wpaperd/config.toml".source = configFile;
+      file.xdg_config."wpaperd/config.toml".source = configFile;
+    };
   };
 }
