@@ -76,7 +76,7 @@ in
     (mkEntry "hardware" "zram-swap")
     (mkEntry "programs" "atuin")
     (mkEntry "programs" "bat")
-    (mkEntry "programs" "diffitastic")
+    (mkEntry "programs" "difftastic")
     (mkEntry "programs" "direnv")
     (mkEntry "programs" "eza")
     (mkEntry "programs" "fastfetch")

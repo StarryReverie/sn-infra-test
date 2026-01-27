@@ -5,6 +5,10 @@
   ...
 }:
 let
+  selfCfg = config.custom.users.starryreverie;
+  customCfg = selfCfg.programs.direnv;
+in
+let
   configFile = pkgs.writers.writeTOML "direnv.toml" {
     global = {
       log_filter = "^$";
@@ -13,26 +17,28 @@ let
   };
 in
 {
-  custom.users.starryreverie = {
-    applications.zsh = {
-      rcContent = ''
-        # ===== Direnv integration
-        eval "$(${lib.getExe pkgs.direnv} hook zsh)"
-      '';
+  config = {
+    custom.users.starryreverie = {
+      applications.zsh = lib.mkIf customCfg.enable {
+        rcContent = ''
+          # ===== Direnv integration
+          eval "$(${lib.getExe pkgs.direnv} hook zsh)"
+        '';
+      };
     };
-  };
 
-  users.users.starryreverie.maid = {
-    packages = [ pkgs.direnv ];
+    users.users.starryreverie.maid = lib.mkIf customCfg.enable {
+      packages = [ pkgs.direnv ];
 
-    file.xdg_config."direnv/direnv.toml".source = configFile;
-    file.xdg_config."direnv/direnvrc".source = ./direnv-stdlib.sh;
-    file.xdg_config."direnv/lib/nix-direnv.sh".source = "${pkgs.nix-direnv}/share/nix-direnv/direnvrc";
-  };
+      file.xdg_config."direnv/direnv.toml".source = configFile;
+      file.xdg_config."direnv/direnvrc".source = ./direnv-stdlib.sh;
+      file.xdg_config."direnv/lib/nix-direnv.sh".source = "${pkgs.nix-direnv}/share/nix-direnv/direnvrc";
+    };
 
-  preservation.preserveAt."/nix/persistence" = {
-    users.starryreverie = {
-      directories = [ ".local/share/direnv" ];
+    preservation.preserveAt."/nix/persistence" = lib.mkIf customCfg.enable {
+      users.starryreverie = {
+        directories = [ ".local/share/direnv" ];
+      };
     };
   };
 }

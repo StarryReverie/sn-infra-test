@@ -73,6 +73,18 @@ in
     core = {
       environment.enable = true;
     };
+    programs = {
+      atuin.enable = true;
+      bat.enable = true;
+      difftastic.enable = true;
+      direnv.enable = true;
+      eza.enable = true;
+      fastfetch.enable = true;
+      fd.enable = true;
+      fzf.enable = true;
+      ripgrep.enable = true;
+      zoxide.enable = true;
+    };
     security = {
       password.enable = true;
     };
