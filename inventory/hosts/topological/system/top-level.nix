@@ -55,5 +55,11 @@ in
       secret.enable = true;
       sudo.enable = true;
     };
+    services = {
+      dnsproxy.enable = true;
+      openssh.enable = true;
+      tailscale.enable = true;
+      transparent-proxy.enable = true;
+    };
   };
 }

@@ -115,5 +115,8 @@ in
     security = {
       password.enable = true;
     };
+    services = {
+      mpd-ecosystem.enable = true;
+    };
   };
 }

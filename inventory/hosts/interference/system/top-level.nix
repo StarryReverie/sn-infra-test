@@ -52,5 +52,9 @@ in
       secret.enable = true;
       sudo.enable = true;
     };
+    services = {
+      openssh.enable = true;
+      tailscale.enable = true;
+    };
   };
 }

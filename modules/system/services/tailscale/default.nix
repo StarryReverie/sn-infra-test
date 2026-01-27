@@ -4,10 +4,15 @@
   pkgs,
   ...
 }:
+let
+  customCfg = config.custom.system.services.tailscale;
+in
 {
-  services.tailscale.enable = true;
+  config = lib.mkIf customCfg.enable {
+    services.tailscale.enable = true;
 
-  preservation.preserveAt."/nix/persistence" = {
-    directories = [ "/var/lib/tailscale" ];
+    preservation.preserveAt."/nix/persistence" = {
+      directories = [ "/var/lib/tailscale" ];
+    };
   };
 }

@@ -72,6 +72,14 @@ in
       secret.enable = true;
       sudo.enable = true;
     };
+    services = {
+      dconf.enable = true;
+      dnsproxy.enable = true;
+      ly.enable = true;
+      openssh.enable = true;
+      tailscale.enable = true;
+      transparent-proxy.enable = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
