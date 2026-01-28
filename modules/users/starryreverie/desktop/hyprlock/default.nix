@@ -14,22 +14,14 @@ in
     users.users.starryreverie.maid = {
       packages = with pkgs; [ hyprlock ];
 
-      file.xdg_config."hypr/hyprlock.conf".text =
+      file.xdg_config."hypr/hyprlock.conf".source =
         let
           resourcesPkgs = inputs.starrynix-resources.legacyPackages.${pkgs.stdenv.hostPlatform.system};
           wallpaperPackage = resourcesPkgs.wallpaperPackages.minimalism;
         in
-        ''
-          ${builtins.readFile ./hyprlock.template.conf}
-
-          background {
-              path = ${wallpaperPackage.wallpaperDir}/wallhaven-2y2wg6.jpg
-              blur_passes = 2
-              blur_size = 5
-          }
-        '';
+        pkgs.replaceVars ./hyprlock.conf {
+          backgroundPath = "${wallpaperPackage.wallpaperDir}/wallhaven-2y2wg6.jpg";
+        };
     };
-
-    security.pam.services.hyprlock = { };
   };
 }
