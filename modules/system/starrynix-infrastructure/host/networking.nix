@@ -82,7 +82,7 @@ in
               list:
               lib.pipe list [
                 (lib.lists.map (name: "\"${name}\""))
-                (builtins.concatStringsSep ", ")
+                (lib.strings.concatStringsSep ", ")
               ];
             internalInterfaceElements = makeInterfaceElements hostCfg.networking.internalInterfaces;
             externalInterfaceElements = makeInterfaceElements hostCfg.networking.externalInterfaces;
@@ -98,7 +98,7 @@ in
               "${cfg.protocol} . ${sourcePort} : ${destinationIpv4Address} . ${destinationPort}";
             forwardPortElements = lib.pipe hostCfg.networking.forwardPorts [
               (lib.lists.map mapForwardPortElement)
-              (builtins.concatStringsSep ",\n")
+              (lib.strings.concatStringsSep ",\n")
             ];
           in
           {

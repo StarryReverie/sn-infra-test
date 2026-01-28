@@ -25,7 +25,7 @@
         results_on_new_tab = true;
       };
 
-      engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
+      engines = lib.attrsets.mapAttrsToList (name: value: { inherit name; } // value) {
         "bing".disabled = false;
         "nixos wiki".disabled = false;
 

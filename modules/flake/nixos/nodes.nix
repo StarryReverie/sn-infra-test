@@ -22,7 +22,7 @@ in
         };
       };
     in
-    nixpkgs-lib.foldAttrs nixpkgs-lib.recursiveUpdate { } [
+    nixpkgs-lib.attrsets.foldAttrs nixpkgs-lib.attrsets.recursiveUpdate { } [
       (makeNodeEntry "jellyfin" "main")
       (makeNodeEntry "nextcloud" "main")
       (makeNodeEntry "nextcloud" "storage")

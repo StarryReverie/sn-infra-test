@@ -26,7 +26,7 @@ in
           nixpkgs-lib.attrsets.listToAttrs
         ];
       in
-      nixpkgs-lib.mergeAttrsList [
+      nixpkgs-lib.attrsets.mergeAttrsList [
         colmenaNodeConfigurations
         microvmNodeConfigurations
       ];

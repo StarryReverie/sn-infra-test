@@ -37,7 +37,7 @@ in
         createDirectoryCommands = lib.pipe cfg.states [
           (lib.attrsets.mapAttrsToList (_: state: state.name))
           (lib.lists.map (name: "mkdir -p /var/lib/microvms/${config.networking.hostName}/${name}"))
-          (builtins.concatStringsSep "\n")
+          (lib.strings.concatStringsSep "\n")
         ];
       in
       lib.mkBefore createDirectoryCommands;

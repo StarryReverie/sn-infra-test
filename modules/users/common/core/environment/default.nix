@@ -42,12 +42,11 @@ let
           '';
 
           file.xdg_config."environment.d/60-custom-session-vars.conf".text =
-            let
-              vars = customCfg.sessionVariables;
-              varEntries = lib.attrsets.mapAttrsToList (k: v: "${k}=${v}") vars;
-              varFileContent = builtins.concatStringsSep "\n" varEntries;
-            in
-            varFileContent;
+            lib.pipe customCfg.sessionVariables
+              [
+                (lib.attrsets.mapAttrsToList (k: v: "${k}=${v}"))
+                (lib.strings.concatStringsSep "\n")
+              ];
         };
       };
     };

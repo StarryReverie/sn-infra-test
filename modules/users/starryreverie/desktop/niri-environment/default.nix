@@ -115,7 +115,7 @@ in
             monitorsOnCommand = "${lib.getExe pkgs.niri} msg action power-on-monitors";
             suspendCommand = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
           in
-          builtins.concatStringsSep " " [
+          lib.strings.concatStringsSep " " [
             "${lib.getExe pkgs.swayidle}"
             "timeout 180 ${lib.escapeShellArg lockGracefullyCommand}"
             "timeout 185 ${lib.escapeShellArg monitorsOffCommand}"

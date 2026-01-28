@@ -17,8 +17,8 @@ in
       GSETTINGS_SCHEMA_DIR =
         let
           gsettingsSchemaRoots = lib.pipe config.environment.profiles [
-            (builtins.map (profile: "\"${profile}/share/gsettings-schemas\""))
-            (builtins.concatStringsSep " ")
+            (lib.lists.map (profile: "\"${profile}/share/gsettings-schemas\""))
+            (lib.strings.concatStringsSep " ")
           ];
           searchScript = pkgs.replaceVars ./search-gsettings-schemas.sh {
             inherit gsettingsSchemaRoots;

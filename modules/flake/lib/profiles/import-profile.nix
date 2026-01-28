@@ -34,7 +34,7 @@ let
         "rollback"
       ];
 
-      profile = nixpkgs-lib.foldl (
+      profile = nixpkgs-lib.lists.foldl (
         finalProfile: userEntry:
         nixpkgs-lib.recursiveUpdate finalProfile {
           users.${userEntry.name} = importApplyUserProfile userEntry.value specialArgs baseProfileArgs;

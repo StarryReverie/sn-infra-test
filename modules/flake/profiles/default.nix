@@ -18,7 +18,7 @@ in
         );
       };
     in
-    nixpkgs-lib.foldAttrs nixpkgs-lib.recursiveUpdate { } [
+    nixpkgs-lib.attrsets.foldAttrs nixpkgs-lib.attrsets.recursiveUpdate { } [
       (makeProfileEntry "ancilla")
     ];
 }

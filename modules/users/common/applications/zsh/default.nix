@@ -124,9 +124,9 @@ let
               ''
                 # ===== Shell aliases
                 ${
-                  (lib.pipe (lib.attrsToList customCfg.shellAliases) [
-                    (builtins.map ({ name, value }: "alias -- ${name}=${lib.escapeShellArg value}"))
-                    (builtins.concatStringsSep "\n")
+                  (lib.pipe customCfg.shellAliases [
+                    (lib.attrsets.mapAttrsToList (name: value: "alias -- ${name}=${lib.strings.escapeShellArg value}"))
+                    (lib.strings.concatStringsSep "\n")
                   ])
                 }
               ''
@@ -159,13 +159,10 @@ let
           file.home.".zprofile".text = customCfg.profileContent;
           file.home.".zshrc".text = customCfg.rcContent;
 
-          file.home.".zshenv".text =
-            let
-              makeEnvironment = { name, value }: "export ${name}=${lib.escapeShellArg value}";
-              environmentCommands = builtins.map makeEnvironment (lib.attrsToList customCfg.environment);
-              zshenvContent = builtins.concatStringsSep "\n" environmentCommands;
-            in
-            zshenvContent;
+          file.home.".zshenv".text = lib.pipe customCfg.environment [
+            (lib.attrsets.mapAttrsToList (name: value: "export ${name}=${lib.strings.escapeShellArg value}"))
+            (lib.strings.concatStringsSep "\n")
+          ];
         };
       };
     };

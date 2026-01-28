@@ -101,21 +101,16 @@ let
             userDirectoryVars = mkUserDirectoryVars customCfg.userDirectories;
           in
           {
-            file.xdg_config."user-dirs.dirs".text =
-              let
-                varEntries = lib.mapAttrsToList (name: value: "${name}=\"${value}\"") userDirectoryVars;
-                fileContent = builtins.concatStringsSep "\n" varEntries;
-              in
-              fileContent;
+            file.xdg_config."user-dirs.dirs".text = lib.pipe userDirectoryVars [
+              (lib.attrsets.mapAttrsToList (name: value: "${name}=\"${value}\""))
+              (lib.strings.concatStringsSep "\n")
+            ];
 
             systemd.services."create-xdg-user-dirs" = {
-              script =
-                let
-                  mapMkdirCommand = name: value: "mkdir -p \"${value}\"";
-                  mkdirCommands = lib.mapAttrsToList mapMkdirCommand userDirectoryVars;
-                  fileContent = builtins.concatStringsSep "\n" mkdirCommands;
-                in
-                fileContent;
+              script = lib.pipe userDirectoryVars [
+                (lib.attrsets.mapAttrsToList (name: value: "mkdir -p \"${value}\""))
+                (lib.strings.concatStringsSep "\n")
+              ];
 
               serviceConfig.Type = "oneshot";
               wantedBy = [ config.users.users.${name}.maid.maid.systemdTarget ];

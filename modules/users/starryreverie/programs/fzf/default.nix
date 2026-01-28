@@ -13,7 +13,7 @@ in
     custom.users.starryreverie = {
       applications.zsh = lib.mkIf customCfg.enable {
         environment = {
-          FZF_DEFAULT_OPTS = builtins.concatStringsSep " " [
+          FZF_DEFAULT_OPTS = lib.strings.concatStringsSep " " [
             "--ansi"
             "--reverse"
             "--scroll-off=5"

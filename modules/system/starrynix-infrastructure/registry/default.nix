@@ -236,7 +236,7 @@ in
     assertions = [
       (
         let
-          clusters = builtins.attrValues cfg.clusters;
+          clusters = lib.attrsets.attrValues cfg.clusters;
           clusterIndexes = lib.lists.map (c: c.index) clusters;
           dupClusterIndexes = lib.pipe clusterIndexes [
             (lib.lists.filter (i: (lib.lists.count (x: x == i) clusterIndexes) > 1))
@@ -251,8 +251,8 @@ in
                 if dupClusterIndexes != [ ] then
                   "Duplicate cluster index(es): ${
                     lib.pipe dupClusterIndexes [
-                      (map (i: "`${builtins.toString i}`"))
-                      (builtins.concatStringsSep ", ")
+                      (lib.lists.map (i: "`${builtins.toString i}`"))
+                      (lib.strings.concatStringsSep ", ")
                     ]
                   }."
                 else
@@ -263,11 +263,11 @@ in
         }
       )
     ]
-    ++ (lib.mapAttrsToList (
+    ++ (lib.attrsets.mapAttrsToList (
       clusterName: cluster:
       let
-        nodes = builtins.attrValues cluster.nodes;
-        nodeIndexes = map (n: n.index) nodes;
+        nodes = lib.attrsets.attrValues cluster.nodes;
+        nodeIndexes = lib.lists.map (n: n.index) nodes;
         dupNodeIndexes = lib.pipe nodeIndexes [
           (lib.lists.filter (i: lib.lists.count (x: x == i) nodeIndexes > 1))
           lib.lists.unique
@@ -281,8 +281,8 @@ in
               if dupNodeIndexes != [ ] then
                 "Duplicate node index(es): ${
                   lib.pipe dupNodeIndexes [
-                    (map (i: "`${builtins.toString i}`"))
-                    (builtins.concatStringsSep ", ")
+                    (lib.lists.map (i: "`${builtins.toString i}`"))
+                    (lib.strings.concatStringsSep ", ")
                   ]
                 }."
               else
