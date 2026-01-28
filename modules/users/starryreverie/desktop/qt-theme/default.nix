@@ -29,14 +29,22 @@ in
 
       file.xdg_config =
         let
-          orchis = inputs.starrynix-derivations.packages.${pkgs.stdenv.hostPlatform.system}.orchis-kde;
+          derivationsPkgs = inputs.starrynix-derivations.packages.${pkgs.stdenv.hostPlatform.system};
+          kvlibadwaita = derivationsPkgs.kvlibadwaita.overrideAttrs {
+            # Kvantum tries to modify the files directly when applying customizations
+            postFixup = ''
+              for file in $out/share/Kvantum/KvLibadwaita/*.kvconfig; do
+                substituteInPlace $file --replace-fail 'tooltip_delay=0' 'tooltip_delay=-1'
+              done
+            '';
+          };
         in
         {
-          "Kvantum/Orchis-solid".source = "${orchis}/share/Kvantum/Orchis-solid";
+          "Kvantum/KvLibadwaita".source = "${kvlibadwaita}/share/Kvantum/KvLibadwaita";
 
           "Kvantum/kvantum.kvconfig".text = ''
             [General]
-            theme = Orchis-solidDark
+            theme = KvLibadwaitaDark
           '';
 
           "qt5ct/qt5ct.conf".source = pkgs.replaceVars ./qt5ct.conf {
