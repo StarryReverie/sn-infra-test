@@ -40,6 +40,12 @@
       boot.extraModulePackages = [ ];
     }
 
+    # Keyd
+    {
+      # Keyd ignores mice by default. Specific mouse device ID must be added explicitly.
+      services.keyd.keyboards.default.ids = [ "25a7:faa0:c238fbe2" ];
+    }
+
     # NVIDIA Graphics
     {
       custom.system.hardware.nvidia-graphics = {

@@ -18,6 +18,10 @@ in
         capslock = "overload(control, esc)";
         # Emit `Caps Lock`.
         esc = "capslock";
+        # Emit `Alt` when held, otherwise as-is.
+        mouse1 = "overload(alt, mouse1)";
+        # Emit `Super`/`Meta` when held, otherwise as-is.
+        mouse2 = "overload(meta, mouse2)";
       };
     };
 
