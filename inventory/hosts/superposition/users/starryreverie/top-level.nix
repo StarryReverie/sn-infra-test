@@ -87,5 +87,9 @@
     services = {
       mpd-ecosystem.enable = true;
     };
+    virtualization = {
+      container.enable = true;
+      libvirt.enable = true;
+    };
   };
 }

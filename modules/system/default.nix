@@ -98,6 +98,7 @@ in
     (mkEntry "services" "transparent-proxy")
     (mkEntry "virtualization" "container")
     (mkEntry "virtualization" "distrobox")
+    (mkEntry "virtualization" "libvirt")
     (mkEntry "virtualization" "waydroid")
   ];
 }

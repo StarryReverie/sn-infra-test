@@ -65,6 +65,7 @@
     virtualization = {
       container.enable = true;
       distrobox.enable = true;
+      libvirt.enable = true;
     };
   };
 
