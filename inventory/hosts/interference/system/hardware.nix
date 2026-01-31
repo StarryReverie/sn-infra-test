@@ -31,7 +31,10 @@
 
     # Networking
     {
-      age.secrets."10-ens18.network".rekeyFile = ./10-ens18.network.age;
+      age.secrets."10-ens18.network" = {
+        rekeyFile = ./10-ens18.network.age;
+        configureForUser = "systemd-network";
+      };
 
       environment.etc."systemd/network/10-ens18.network" = {
         source = config.age.secrets."10-ens18.network".path;
