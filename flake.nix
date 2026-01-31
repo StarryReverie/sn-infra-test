@@ -47,6 +47,10 @@
       url = "github:lf-/flakey-profile/main";
     };
 
+    import-tree = {
+      url = "github:vic/import-tree/main";
+    };
+
     microvm = {
       url = "github:microvm-nix/microvm.nix/main";
       inputs.nixpkgs.follows = "nixpkgs";
