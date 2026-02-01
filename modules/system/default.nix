@@ -41,6 +41,7 @@ in
     (mkEntry "applications" "opencode")
     (mkEntry "applications" "qq")
     (mkEntry "applications" "resources")
+    (mkEntry "applications" "steam")
     (mkEntry "applications" "telegram-desktop")
     (mkEntry "applications" "vscode")
     (mkEntry "applications" "yazi")
