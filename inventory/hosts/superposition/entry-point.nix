@@ -23,7 +23,6 @@ inputs.nixpkgs.lib.nixosSystem {
 
     # Local modules
     (flakeRoot + /modules/nixos-modules.nix)
-    ./system/top-level.nix
-    ./users/starryreverie/top-level.nix
+    (inputs.import-tree.matchNot "([^/]*/)*entry-point\.nix" ./.)
   ];
 }

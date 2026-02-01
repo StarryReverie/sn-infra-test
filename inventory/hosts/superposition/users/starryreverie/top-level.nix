@@ -6,11 +6,6 @@
   ...
 }:
 {
-  imports = [
-    ./core.nix
-    ./desktop.nix
-  ];
-
   users.users.starryreverie = {
     uid = 1000;
     group = config.users.groups.starryreverie.name;

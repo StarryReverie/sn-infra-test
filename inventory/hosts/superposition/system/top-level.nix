@@ -6,12 +6,6 @@
   ...
 }:
 {
-  imports = [
-    ./disk-config.nix
-    ./hardware.nix
-    ./services.nix
-  ];
-
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "superposition";
   system.stateVersion = "25.11";

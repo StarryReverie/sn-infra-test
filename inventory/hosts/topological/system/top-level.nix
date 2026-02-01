@@ -5,12 +5,6 @@
   ...
 }:
 {
-  imports = [
-    ./disk-config.nix
-    ./hardware.nix
-    ./service.nix
-  ];
-
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "topological";
   system.stateVersion = "25.11";
