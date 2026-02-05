@@ -8,19 +8,10 @@
 let
   customCfg = config.custom.system.desktop.wayfire-environment;
 in
-let
-  wayfirePackage = pkgs.wayfire-with-plugins.override {
-    wayfire = pkgs.wayfire;
-    plugins = with pkgs.wayfirePlugins; [
-      wcm
-      wf-shell
-    ];
-  };
-in
 {
   config = lib.mkMerge [
     (lib.mkIf customCfg.enable {
-      environment.systemPackages = [ wayfirePackage ];
+      environment.systemPackages = [ pkgs.wayfire ];
 
       services.displayManager.sessionPackages = lib.singleton (
         pkgs.runCommandLocal "wayfire-session-desktop-item"
@@ -33,7 +24,6 @@ in
                 name = "wayfire";
                 desktopName = "Wayfire";
                 exec = pkgs.writeShellScript "wayfire-session" (builtins.readFile ./wayfire-session.sh);
-                # exec = "wayfire";
                 type = "Application";
               }
             }
@@ -45,7 +35,7 @@ in
 
       systemd.user.services."wayfire" = {
         description = "A customizable, extendable and lightweight environment without sacrificing its appearance";
-        serviceConfig.ExecStart = "${wayfirePackage}/bin/wayfire";
+        serviceConfig.ExecStart = "${pkgs.wayfire}/bin/wayfire";
         serviceConfig.Slice = "session.slice";
         environment = lib.mkForce { };
         bindsTo = [
