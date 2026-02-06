@@ -34,7 +34,7 @@
     "timezone": "Asia/Shanghai",
     "format": " {:%B %d - %H:%M} ",
     "tooltip": true,
-    "tooltip-format": "Date:   {:%Y-%m-%d\nWeekday:  %A\nTimezone: %Z\nTime:   %H:%M:%S}"
+    "tooltip-format": "Date:     {:%Y-%m-%d\nWeekday:  %A\nTimezone: %Z\nTime:     %H:%M:%S}"
   },
   "custom/wallpaper": {
     "interval": "once",
@@ -86,9 +86,9 @@
     "format-charging": " 󱐋 {capacity}% ",
     "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
     "tooltip": true,
-    "tooltip-format-full": "Capacity: {capacity}%\nPower:  {power} W\nStatus:   Full",
-    "tooltip-format-charging": "Capacity: {capacity}%\nPower:  {power} W\nStatus:   Charging\nEstimate: {timeTo}",
-    "tooltip-format-discharging": "Capacity: {capacity}%\nPower:  {power} W\nStatus:   Discharging\nEstimate: {timeTo}"
+    "tooltip-format-full": "Capacity: {capacity}%\nPower:    {power}W\nStatus:   Full",
+    "tooltip-format-charging": "Capacity: {capacity}%\nPower:    {power}W\nStatus:   Charging\nEstimate: {timeTo}",
+    "tooltip-format-discharging": "Capacity: {capacity}%\nPower:    {power}W\nStatus:   Discharging\nEstimate: {timeTo}"
   },
   "bluetooth": {
 	  "interval": 60,
@@ -99,11 +99,11 @@
     "on-click": "blueman-manager",
     "tooltip": true,
     "tooltip-format-no-controller": "Bluetooth Unavailable",
-    "tooltip-format-disabled": "Controller: {controller_alias}\nAddress:  {controller_address}\nStatus:   Disabled",
-    "tooltip-format-on": "Controller: {controller_alias}\nAddress:  {controller_address}\nStatus:   Enabled\n\nNo Connection",
-    "tooltip-format-connected": "Controller: {controller_alias}\nAddress:  {controller_address}\nStatus:   Connected\n\nConnections:{device_enumerate}",
-    "tooltip-format-enumerate-connected": "\n\n- Device:  {device_alias}\n  Address: {device_address}",
-    "tooltip-format-enumerate-connected-battery": "\n\n- Device:  {device_alias}\n  Address: {device_address}\n  Battery: {device_battery_percentage}%"
+    "tooltip-format-disabled": "Controller: {controller_alias}\nAddress:    {controller_address}\nStatus:     Disabled",
+    "tooltip-format-on": "Controller: {controller_alias}\nAddress:    {controller_address}\nStatus:     Enabled\n\nNo Connection",
+    "tooltip-format-connected": "Controller: {controller_alias}\nAddress:    {controller_address}\nStatus:     Connected{device_enumerate}",
+    "tooltip-format-enumerate-connected": "\n\nDevice:  {device_alias}\nAddress: {device_address}",
+    "tooltip-format-enumerate-connected-battery": "\n\nDevice:  {device_alias}\nAddress: {device_address}\nBattery: {device_battery_percentage}%"
   },
   "wireplumber": {
 	  "interval": 60,
@@ -141,7 +141,7 @@
 	  "interval": 10,
     "format": "  {percentage}% ",
     "tooltip": true,
-    "tooltip-format": "Percentage:  {percentage}%\nRAM Total:   {total:0.1f} GiB\nRAM Available: {avail:0.1f} GiB\nRAM Used:    {used:0.1f} GiB\nSwap Used:   {swapUsed:0.1f} GiB"
+    "tooltip-format": "Percentage:    {percentage}%\nRAM Total:     {total:0.1f}GiB\nRAM Available: {avail:0.1f}GiB\nRAM Used:      {used:0.1f}GiB\nSwap Used:     {swapUsed:0.1f}GiB"
   },
   "cpu": {
 	  "interval": 10,
