@@ -149,16 +149,5 @@ in
         after = [ "wayfire-session.target" ];
       };
     };
-
-    preservation.preserveAt."/nix/persistence" = {
-      users.starryreverie = {
-        files = [
-          {
-            file = ".config/wayfire.ini";
-            how = "symlink";
-          }
-        ];
-      };
-    };
   };
 }
