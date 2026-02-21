@@ -94,6 +94,7 @@ in
     (mkEntry "security" "sudo")
     (mkEntry "services" "dconf")
     (mkEntry "services" "dnsproxy")
+    (mkEntry "services" "gdm")
     (mkEntry "services" "ly")
     (mkEntry "services" "mpd-ecosystem")
     (mkEntry "services" "openssh")

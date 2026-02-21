@@ -35,6 +35,7 @@
     services = {
       dnsproxy.enable = true;
       openssh.enable = true;
+      gdm.enable = true;
       tailscale.enable = true;
       transparent-proxy.enable = true;
     };
