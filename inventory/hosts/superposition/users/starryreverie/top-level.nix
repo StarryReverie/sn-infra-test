@@ -42,13 +42,9 @@
       zsh.enable = true;
     };
     core = {
-      preservation.enable = true;
       environment.enable = true;
+      preservation.enable = true;
       xdg.enable = true;
-    };
-    hardware = {
-      pipewire.enable = true;
-      wireless.enable = true;
     };
     desktop = {
       clipboard.enable = true;
@@ -62,6 +58,10 @@
       waybar.enable = true;
       wayfire-environment.enable = true;
       wpaperd.enable = true;
+    };
+    hardware = {
+      pipewire.enable = true;
+      wireless.enable = true;
     };
     programs = {
       atuin.enable = true;

@@ -28,17 +28,27 @@
 
   custom.users.starryreverie = {
     applications = {
+      alacritty.enable = true;
+      firefox.enable = true;
       git.enable = true;
       helix.enable = true;
       lazygit.enable = true;
+      nautilus.enable = true;
+      resources.enable = true;
       yazi.enable = true;
       zellij.enable = true;
       zsh.enable = true;
     };
     core = {
       environment.enable = true;
+      preservation.enable = true;
+      xdg.enable = true;
+    };
+    desktop = {
+      fcitx5.enable = true;
     };
     hardware = {
+      pipewire.enable = true;
       wireless.enable = true;
     };
     programs = {
