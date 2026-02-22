@@ -52,6 +52,7 @@ in
     (mkEntry "core" "etc-overlay")
     (mkEntry "core" "fhs-compatibility")
     (mkEntry "core" "initrd")
+    (mkEntry "core" "localization")
     (mkEntry "core" "nix")
     (mkEntry "core" "preservation")
     (mkEntry "core" "user-management")
